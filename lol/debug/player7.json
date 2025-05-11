@@ -1,0 +1,51 @@
+[{
+		"canUse":	false,
+		"consumable":	false,
+		"count":	1,
+		"displayName":	"Doran's Ring",
+		"itemID":	1056,
+		"price":	400,
+		"rawDescription":	"GeneratedTip_Item_1056_Description",
+		"rawDisplayName":	"Item_1056_Name",
+		"slot":	0
+	}, {
+		"canUse":	false,
+		"consumable":	false,
+		"count":	1,
+		"displayName":	"Sorcerer's Shoes",
+		"itemID":	3020,
+		"price":	800,
+		"rawDescription":	"GeneratedTip_Item_3020_Description",
+		"rawDisplayName":	"Item_3020_Name",
+		"slot":	1
+	}, {
+		"canUse":	false,
+		"consumable":	false,
+		"count":	1,
+		"displayName":	"Lost Chapter",
+		"itemID":	3802,
+		"price":	250,
+		"rawDescription":	"GeneratedTip_Item_3802_Description",
+		"rawDisplayName":	"Item_3802_Name",
+		"slot":	2
+	}, {
+		"canUse":	true,
+		"consumable":	true,
+		"count":	1,
+		"displayName":	"Control Ward",
+		"itemID":	2055,
+		"price":	75,
+		"rawDescription":	"GeneratedTip_Item_2055_Description",
+		"rawDisplayName":	"Item_2055_Name",
+		"slot":	5
+	}, {
+		"canUse":	true,
+		"consumable":	false,
+		"count":	1,
+		"displayName":	"Stealth Ward",
+		"itemID":	3340,
+		"price":	0,
+		"rawDescription":	"GeneratedTip_Item_3340_Description",
+		"rawDisplayName":	"Item_3340_Name",
+		"slot":	6
+	}]

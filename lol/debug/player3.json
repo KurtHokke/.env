@@ -1,0 +1,41 @@
+[{
+		"canUse":	false,
+		"consumable":	false,
+		"count":	1,
+		"displayName":	"Mosstomper Seedling",
+		"itemID":	1103,
+		"price":	450,
+		"rawDescription":	"GeneratedTip_Item_1103_Description",
+		"rawDisplayName":	"Item_1103_Name",
+		"slot":	0
+	}, {
+		"canUse":	false,
+		"consumable":	false,
+		"count":	1,
+		"displayName":	"Glowing Mote",
+		"itemID":	2022,
+		"price":	250,
+		"rawDescription":	"GeneratedTip_Item_2022_Description",
+		"rawDisplayName":	"Item_2022_Name",
+		"slot":	1
+	}, {
+		"canUse":	false,
+		"consumable":	false,
+		"count":	1,
+		"displayName":	"Tunneler",
+		"itemID":	2021,
+		"price":	400,
+		"rawDescription":	"GeneratedTip_Item_2021_Description",
+		"rawDisplayName":	"Item_2021_Name",
+		"slot":	2
+	}, {
+		"canUse":	true,
+		"consumable":	false,
+		"count":	1,
+		"displayName":	"Stealth Ward",
+		"itemID":	3340,
+		"price":	0,
+		"rawDescription":	"GeneratedTip_Item_3340_Description",
+		"rawDisplayName":	"Item_3340_Name",
+		"slot":	6
+	}]

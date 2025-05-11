@@ -1,0 +1,9 @@
+{
+    "files.associations": {
+        "*.zsh": "shellscript",
+        "*.wsb": "xml",
+        "cjson.h": "c",
+        "cjson_utils.h": "c",
+        "stdbool.h": "c"
+    }
+}

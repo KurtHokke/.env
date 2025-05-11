@@ -1,0 +1,14 @@
+{
+    "edit scope color": {
+    "prefix": "scope",
+    "body": [
+        "{",
+        "    \"scope\": [\n        \"${1:source.python string}\",\n    ],",
+        "    \"settings\": {",
+        "        \"foreground\": \"#ae00ff\",${2:\n        \"fontStyle\": \"bold\"}",
+        "    }",
+        "},",
+    ],
+    "description": "edit color of scopes"
+    }
+}

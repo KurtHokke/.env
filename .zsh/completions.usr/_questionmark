@@ -1,0 +1,14 @@
+_questionmark() {
+  local state
+
+  _arguments \ 
+    '1: :->aws_profile'\ 
+    '*: :->eb_name'
+
+  case $state in
+    (aws_profile) _arguments '1:profiles:(cuonglm test)' ;;
+              (*) compadd "$@" prod staging dev
+  esac
+}
+
+_questionmark "$@"

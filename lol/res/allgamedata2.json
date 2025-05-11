@@ -1,0 +1,346 @@
+{
+	"activePlayer": {
+		"abilities": {
+			"E": {
+				"abilityLevel": 0,
+				"displayName": "Powder Keg",
+				"id": "GangplankE",
+				"rawDescription": "GeneratedTip_Spell_GangplankE_Description",
+				"rawDisplayName": "GeneratedTip_Spell_GangplankE_DisplayName"
+			},
+			"Passive": {
+				"displayName": "Trial by Fire",
+				"id": "GangplankPassive",
+				"rawDescription": "GeneratedTip_Passive_GangplankPassive_Description",
+				"rawDisplayName": "GeneratedTip_Passive_GangplankPassive_DisplayName"
+			},
+			"Q": {
+				"abilityLevel": 0,
+				"displayName": "Parrrley",
+				"id": "GangplankQWrapper",
+				"rawDescription": "GeneratedTip_Spell_GangplankQWrapper_Description",
+				"rawDisplayName": "GeneratedTip_Spell_GangplankQWrapper_DisplayName"
+			},
+			"R": {
+				"abilityLevel": 0,
+				"displayName": "Cannon Barrage",
+				"id": "GangplankR",
+				"rawDescription": "GeneratedTip_Spell_GangplankR_Description",
+				"rawDisplayName": "GeneratedTip_Spell_GangplankR_DisplayName"
+			},
+			"W": {
+				"abilityLevel": 0,
+				"displayName": "Remove Scurvy",
+				"id": "GangplankW",
+				"rawDescription": "GeneratedTip_Spell_GangplankW_Description",
+				"rawDisplayName": "GeneratedTip_Spell_GangplankW_DisplayName"
+			}
+		},
+		"championStats": {
+			"abilityHaste": 0.0,
+			"abilityPower": 0.0,
+			"armor": 31.0,
+			"armorPenetrationFlat": 0.0,
+			"armorPenetrationPercent": 1.0,
+			"attackDamage": 79.4000015258789,
+			"attackRange": 125.0,
+			"attackSpeed": 0.7269999980926514,
+			"bonusArmorPenetrationPercent": 1.0,
+			"bonusMagicPenetrationPercent": 1.0,
+			"critChance": 0.0,
+			"critDamage": 175.0,
+			"currentHealth": 775.0,
+			"healShieldPower": 0.0,
+			"healthRegenRate": 1.2000000476837159,
+			"lifeSteal": 0.029999999329447748,
+			"magicLethality": 0.0,
+			"magicPenetrationFlat": 0.0,
+			"magicPenetrationPercent": 1.0,
+			"magicResist": 32.0,
+			"maxHealth": 775.0,
+			"moveSpeed": 345.0,
+			"omnivamp": 0.0,
+			"physicalLethality": 0.0,
+			"physicalVamp": 0.0,
+			"resourceMax": 280.0,
+			"resourceRegenRate": 1.600000023841858,
+			"resourceType": "MANA",
+			"resourceValue": 280.0,
+			"spellVamp": 0.0,
+			"tenacity": 5.0
+		},
+		"currentGold": 205.0401153564453,
+		"fullRunes": {
+			"generalRunes": [
+				{
+					"displayName": "Grasp of the Undying",
+					"id": 8437,
+					"rawDescription": "perk_tooltip_GraspOfTheUndying",
+					"rawDisplayName": "perk_displayname_GraspOfTheUndying"
+				},
+				{
+					"displayName": "Demolish",
+					"id": 8446,
+					"rawDescription": "perk_tooltip_8446",
+					"rawDisplayName": "perk_displayname_8446"
+				},
+				{
+					"displayName": "Second Wind",
+					"id": 8444,
+					"rawDescription": "perk_tooltip_SecondWind",
+					"rawDisplayName": "perk_displayname_SecondWind"
+				},
+				{
+					"displayName": "Overgrowth",
+					"id": 8451,
+					"rawDescription": "perk_tooltip_Overgrowth",
+					"rawDisplayName": "perk_displayname_Overgrowth"
+				},
+				{
+					"displayName": "Scorch",
+					"id": 8237,
+					"rawDescription": "perk_tooltip_Scorch",
+					"rawDisplayName": "perk_displayname_Scorch"
+				},
+				{
+					"displayName": "Transcendence",
+					"id": 8210,
+					"rawDescription": "perk_tooltip_Transcendence",
+					"rawDisplayName": "perk_displayname_Transcendence"
+				}
+			],
+			"keystone": {
+				"displayName": "Grasp of the Undying",
+				"id": 8437,
+				"rawDescription": "perk_tooltip_GraspOfTheUndying",
+				"rawDisplayName": "perk_displayname_GraspOfTheUndying"
+			},
+			"primaryRuneTree": {
+				"displayName": "Resolve",
+				"id": 8400,
+				"rawDescription": "perkstyle_tooltip_7204",
+				"rawDisplayName": "perkstyle_displayname_7204"
+			},
+			"secondaryRuneTree": {
+				"displayName": "Sorcery",
+				"id": 8200,
+				"rawDescription": "perkstyle_tooltip_7202",
+				"rawDisplayName": "perkstyle_displayname_7202"
+			},
+			"statRunes": [
+				{
+					"id": 5005,
+					"rawDescription": "perk_tooltip_StatModAttackSpeed"
+				},
+				{
+					"id": 5008,
+					"rawDescription": "perk_tooltip_StatModAdaptive"
+				},
+				{
+					"id": 5011,
+					"rawDescription": "perk_tooltip_StatModHealth"
+				}
+			]
+		},
+		"level": 1,
+		"riotId": "gta6wontrelease#2855",
+		"riotIdGameName": "gta6wontrelease",
+		"riotIdTagLine": "2855",
+		"summonerName": "gta6wontrelease#2855",
+		"teamRelativeColors": true
+	},
+	"allPlayers": [
+		{
+			"championName": "Gangplank",
+			"isBot": false,
+			"isDead": false,
+			"items": [
+				{
+					"canUse": false,
+					"consumable": false,
+					"count": 1,
+					"displayName": "Doran's Blade",
+					"itemID": 1055,
+					"price": 450,
+					"rawDescription": "GeneratedTip_Item_1055_Description",
+					"rawDisplayName": "Item_1055_Name",
+					"slot": 0
+				},
+				{
+					"canUse": true,
+					"consumable": false,
+					"count": 1,
+					"displayName": "Stealth Ward",
+					"itemID": 3340,
+					"price": 0,
+					"rawDescription": "GeneratedTip_Item_3340_Description",
+					"rawDisplayName": "Item_3340_Name",
+					"slot": 6
+				}
+			],
+			"level": 1,
+			"position": "",
+			"rawChampionName": "game_character_displayname_Gangplank",
+			"rawSkinName": "game_character_skin_displayname_Gangplank_14",
+			"respawnTimer": 0.0,
+			"riotId": "gta6wontrelease#2855",
+			"riotIdGameName": "gta6wontrelease",
+			"riotIdTagLine": "2855",
+			"runes": {
+				"keystone": {
+					"displayName": "Grasp of the Undying",
+					"id": 8437,
+					"rawDescription": "perk_tooltip_GraspOfTheUndying",
+					"rawDisplayName": "perk_displayname_GraspOfTheUndying"
+				},
+				"primaryRuneTree": {
+					"displayName": "Resolve",
+					"id": 8400,
+					"rawDescription": "perkstyle_tooltip_7204",
+					"rawDisplayName": "perkstyle_displayname_7204"
+				},
+				"secondaryRuneTree": {
+					"displayName": "Sorcery",
+					"id": 8200,
+					"rawDescription": "perkstyle_tooltip_7202",
+					"rawDisplayName": "perkstyle_displayname_7202"
+				}
+			},
+			"scores": {
+				"assists": 0,
+				"creepScore": 0,
+				"deaths": 0,
+				"kills": 0,
+				"wardScore": 0.0
+			},
+			"skinID": 14,
+			"skinName": "Pool Party Gangplank",
+			"summonerName": "gta6wontrelease#2855",
+			"summonerSpells": {
+				"summonerSpellOne": {
+					"displayName": "Teleport",
+					"rawDescription": "GeneratedTip_SummonerSpell_SummonerTeleport_Description",
+					"rawDisplayName": "GeneratedTip_SummonerSpell_SummonerTeleport_DisplayName"
+				},
+				"summonerSpellTwo": {
+					"displayName": "Flash",
+					"rawDescription": "GeneratedTip_SummonerSpell_SummonerFlash_Description",
+					"rawDisplayName": "GeneratedTip_SummonerSpell_SummonerFlash_DisplayName"
+				}
+			},
+			"team": "ORDER"
+		},
+		{
+			"championName": "Annie",
+			"isBot": true,
+			"isDead": false,
+			"items": [
+				{
+					"canUse": false,
+					"consumable": false,
+					"count": 1,
+					"displayName": "Amplifying Tome",
+					"itemID": 1052,
+					"price": 400,
+					"rawDescription": "GeneratedTip_Item_1052_Description",
+					"rawDisplayName": "Item_1052_Name",
+					"slot": 0
+				},
+				{
+					"canUse": true,
+					"consumable": true,
+					"count": 2,
+					"displayName": "Health Potion",
+					"itemID": 2003,
+					"price": 50,
+					"rawDescription": "GeneratedTip_Item_2003_Description",
+					"rawDisplayName": "Item_2003_Name",
+					"slot": 1
+				},
+				{
+					"canUse": true,
+					"consumable": false,
+					"count": 1,
+					"displayName": "Stealth Ward",
+					"itemID": 3340,
+					"price": 0,
+					"rawDescription": "GeneratedTip_Item_3340_Description",
+					"rawDisplayName": "Item_3340_Name",
+					"slot": 6
+				}
+			],
+			"level": 3,
+			"position": "MIDDLE",
+			"rawChampionName": "game_character_displayname_Annie",
+			"rawSkinName": "game_character_skin_displayname_Annie_0",
+			"respawnTimer": 0.0,
+			"riotId": "Annie#BOT",
+			"riotIdGameName": "Annie",
+			"riotIdTagLine": "BOT",
+			"runes": {
+				"keystone": {
+					"displayName": "Arcane Comet",
+					"id": 8229,
+					"rawDescription": "perk_tooltip_ArcaneComet",
+					"rawDisplayName": "perk_displayname_ArcaneComet"
+				},
+				"primaryRuneTree": {
+					"displayName": "Sorcery",
+					"id": 8200,
+					"rawDescription": "perkstyle_tooltip_7202",
+					"rawDisplayName": "perkstyle_displayname_7202"
+				},
+				"secondaryRuneTree": {
+					"displayName": "Domination",
+					"id": 8100,
+					"rawDescription": "perkstyle_tooltip_7200",
+					"rawDisplayName": "perkstyle_displayname_7200"
+				}
+			},
+			"scores": {
+				"assists": 0,
+				"creepScore": 10,
+				"deaths": 0,
+				"kills": 0,
+				"wardScore": 0.0
+			},
+			"skinID": 0,
+			"skinName": "",
+			"summonerName": "Annie Bot",
+			"summonerSpells": {
+				"summonerSpellOne": {
+					"displayName": "Flash",
+					"rawDescription": "GeneratedTip_SummonerSpell_SummonerFlash_Description",
+					"rawDisplayName": "GeneratedTip_SummonerSpell_SummonerFlash_DisplayName"
+				},
+				"summonerSpellTwo": {
+					"displayName": "Ignite",
+					"rawDescription": "GeneratedTip_SummonerSpell_SummonerDot_Description",
+					"rawDisplayName": "GeneratedTip_SummonerSpell_SummonerDot_DisplayName"
+				}
+			},
+			"team": "CHAOS"
+		}
+	],
+	"events": {
+		"Events": [
+			{
+				"EventID": 0,
+				"EventName": "GameStart",
+				"EventTime": 0.025171499699354173
+			},
+			{
+				"EventID": 1,
+				"EventName": "MinionsSpawning",
+				"EventTime": 65.0545654296875
+			}
+		]
+	},
+	"gameData": {
+		"gameMode": "CLASSIC",
+		"gameTime": 175.91409301757813,
+		"mapName": "Map11",
+		"mapNumber": 11,
+		"mapTerrain": "Default"
+	}
+}

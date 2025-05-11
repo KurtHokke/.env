@@ -1,0 +1,71 @@
+[{
+		"canUse":	true,
+		"consumable":	false,
+		"count":	1,
+		"displayName":	"Runic Compass",
+		"itemID":	3866,
+		"price":	400,
+		"rawDescription":	"GeneratedTip_Item_3866_Description",
+		"rawDisplayName":	"Item_3866_Name",
+		"slot":	0
+	}, {
+		"canUse":	false,
+		"consumable":	false,
+		"count":	1,
+		"displayName":	"Ionian Boots of Lucidity",
+		"itemID":	3158,
+		"price":	350,
+		"rawDescription":	"GeneratedTip_Item_3158_Description",
+		"rawDisplayName":	"Item_3158_Name",
+		"slot":	1
+	}, {
+		"canUse":	false,
+		"consumable":	false,
+		"count":	1,
+		"displayName":	"Amplifying Tome",
+		"itemID":	1052,
+		"price":	400,
+		"rawDescription":	"GeneratedTip_Item_1052_Description",
+		"rawDisplayName":	"Item_1052_Name",
+		"slot":	2
+	}, {
+		"canUse":	false,
+		"consumable":	false,
+		"count":	1,
+		"displayName":	"Kindlegem",
+		"itemID":	3067,
+		"price":	150,
+		"rawDescription":	"GeneratedTip_Item_3067_Description",
+		"rawDisplayName":	"Item_3067_Name",
+		"slot":	3
+	}, {
+		"canUse":	true,
+		"consumable":	true,
+		"count":	1,
+		"displayName":	"Control Ward",
+		"itemID":	2055,
+		"price":	75,
+		"rawDescription":	"GeneratedTip_Item_2055_Description",
+		"rawDisplayName":	"Item_2055_Name",
+		"slot":	4
+	}, {
+		"canUse":	false,
+		"consumable":	false,
+		"count":	1,
+		"displayName":	"Cloth Armor",
+		"itemID":	1029,
+		"price":	300,
+		"rawDescription":	"GeneratedTip_Item_1029_Description",
+		"rawDisplayName":	"Item_1029_Name",
+		"slot":	5
+	}, {
+		"canUse":	true,
+		"consumable":	false,
+		"count":	1,
+		"displayName":	"Oracle Lens",
+		"itemID":	3364,
+		"price":	0,
+		"rawDescription":	"GeneratedTip_Item_3364_Description",
+		"rawDisplayName":	"Item_3364_Name",
+		"slot":	6
+	}]

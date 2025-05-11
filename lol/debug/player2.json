@@ -1,0 +1,41 @@
+[{
+		"canUse":	false,
+		"consumable":	false,
+		"count":	1,
+		"displayName":	"Doran's Blade",
+		"itemID":	1055,
+		"price":	450,
+		"rawDescription":	"GeneratedTip_Item_1055_Description",
+		"rawDisplayName":	"Item_1055_Name",
+		"slot":	0
+	}, {
+		"canUse":	false,
+		"consumable":	false,
+		"count":	1,
+		"displayName":	"Kraken Slayer",
+		"itemID":	6672,
+		"price":	425,
+		"rawDescription":	"GeneratedTip_Item_6672_Description",
+		"rawDisplayName":	"Item_6672_Name",
+		"slot":	1
+	}, {
+		"canUse":	false,
+		"consumable":	false,
+		"count":	1,
+		"displayName":	"Scout's Slingshot",
+		"itemID":	3144,
+		"price":	100,
+		"rawDescription":	"GeneratedTip_Item_3144_Description",
+		"rawDisplayName":	"Item_3144_Name",
+		"slot":	2
+	}, {
+		"canUse":	true,
+		"consumable":	false,
+		"count":	1,
+		"displayName":	"Stealth Ward",
+		"itemID":	3340,
+		"price":	0,
+		"rawDescription":	"GeneratedTip_Item_3340_Description",
+		"rawDisplayName":	"Item_3340_Name",
+		"slot":	6
+	}]

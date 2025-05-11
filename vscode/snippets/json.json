@@ -1,0 +1,14 @@
+{
+    "edit scope color": {
+    "prefix": "bddbdsdbb",
+    "body": [
+        "{",
+        "    scope: \"\",",
+        "    settings: {",
+        "        foreground: \"#ae00ff\",",
+        "    }",
+        "},",
+    ],
+    "description": "edit color of scopes"
+    }
+}

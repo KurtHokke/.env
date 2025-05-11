@@ -1,0 +1,51 @@
+[{
+		"canUse":	false,
+		"consumable":	false,
+		"count":	1,
+		"displayName":	"Tear of the Goddess",
+		"itemID":	3070,
+		"price":	400,
+		"rawDescription":	"GeneratedTip_Item_3070_Description",
+		"rawDisplayName":	"Item_3070_Name",
+		"slot":	0
+	}, {
+		"canUse":	true,
+		"consumable":	true,
+		"count":	4,
+		"displayName":	"Health Potion",
+		"itemID":	2003,
+		"price":	50,
+		"rawDescription":	"GeneratedTip_Item_2003_Description",
+		"rawDisplayName":	"Item_2003_Name",
+		"slot":	1
+	}, {
+		"canUse":	false,
+		"consumable":	false,
+		"count":	1,
+		"displayName":	"Null-Magic Mantle",
+		"itemID":	1033,
+		"price":	400,
+		"rawDescription":	"GeneratedTip_Item_1033_Description",
+		"rawDisplayName":	"Item_1033_Name",
+		"slot":	2
+	}, {
+		"canUse":	false,
+		"consumable":	false,
+		"count":	1,
+		"displayName":	"Null-Magic Mantle",
+		"itemID":	1033,
+		"price":	400,
+		"rawDescription":	"GeneratedTip_Item_1033_Description",
+		"rawDisplayName":	"Item_1033_Name",
+		"slot":	3
+	}, {
+		"canUse":	true,
+		"consumable":	false,
+		"count":	1,
+		"displayName":	"Stealth Ward",
+		"itemID":	3340,
+		"price":	0,
+		"rawDescription":	"GeneratedTip_Item_3340_Description",
+		"rawDisplayName":	"Item_3340_Name",
+		"slot":	6
+	}]

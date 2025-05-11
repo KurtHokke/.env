@@ -1,0 +1,51 @@
+[{
+		"canUse":	false,
+		"consumable":	false,
+		"count":	1,
+		"displayName":	"Doran's Ring",
+		"itemID":	1056,
+		"price":	400,
+		"rawDescription":	"GeneratedTip_Item_1056_Description",
+		"rawDisplayName":	"Item_1056_Name",
+		"slot":	0
+	}, {
+		"canUse":	false,
+		"consumable":	false,
+		"count":	1,
+		"displayName":	"Tear of the Goddess",
+		"itemID":	3070,
+		"price":	400,
+		"rawDescription":	"GeneratedTip_Item_3070_Description",
+		"rawDisplayName":	"Item_3070_Name",
+		"slot":	1
+	}, {
+		"canUse":	false,
+		"consumable":	false,
+		"count":	1,
+		"displayName":	"Lost Chapter",
+		"itemID":	3802,
+		"price":	250,
+		"rawDescription":	"GeneratedTip_Item_3802_Description",
+		"rawDisplayName":	"Item_3802_Name",
+		"slot":	2
+	}, {
+		"canUse":	false,
+		"consumable":	false,
+		"count":	1,
+		"displayName":	"Hextech Alternator",
+		"itemID":	3145,
+		"price":	300,
+		"rawDescription":	"GeneratedTip_Item_3145_Description",
+		"rawDisplayName":	"Item_3145_Name",
+		"slot":	3
+	}, {
+		"canUse":	true,
+		"consumable":	false,
+		"count":	1,
+		"displayName":	"Stealth Ward",
+		"itemID":	3340,
+		"price":	0,
+		"rawDescription":	"GeneratedTip_Item_3340_Description",
+		"rawDisplayName":	"Item_3340_Name",
+		"slot":	6
+	}]

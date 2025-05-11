@@ -1,0 +1,318 @@
+{
+    "editor.semanticTokenColorCustomizations": {
+        "enabled": true, // enable for all themes
+        "rules": {
+            "function.declaration": {
+                "foreground": "#2dabff",
+                "fontStyle": "bold underline"
+            },
+            "variable.mutable": {
+                "foreground": "#ff9ff5",
+                "fontStyle": "",
+            },
+            "variable": {
+                "foreground": "#c6c8ff"
+            }
+        }
+    },
+    "editor.tokenColorCustomizations": {
+        "textMateRules": [
+            {
+                "scope": [
+                    "keyword.default.zig"
+                ],
+                "settings": {
+                    "foreground": "#d900ff",
+                    "fontStyle": "bold"
+                }
+            },
+            {
+                "scope": [
+                    "support.function.builtin.zig"
+                ],
+                "settings": {
+                    "foreground": "#ffc400",
+                    "fontStyle": "bold"
+                }
+            },
+            {
+                "scope": [
+                    "string.quoted.double.zig"
+                ],
+                "settings": {
+                    "foreground": "#00e40f",
+                    "fontStyle": "bold"
+                }
+            },
+            {
+                "scope": [
+                    "string.quoted.double.c"
+                ],
+                "settings": {
+                    "foreground": "#74da00",
+                }
+            },
+            {
+                "scope": [
+                    "keyword.control.directive.include.c"
+                ],
+                "settings": {
+                    "foreground": "#e2c000",
+                    "fontStyle": "bold"
+                }
+            },
+            {
+                "scope": [
+                    "entity.name.function.c"
+                ],
+                "settings": {
+                    "foreground": "#00a2ff",
+                    "fontStyle": "bold"
+                }
+            },
+            {
+                "scope": [
+                    "constant.numeric.decimal.c"
+                ],
+                "settings": {
+                    "foreground": "#00dac7",
+                    //"fontStyle": "bold"
+                }
+            },
+            {
+                "scope": [
+                    "storage.type.built-in.primitive.c"
+                ],
+                "settings": {
+                    "foreground": "#e100ff",
+                    "fontStyle": "italic"
+                }
+            },
+            {
+                "scope": [
+                    "storage.modifier.c"
+                ],
+                "settings": {
+                    "foreground": "#b700ff",
+                    "fontStyle": "bold"
+                }
+            },
+            {
+                "scope": [
+                    "keyword.control.c"
+                ],
+                "settings": {
+                    "foreground": "#c42e00",
+                    "fontStyle": "bold"
+                }
+            },
+            {
+                "scope": [
+                    "variable.parameter.function.language.special.self.python",
+                    "variable.language.special.self.python"
+                ],
+                "settings": {
+                    "foreground": "#bd0058", // Change to your desired color
+                    "fontStyle": "bold" // Optional: add styles like bold, italic, etc.
+                }
+            },
+            {
+                "scope": "support.function.magic.python",
+                "settings": {
+                    "foreground": "#ff00c8",
+                    "fontStyle": "bold"
+                }
+            },
+            {
+                "scope": "entity.name.function.decorator.python",
+                "settings": {
+                    "foreground": "#fffb00c9",
+                }
+            },
+            {
+                "scope": [
+                    "entity.name.type.class.python",
+                ],
+                "settings": {
+                    "foreground": "#ffbf6b",
+                }
+            },
+            {
+                "scope": [
+                    "keyword.operator.python",
+                    "keyword.operator.assignment.python",
+                    "keyword.operator.comparison.python",
+                    "punctuation.separator.arguments.python",
+                    "punctuation.separator.parameters.python"
+                ],
+                "settings": {
+                    "foreground": "#00d9ff",
+                    "fontStyle": "bold"
+                }
+            },
+            {
+                "scope": [
+                    "constant.language.python",
+                    "storage.type.function.python",
+                    "keyword.control.flow.python",
+                    "storage.type.class.python",
+                ],
+                "settings": {
+                    "foreground": "#ff5e00",
+                }
+            },
+            {
+                "scope": [
+                    "keyword.operator.logical.python",
+                ],
+                "settings": {
+                    "foreground": "#ff3300",
+                }
+            },
+            {
+                "scope": "constant.language.python",
+                "settings": {
+                    "foreground": "#ff5100",
+                    "fontStyle": "bold"
+                }
+            },
+            {
+                "scope": "constant.numeric.dec.python",
+                "settings": {
+                    "foreground": "#00ff9d",
+                }
+            },
+            {
+                "scope": "source.python string",
+                "settings": {
+                    "foreground": "#11cc00",
+                }
+            },
+            {
+                "scope": "source.python entity.name.function",
+                "settings": {
+                    "foreground": "#00a2ff",
+                }
+            },
+            {
+                "scope": "support.function.builtin.python",
+                "settings": {
+                    "foreground": "#ae00ff",
+                }
+            },
+            {
+                "scope": "support.function.builtin.python",
+                "settings": {
+                    "foreground": "#ae00ff",
+                }
+            },
+            {
+                "scope": "support.function.builtin.python",
+                "settings": {
+                    "foreground": "#ae00ff",
+                }
+            },
+            {
+                "scope": [
+                    "punctuation.definition.variable.begin.batchfile",
+                    "punctuation.definition.variable.end.batchfile",
+                ],
+                "settings": {
+                    "foreground": "#ff6262",
+                    "fontStyle": "bold"
+                }
+            },
+            {
+                "scope": [
+                    "variable.other.readwrite.batchfile",
+                    "variable.other.member.powershell",
+                ],
+                "settings": {
+                    "foreground": "#ffaa88",
+                }
+            },
+            {
+                "scope": [
+                    "punctuation.definition.variable.powershell",
+                    "punctuation.section.braces.begin",
+                    "punctuation.section.braces.end",
+                ],
+                "settings": {
+                    "foreground": "#00e1ff",
+                    //"fontStyle": "italic bold"
+                }
+            },
+        ]
+    },
+    "editor.acceptSuggestionOnEnter": "off",
+    "editor.autoIndent": "brackets",
+    "editor.detectIndentation": false,
+    //"editor.fontFamily": "FiraCode Nerd Font Mono Light, FiraCode Nerd Font, Arial, Arial Black, Bahnschrift, Bahnschrift Condensed, Bahnschrift Light, Bahnschrift Light Condensed, Bahnschrift Light SemiCondensed, Bahnschrift SemiBold, Bahnschrift SemiBold Condensed, Bahnschrift SemiBold SemiConden, Bahnschrift SemiCondensed, Bahnschrift SemiLight, Bahnschrift SemiLight Condensed, Bahnschrift SemiLight SemiConde, Calibri, Calibri Light, Cambria, Cambria Math, Candara, Candara Light, Cascadia Code, Cascadia Code ExtraLight, Cascadia Code Light, Cascadia Code SemiBold, Cascadia Code SemiLight, Cascadia Mono, Cascadia Mono ExtraLight, Cascadia Mono Light, Cascadia Mono SemiBold, Cascadia Mono SemiLight, Comic Sans MS, Consolas, Constantia, Corbel, Corbel Light, Courier New, DINPro-Regular, Ebrima, FiraCode Nerd Font Light, FiraCode Nerd Font Med, FiraCode Nerd Font Mono, FiraCode Nerd Font Mono Med, FiraCode Nerd Font Mono Ret, FiraCode Nerd Font Mono SemBd, FiraCode Nerd Font Propo, FiraCode Nerd Font Propo Light, FiraCode Nerd Font Propo Med, FiraCode Nerd Font Propo Ret, FiraCode Nerd Font Propo SemBd, FiraCode Nerd Font Ret, FiraCode Nerd Font SemBd, FiraMono Nerd Font, FiraMono Nerd Font Medium, FiraMono Nerd Font Mono, FiraMono Nerd Font Mono Medium, FiraMono Nerd Font Propo, FiraMono Nerd Font Propo Medium, Franklin Gothic Medium, Gabriola, Gadugi, Georgia, Impact, Ink Free, Javanese Text, Leelawadee UI, Leelawadee UI Semilight, Lucida Console, Lucida Sans Unicode, Malgun Gothic, Malgun Gothic Semilight, Marlett, Microsoft Himalaya, Microsoft JhengHei, Microsoft JhengHei Light, Microsoft JhengHei UI, Microsoft JhengHei UI Light, Microsoft New Tai Lue, Microsoft PhagsPa, Microsoft Sans Serif, Microsoft Tai Le, Microsoft YaHei, Microsoft YaHei Light, Microsoft YaHei UI, Microsoft YaHei UI Light, Microsoft Yi Baiti, MingLiU-ExtB, MingLiU_HKSCS-ExtB, MingLiU_MSCS-ExtB, Mongolian Baiti, MS Gothic, MS PGothic, MS UI Gothic, MV Boli, Myanmar Text, Nirmala Text, Nirmala Text Semilight, Nirmala UI, Nirmala UI Semilight, NSimSun, Palatino Linotype, PMingLiU-ExtB, Sans Serif Collection, Segoe Fluent Icons, Segoe MDL2 Assets, Segoe Print, Segoe Script, Segoe UI, Segoe UI Black, Segoe UI Emoji, Segoe UI Historic, Segoe UI Light, Segoe UI Semibold, Segoe UI Semilight, Segoe UI Symbol, Segoe UI Variable Display, Segoe UI Variable Display Light, Segoe UI Variable Display Semib, Segoe UI Variable Display Semil, Segoe UI Variable Small, Segoe UI Variable Small Light, Segoe UI Variable Small Semibol, Segoe UI Variable Small Semilig, Segoe UI Variable Text, Segoe UI Variable Text Light, Segoe UI Variable Text Semibold, Segoe UI Variable Text Semiligh, SimSun, SimSun-ExtB, Sitka Banner, Sitka Banner Semibold, Sitka Display, Sitka Display Semibold, Sitka Heading, Sitka Heading Semibold, Sitka Small, Sitka Small Semibold, Sitka Subheading, Sitka Subheading Semibold, Sitka Text, Sitka Text Semibold, Sylfaen, Symbol, Tahoma, Times New Roman, Trebuchet MS, Unispace, Verdana, Webdings, Wingdings, Yu Gothic, Yu Gothic Light, Yu Gothic Medium, Yu Gothic UI, Yu Gothic UI Light, Yu Gothic UI Semibold, Yu Gothic UI Semilight",
+    "editor.fontFamily": "FiraMono Nerd Font Mono, FiraCode Nerd Font Mono Light",
+    "editor.fontLigatures": true,
+    "editor.fontSize": 18,
+    "editor.tabSize": 4,
+    "editor.useTabStops": true,
+    "editor.multiCursorModifier": "ctrlCmd",
+    "editor.snippetSuggestions": "top",
+
+    "explorer.confirmDelete": false,
+
+    "files.autoSave": "off",
+    //"files.autoSave": "afterDelay",
+    "files.autoSaveDelay": 20,
+
+    "zig.path": "zig",
+    "zig.zls.enabled": "on",
+    "zig.zls.path": "zls",
+    "zig.formattingProvider": "extension",
+    "zig.zls.enableSnippets": false,
+
+    "rust-analyzer.restartServerOnConfigChange": true,
+    "rust-analyzer.showSyntaxTree": true,
+    "rust-analyzer.testExplorer": true,
+    "rust-analyzer.hover.actions.references.enable": true,
+    "rust-analyzer.server.path": "/usr/local/bin/rust-analyzer",
+
+    "workbench.colorTheme": "GitHub Dark Default",
+
+    "C_Cpp_Runner.cStandard": "gnu23",
+    "C_Cpp_Runner.cppStandard": "gnu++23",
+    "C_Cpp_Runner.cCompilerPath": "clang",
+    "C_Cpp_Runner.cppCompilerPath": "clang++",
+    "C_Cpp_Runner.debuggerPath": "lldb",
+
+    "gitlens.ai.model": "gitkraken",
+    "gitlens.ai.gitkraken.model": "gemini:gemini-2.0-flash",
+    "git.enableSmartCommit": true,
+    "intellicode-completions-cdk.loggingLevel": "ALL",
+    "regedit.regExecutable": "c:\\home\\arcno\\.vscode-insiders\\extensions\\isopodlabs.regedit-explorer-0.6.2\\reg\\reg.exe",
+    "telemetry.feedback.enabled": false,
+    "telemetry.telemetryLevel": "off",
+    "editor.experimental.preferTreeSitter.ini": false,
+    "files.associations": {
+        "*.wsb": "xml"
+    },
+    "powershellInlineValues.startLocation": "document",
+    "powershell.powerShellDefaultVersion": "PowerShell Preview (x64)",
+    "debug.openDebug": "openOnDebugBreak",
+    "editor.tabCompletion": "off",
+    "powershell.integratedConsole.focusConsoleOnExecute": true,
+    "files.defaultLanguage": "",
+    "editor.wordSeparators": "`~!@#$%^&*()-=+[{]}\\|;:'\",.<>/?",
+    "powershell.buttons.showPanelMovementButtons": false,
+    "powershell.codeFolding.showLastLine": true,
+    "powershell.sideBar.CommandExplorerVisibility": false,
+    "terminal.integrated.enablePersistentSessions": false,
+    "terminal.external.windowsExec": "\"C:\\home\\arcno\\bin\\WindowsTerminal\\WindowsTerminal.exe\"",
+    "terminal.integrated.defaultProfile.windows": "PowerShell",
+    "powershell.scriptAnalysis.settingsPath": "PSScriptAnalyzer.psd1",
+    //"debug.inlineValues": "on",
+    //"bashIde.shellcheckPath": "C:\\ProgramData\\chocolatey\\lib\\shellcheck\\content\\shellcheck.exe",
+    "bashIde.shellcheckPath": "/usr/bin/shellcheck",
+    "security.allowedUNCHosts": [
+        "wsl.localhost"
+    ],
+    "cmake.configureOnEdit": false,
+    "cmake.configureOnOpen": false,
+}

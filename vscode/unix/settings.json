@@ -1,0 +1,252 @@
+{
+    "editor.tokenColorCustomizations": {
+        "textMateRules": [
+            {
+                "scope": [
+                    "keyword.default.zig"
+                ],
+                "settings": {
+                    "foreground": "#d900ff",
+                    "fontStyle": "bold"
+                }
+            },
+            {
+                "scope": [
+                    "support.function.builtin.zig"
+                ],
+                "settings": {
+                    "foreground": "#ffc400",
+                    "fontStyle": "bold"
+                }
+            },
+            {
+                "scope": [
+                    "string.quoted.double.zig"
+                ],
+                "settings": {
+                    "foreground": "#00e40f",
+                    "fontStyle": "bold"
+                }
+            },
+            {
+                "scope": [
+                    "string.quoted.double.c"
+                ],
+                "settings": {
+                    "foreground": "#74da00",
+                }
+            },
+            {
+                "scope": [
+                    "keyword.control.directive.include.c"
+                ],
+                "settings": {
+                    "foreground": "#e2c000",
+                    "fontStyle": "bold"
+                }
+            },
+            {
+                "scope": [
+                    "entity.name.function.c",
+                    "entity.name.function.shell",
+                    "support.function.builtin.shell"
+                ],
+                "settings": {
+                    "foreground": "#00a2ff",
+                    "fontStyle": "bold"
+                }
+            },
+            {
+                "scope": [
+                    "constant.numeric.decimal.c"
+                ],
+                "settings": {
+                    "foreground": "#00dac7",
+                    //"fontStyle": "bold"
+                }
+            },
+            {
+                "scope": [
+                    "storage.type.built-in.primitive.c",
+                    "keyword.control.continue.shell"
+                ],
+                "settings": {
+                    "foreground": "#e100ff",
+                    "fontStyle": "italic"
+                }
+            },
+            {
+                "scope": [
+                    "storage.modifier.c",
+                    "storage.modifier.local.shell"
+                ],
+                "settings": {
+                    "foreground": "#b700ff",
+                    "fontStyle": "bold"
+                }
+            },
+            {
+                "scope": "variable.other.local.c",
+                "settings": {
+                    "foreground": "#ebe1ff"
+                }
+            },
+            {
+                "scope": [
+                    "keyword.control.c",
+                    "keyword.control.shell",
+                    "keyword.control.if.shell",
+                    "keyword.control.fi.shell",
+                    "keyword.control.then.shell",
+                    "keyword.control.do.shell",
+                    "keyword.control.return.shell",
+                    "keyword.control.else.shell",
+                    "keyword.control.elif.shell"
+                ],
+                "settings": {
+                    "foreground": "#c42e00",
+                    "fontStyle": "bold"
+                }
+            },
+            {
+                "scope": [
+                    "variable.parameter.function.language.special.self.python",
+                    "variable.language.special.self.python"
+                ],
+                "settings": {
+                    "foreground": "#bd0058", // Change to your desired color
+                    "fontStyle": "bold" // Optional: add styles like bold, italic, etc.
+                }
+            },
+            {
+                "scope": "support.function.magic.python",
+                "settings": {
+                    "foreground": "#ff00c8",
+                    "fontStyle": "bold"
+                }
+            },
+            {
+                "scope": "entity.name.function.decorator.python",
+                "settings": {
+                    "foreground": "#fffb00c9",
+                }
+            },
+            {
+                "scope": [
+                    "entity.name.type.class.python",
+                ],
+                "settings": {
+                    "foreground": "#ffbf6b",
+                }
+            },
+            {
+                "scope": [
+                    "keyword.operator.python",
+                    "keyword.operator.assignment.python",
+                    "keyword.operator.comparison.python",
+                    "punctuation.separator.arguments.python",
+                    "punctuation.separator.parameters.python"
+                ],
+                "settings": {
+                    "foreground": "#00d9ff",
+                    "fontStyle": "bold"
+                }
+            },
+            {
+                "scope": [
+                    "constant.language.python",
+                    "storage.type.function.python",
+                    "keyword.control.flow.python",
+                    "storage.type.class.python",
+                ],
+                "settings": {
+                    "foreground": "#ff5e00",
+                }
+            },
+            {
+                "scope": [
+                    "keyword.operator.logical.python",
+                ],
+                "settings": {
+                    "foreground": "#ff3300",
+                }
+            },
+            {
+                "scope": "constant.language.python",
+                "settings": {
+                    "foreground": "#ff5100",
+                    "fontStyle": "bold"
+                }
+            },
+            {
+                "scope": "constant.numeric.dec.python",
+                "settings": {
+                    "foreground": "#00ff9d",
+                }
+            },
+            {
+                "scope": "source.python string",
+                "settings": {
+                    "foreground": "#11cc00",
+                }
+            },
+            {
+                "scope": "source.python entity.name.function",
+                "settings": {
+                    "foreground": "#00a2ff",
+                }
+            },
+            {
+                "scope": "support.function.builtin.python",
+                "settings": {
+                    "foreground": "#ae00ff",
+                }
+            }
+        ]
+    },
+    "editor.acceptSuggestionOnEnter": "off",
+    "editor.autoIndent": "brackets",
+    "editor.detectIndentation": false,
+    "editor.fontFamily": "FiraMono Nerd Font Mono",
+    "editor.fontSize": 18,
+    "editor.tabSize": 4,
+    "editor.useTabStops": true,
+    "editor.multiCursorModifier": "ctrlCmd",
+    "editor.snippetSuggestions": "top",
+
+    "explorer.confirmDelete": false,
+
+    "files.autoSave": "off",
+    //"files.autoSave": "afterDelay",
+    "files.autoSaveDelay": 20,
+
+    "zig.path": "zig",
+    "zig.zls.enabled": "on",
+    "zig.zls.path": "zls",
+    "zig.formattingProvider": "extension",
+    "zig.zls.enableSnippets": false,
+
+    "rust-analyzer.restartServerOnConfigChange": true,
+    "rust-analyzer.showSyntaxTree": true,
+    "rust-analyzer.testExplorer": true,
+    "rust-analyzer.hover.actions.references.enable": true,
+    "rust-analyzer.server.path": "/usr/local/bin/rust-analyzer",
+
+    "workbench.colorTheme": "GitHub Dark Default",
+
+    "C_Cpp_Runner.cStandard": "gnu23",
+    "C_Cpp_Runner.cppStandard": "gnu++23",
+    "C_Cpp_Runner.cCompilerPath": "clang",
+    "C_Cpp_Runner.cppCompilerPath": "clang++",
+    "C_Cpp_Runner.debuggerPath": "lldb",
+
+    "intellicode-completions-cdk.loggingLevel": "ALL",
+    "workbench.iconTheme": "vscode-icons",
+    "bashIde.shellcheckPath": "/usr/bin/shellcheck",
+    "bashIde.globPattern": "**/*@(.sh|.inc|.bash|.zsh|.command)",
+    "files.associations": {
+        "*.zsh": "shellscript"
+    },
+    "bashIde.shellcheckArguments": "--exclude=SC2066,SC2296,SC2086",
+    "workbench.sideBar.location": "right",
+}

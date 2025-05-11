@@ -1,0 +1,51 @@
+[{
+		"canUse":	true,
+		"consumable":	false,
+		"count":	1,
+		"displayName":	"Runic Compass",
+		"itemID":	3866,
+		"price":	400,
+		"rawDescription":	"GeneratedTip_Item_3866_Description",
+		"rawDisplayName":	"Item_3866_Name",
+		"slot":	0
+	}, {
+		"canUse":	false,
+		"consumable":	false,
+		"count":	1,
+		"displayName":	"Vampiric Scepter",
+		"itemID":	1053,
+		"price":	550,
+		"rawDescription":	"GeneratedTip_Item_1053_Description",
+		"rawDisplayName":	"Item_1053_Name",
+		"slot":	1
+	}, {
+		"canUse":	false,
+		"consumable":	false,
+		"count":	1,
+		"displayName":	"Recurve Bow",
+		"itemID":	1043,
+		"price":	450,
+		"rawDescription":	"GeneratedTip_Item_1043_Description",
+		"rawDisplayName":	"Item_1043_Name",
+		"slot":	2
+	}, {
+		"canUse":	false,
+		"consumable":	false,
+		"count":	1,
+		"displayName":	"Boots",
+		"itemID":	1001,
+		"price":	300,
+		"rawDescription":	"GeneratedTip_Item_1001_Description",
+		"rawDisplayName":	"Item_1001_Name",
+		"slot":	3
+	}, {
+		"canUse":	true,
+		"consumable":	false,
+		"count":	1,
+		"displayName":	"Stealth Ward",
+		"itemID":	3340,
+		"price":	0,
+		"rawDescription":	"GeneratedTip_Item_3340_Description",
+		"rawDisplayName":	"Item_3340_Name",
+		"slot":	6
+	}]
