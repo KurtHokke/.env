@@ -72,6 +72,11 @@ if [[ -n "$WEZTERM_EXECUTABLE" ]]; then
     [[ -f "$ZADDONS/wezterm.sh" ]] && source "$ZADDONS/wezterm.sh" || echo "$ZADDONS/wezterm.sh NOT FOUND!"
 fi
 
+GITALIAS_SYNC=$(git config list | grep "alias.sync")
+if [[ -z "$GITALIAS_SYNC" ]]; then
+    git config --global alias.sync '!git add . && git commit -m "sync" && git push'
+fi
+
 source "$ZADDONS/zsh-z/zsh-z.plugin.zsh"
 source "$ZADDONS/zsh-bat.plugin.zsh"
 autoload -U +X compinit && compinit

@@ -250,4 +250,7 @@
     "bashIde.shellcheckArguments": "--exclude=SC2066,SC2296,SC2086",
     "workbench.sideBar.location": "right",
     "editor.defaultColorDecorators": "always",
+    "cmake.automaticReconfigure": false,
+    "cmake.configureOnEdit": false,
+    "cmake.configureOnOpen": false,
 }
