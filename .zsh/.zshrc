@@ -45,6 +45,8 @@ if [[ -f "$HOME/.sship" ]]; then
 fi
 
 eval "$(ssh-agent -s)" > /dev/null 2>&1
+[[ -f ~/.ssh/id_ed25519 ]] && GITHUB_SSH=~/.ssh/id_ed25519
+[[ -f ~/.ssh/github ]] && GITHUB_SSH=~/.ssh/github
 ssh-add ~/.ssh/github > /dev/null 2>&1
 
 

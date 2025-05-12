@@ -34,10 +34,10 @@ typeset -f exportdirs() {
             fi
             if [[ -d $dir ]]; then
                 export $var=$dir
-            elif realdir="$(realpath $dir)"; then
+            elif realdir="$(realpath $dir &>/dev/null)"; then
                 export $var=$realdir
             else
-                echo -e "${pathvars[i]} not found in:\n$DIR"
+                #echo -e "${pathvars[i]} not found in:\n$DIR"
             fi
     done
 }

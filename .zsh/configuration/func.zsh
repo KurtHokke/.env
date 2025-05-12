@@ -5,7 +5,25 @@ optsetter() {
 if [[ $# -gt 0 ]]; then
     [[ $1 == "optsetter" ]] && optsetter && return
 fi
-
+cp() { local dest
+    if [[ "$1" != "--mkdir" ]]; then
+        /usr/bin/cp "$@"
+        return
+    fi
+    shift
+    case $# in
+        2)
+            dest="$2"
+        ;;
+        3)
+            dest="$3"
+        ;;
+        *)
+            echo "nothing"; return
+        ;;
+    esac
+    mkdir -p "$dest" && /usr/bin/cp "$@"
+}
 # shellcheck disable=SC2162
 mountvhdx() { local PASSWD=0; local nobackup=0;
     local VHDX="/mnt/win/home/arcno/AppData/Local/wsl/{06af1971-d3bf-4ec0-a8e8-53da9139ef7b}/ext4.vhdx"
@@ -256,6 +274,7 @@ echovariable() {
 }
 syncmypath() {
     MYPATH="${HOME}/bin"
+    [[ ! -d "$MYPATH" ]] && return
     for MYFILE in "$MYPATH"/*; do
         if [[ ! -x "$MYFILE" ]]; then chmod +x "$MYFILE"
         fi
