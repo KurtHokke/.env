@@ -274,7 +274,7 @@ echovariable() {
 }
 syncmypath() {
     MYPATH="${HOME}/bin"
-    [[ ! -d "$MYPATH" ]] && return
+    [[ ! -d "$MYPATH" || -d "/mnt/wslg/distro" ]] && return
     for MYFILE in "$MYPATH"/*; do
         if [[ ! -x "$MYFILE" ]]; then chmod +x "$MYFILE"
         fi

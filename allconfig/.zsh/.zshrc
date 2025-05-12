@@ -14,6 +14,9 @@
 # setup, too, just by copying our global zshrc to their ${HOME}/.zshrc.
 # Adjustments would still go to the .zshrc.local file.
 ################################################################################
+SET_X=0
+[[ SET_X -eq 1 ]] && set -x
+
 umask 0002
 
 ZDOTDIR="$HOME/.zsh"
@@ -77,14 +80,21 @@ if [[ -z "$GITALIAS_SYNC" ]]; then
     git config --global alias.sync '!git add . && git commit -m "sync" && git push'
 fi
 
+
+if [[ ! -d "/mnt/wslg/distro" ]]; then
+    source "$ZADDONS/zsh-bat.plugin.zsh"
+fi
 source "$ZADDONS/zsh-z/zsh-z.plugin.zsh"
-source "$ZADDONS/zsh-bat.plugin.zsh"
 autoload -U +X compinit && compinit
 autoload -U +X bashcompinit && bashcompinit
 source "$ZADDONS/yazi/yazi.bash"
 source "$ZADDONS/yazi/ya.bash"
 
 zstyle ':completion:*' menu select
+
+
+[[ SET_X -eq 1 ]] && set +x
+
 
 ## Settings for umask
 #if (( EUID == 0 )); then
