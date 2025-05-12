@@ -1,0 +1,46 @@
+#!/usr/bin/bash
+
+mkCMakeLists() { local filePATH; local NAME
+    filePATH="$1"
+    NAME="$2"
+    tee "$filePATH" <<EOF >/dev/null
+cmake_minimum_required(VERSION 4.0.0)
+
+project($NAME VERSION 1.0 LANGUAGES C) 
+
+set(CMAKE_C_STANDARD 11)
+set(CMAKE_C_STANDARD_REQUIRED ON)
+
+
+#set(CMAKE_RUNTIME_OUTPUT_DIRECTORY \${CMAKE_BINARY_DIR}/../bin)
+
+set(SOURCES
+    src/main.c
+)
+add_executable($NAME \${SOURCES})
+
+#find_package(PkgConfig REQUIRED)
+#pkg_check_modules(jansson REQUIRED IMPORTED_TARGET jansson>=2.14.1)
+#target_link_libraries($NAME PUBLIC PkgConfig::jansson)
+
+#set(OPT OFF)
+#if(OPT)
+#elseif(OPT)
+#else()
+#endif()
+EOF
+}
+
+[[ $# -lt 1 ]] && echo "Usage: $0 [PROJECTNAME] [out]" && exit
+NAME="$1"
+if [[ $# -lt 2 ]]; then
+    filePATH="$(pwd)/CMakeLists.txt"
+else
+    if [[ -d "$2" ]]; then
+        filePATH="$2/CMakeLists.txt"
+    else
+        [[ -d "$(dirname "$2")" ]] || exit
+        filePATH="$2"
+    fi
+fi
+mkCMakeLists "$filePATH" "$NAME"

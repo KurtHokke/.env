@@ -1,0 +1,6 @@
+cleanbuild() {
+cd "/home/src/.env/c" || return
+rm -rf ./build
+mkdir ./build
+cd ./build && cmake "$@" .. || return
+}
