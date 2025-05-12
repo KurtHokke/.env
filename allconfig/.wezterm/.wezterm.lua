@@ -17,11 +17,11 @@ config.colors = {
 
 -- For example, changing the initial geometry for new windows:
 config.initial_cols = 120
-config.initial_rows = 28
+config.initial_rows = 35
 
 -- or, changing the font size and color scheme.
-config.font_size = 10
-config.color_scheme = 'AdventureTime'
+config.font_size = 14
+config.font = wezterm.font('FiraMono Nerd Font Mono')
 
 -- Finally, return the configuration to wezterm:
 return config
