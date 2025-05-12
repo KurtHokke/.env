@@ -68,6 +68,10 @@ promptinit
 prompt adam2
 #export VIRTUAL_ENV_DISABLE_PROMPT=
 
+if [[ -n "$WEZTERM_EXECUTABLE" ]]; then
+    [[ -f "$ZADDONS/wezterm.sh" ]] && source "$ZADDONS/wezterm.sh" || echo "$ZADDONS/wezterm.sh NOT FOUND!"
+fi
+
 source "$ZADDONS/zsh-z/zsh-z.plugin.zsh"
 source "$ZADDONS/zsh-bat.plugin.zsh"
 autoload -U +X compinit && compinit
