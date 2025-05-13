@@ -11,11 +11,20 @@
 #define INIT_TRUE  1
 #define INIT_FALSE 0
 
-#define ORDER 1
-#define CHAOS 0
+#define ORDER "ORDER"
+#define CHAOS "CHAOS"
 
+#define OBJECT "object"
+#define ARRAY "array"
+#define STRING "string"
 
-bool jsson(char *jsonData, gSTATS *data, bool init);
+#define PRINT_AND_RETURN(x, y) do { \
+    fprintf(stderr, "error: %s was not a json %s\n", #x, y); \
+    json_decref(root); \
+    return false; \
+} while (0)
+
+bool jsson(char *jsonData, gSTATS **ptr, bool init);
 
 
 

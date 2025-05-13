@@ -12,11 +12,12 @@ int main() {
 
     //int i = 0;
 
-    gSTATS gold_s = {0};
+    gSTATS *gold_stats = NULL;
+    /*
     if (!gSTATS_handler(&gold_s, INITIATE)) {
         msg(stderr, "(ln16)ERROR: 'if (!gSTATS_handler(&gold_s, INITIATE))'");
         return 1;
-    }
+    }*/
     struct Memory response = do_curl();
     
     if (response.data == NULL || response.size == 0) {
@@ -27,12 +28,15 @@ int main() {
     printf("Response (%zu bytes): %.*s\n", response.size, 500, response.data);
     #endif
 
-    if (!jsson(response.data, &gold_s, INIT_TRUE)) {
+    if (!jsson(response.data, &gold_stats, INIT_TRUE)) {
         msg(stderr, "ERROR:'main.c',line(30): 'if (!jsson(response.data, &gold_s))'");
         return 1;
     }
     free(response.data);
-    gSTATS_handler(&gold_s, DESTROY);
+    printf("\n\n\n%s\n", gold_stats->playerTeam);
+
+    free(gold_stats);
+    //gSTATS_handler(&gold_stats, DESTROY);
 
     return 0;
 }

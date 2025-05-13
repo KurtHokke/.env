@@ -18,6 +18,7 @@
 typedef struct gSTATS {
     char *champName[TEAMSIZE * 2];
     unsigned int *vs[TEAMSIZE * 2];
+    char *playerTeam;
 } gSTATS;
 
 
