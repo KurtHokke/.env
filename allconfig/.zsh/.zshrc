@@ -29,7 +29,7 @@ for sourcefile in "$ZCONFDIR"/*; do
     fi
 done
 
-HISTFILE="$ZDOTDIR/.hist/.histfile"
+HISTFILE="$HOME/.histfile"
 HISTFILESIZE=1000000000
 HISTSIZE=100000
 SAVEHIST=$HISTSIZE
