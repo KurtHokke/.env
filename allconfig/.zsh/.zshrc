@@ -41,6 +41,7 @@ if [[ $setx -eq 1 ]]; then
 	set -x
 fi
 
+export PAGER="most"
 export CMAKE_GENERATOR=Ninja
 
 if [[ -f "$HOME/.sship" ]]; then

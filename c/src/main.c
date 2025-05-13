@@ -9,24 +9,18 @@
 
 int main() {
 
-    gSTATS gold_s = {0};
     int i = 0;
     int j = 0;
-    char *response = NULL;
-    for (i = 0; i < TEAMSIZE; i++) {
-        for (j = 0; j < 2; j++) {
-            gold_s.champName[i][j] = malloc(20);
-            if (gold_s.champName[i][j] == NULL) {
-                fprintf(stderr, "Memory allocation failed\n");
-                return 1;
-            }
-        }
+    gSTATS gold_s = {0};
+    if (!gSTATS_handler(&gold_s, INITIATE)) {
+        fprintf(stderr, "(ln16)ERROR: failed to create struct.\n");
+        return 1;
     }
 
+    char *response = NULL;
     if (do_curl(&response) == 1) {
         return 1;
     }
-    printf("%.*s\n", 150, response);
 
     json_t *root;
     json_error_t error;
@@ -75,4 +69,14 @@ int main() {
     json_decref(allPlayers);
     json_decref(root);
     return 0;
+    end:
+        for (i = 0; i < TEAMSIZE; i++) {
+            for (j = 0; j < 2; j++) {
+                if (mystats.champName[i][j] != NULL) {
+                    free(mystats.champName[i][j]); // Free each allocated string
+                    mystats.champName[i][j] = NULL; // Optional: avoid dangling pointers
+                    printf("Successfully freed mystats.champName[%d][%d]\n", i, j);
+                }
+            }
+        }
 }

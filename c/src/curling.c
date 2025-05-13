@@ -2,10 +2,11 @@
 #include <curl/curl.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdbool.h>
 #include <string.h>
 
 
-int do_curl(char **curl_response) {
+bool do_curl(char **curl_response) {
     CURL *curl;
     CURLcode res;
     struct Memory response = {0};
@@ -20,8 +21,8 @@ int do_curl(char **curl_response) {
     curl_easy_setopt(curl, CURLOPT_URL, "http://127.0.0.1:2999/liveclientdata/allgamedata");
     curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, write_callback);
     curl_easy_setopt(curl, CURLOPT_WRITEDATA, &response);
-
     res = curl_easy_perform(curl);
+
     if (res != CURLE_OK) {
         fprintf(stderr, "curl_easy_perform() Failed: %s\n", curl_easy_strerror(res));
         curl_easy_cleanup(curl);
@@ -29,7 +30,9 @@ int do_curl(char **curl_response) {
         free(response.data); // Free in case of error
         return 1;
     }
-
+#ifdef DEBUG
+    printf("%.*s\n", 150, response.data);
+#endif
     *curl_response = response.data;
 
     // Clean up
