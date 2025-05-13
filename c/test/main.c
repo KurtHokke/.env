@@ -4,134 +4,27 @@
 #include <string.h>
 
 #define TEAMSIZE 5
-#define INITIATE 1
-#define DESTROY 0
-#define LOG_MAXSIZE 200
 
-#define get_logger(logger) __create_or_destroy_logger(logger, INITIATE)
-#define del_logger(logger) __create_or_destroy_logger(logger, DESTROY)
-
-#define DEBUG
-
-
-typedef struct _log {
-    char *msg;
-    size_t size;
-    int exitCode;
-} _log;
-
-/*
 typedef struct gSTATS {
     char *champName[TEAMSIZE * 2];
-    int vs[TEAMSIZE * 2];
-} gSTATS;
-*/
+    unsigned int *vs[TEAMSIZE * 2];
+} *gSTATS;
 
-bool __create_or_destroy_logger(_log *logger, int I_OR_D) {
-    if (I_OR_D == INITIATE) {
-        logger->msg = malloc(LOG_MAXSIZE);
-        logger->msg[0] = '\0';
-        logger->exitCode = 0;
-#ifdef DEBUG
-        printf("Allocated logger->msg at %p\n", (void *)logger->msg);
-#endif
-        if (logger->msg == NULL) {
-            return false;
-        }
-    } else if (I_OR_D == DESTROY) {
-        free(logger->msg);
-        logger->msg = NULL;
-        logger->exitCode = 0;
-#ifdef DEBUG
-        printf("Freed logger->msg at %p\n", (void *)logger->msg);
-#endif
+bool tester(gSTATS *ptr) {
+    if (strcmp((*ptr)->champName[0], "init")) {
+        puts("is init");
+        return true;
     }
-    return true;
+    return false;
 }
-
-void msg(FILE *file, char *msg) {
-    char buffer[LOG_MAXSIZE]; // Adjust size as needed
-    if (msg != NULL) {
-        snprintf(buffer, sizeof(buffer), "Message: %s\n", msg);
-        fputs(buffer, file);
-    }
-}
-
-
-/*
-bool handle_struct(gSTATS *data, int I_OR_D) {
-    int i = 0;
-    if (I_OR_D == INITIATE) {
-        for (i = 0; i < TEAMSIZE * 2; i++) {
-            data->champName[i] = malloc(20);
-            if (data->champName[i] == NULL) {
-                fprintf(stderr, "Memory allocation failed\n");
-                return false;
-            }
-#ifdef DEBUG
-            printf("Allocated champName[%d] at %p\n", i, (void *)data->champName[i]);
-#endif
-        }
-    } else if (I_OR_D == DESTROY) {
-        for (i = 0; i < TEAMSIZE * 2; i++) {
-            if (data->champName[i] != NULL) {
-#ifdef DEBUG
-                printf("Freeing champName[%d] at %p\n", i, (void *)data->champName[i]); 
-#endif
-                free(data->champName[i]);
-                data->champName[i] = NULL;
-            }
-        }
-    } else {
-        return false;
-    }
-    return true;
-}
-*/
 
 int main() {
-    int i = 0;
-
-    if (1 == 1) {
-        msg(stderr, "this is a cool test");
+    gSTATS test = malloc(sizeof(gSTATS));
+    strcpy(test->champName[0], "init");
+    if (tester(&test)) {
+        free(test);
+        return 0;
     }
-    return 0;
+    free(test);
+    return 1;
 }
-/*    
-    char *names[TEAMSIZE * 2] = { "ahse", "garen", "darius", "fiora", "fizz", "malph", "urgot", "sona", "mf", "yi" };
-
-
-    for (i = 0; i < TEAMSIZE * 2; i++) {
-        for (j = 0; j < 2; j++) {
-            strcpy(mystats.champName[i][j], names[i][j]);
-            if (strcmp(mystats.champName[i][j], names[i][j]) == 0) {
-                printf("Successfully copied '%s' to mystats.champName[%d][%d]\n", mystats.champName[i][j], i, j);
-            } else {
-                fprintf(stderr, "failed to copy '%s' to mystats.champName[%d][%d]\n", mystats.champName[i][j], i, j);
-                goto end;
-            }
-        }
-    }
-    end:
-        for (i = 0; i < TEAMSIZE; i++) {
-            for (j = 0; j < 2; j++) {
-                if (mystats.champName[i][j] != NULL) {
-                    free(mystats.champName[i][j]); // Free each allocated string
-                    mystats.champName[i][j] = NULL; // Optional: avoid dangling pointers
-                    printf("Successfully freed mystats.champName[%d][%d]\n", i, j);
-                }
-            }
-        }
-    return 0;
-
-/*
-    mystats.vs[2][1] = 15;
-    printf("%d %d\n", mystats.vs[0][0], mystats.vs[0][1]);
-    printf("%d %d\n", mystats.vs[1][0], mystats.vs[1][1]);
-    printf("%d %d\n", mystats.vs[2][0], mystats.vs[2][1]);
-    printf("%d %d\n", mystats.vs[3][0], mystats.vs[3][1]);
-    printf("%d %d\n", mystats.vs[4][0], mystats.vs[4][1]);
-    return 0;
-
-}
-*/

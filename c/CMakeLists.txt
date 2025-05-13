@@ -8,7 +8,6 @@ set(CMAKE_C_STANDARD_REQUIRED ON)
 set(SOURCES
     src/main.c
     src/utils.h
-    src/utils.c
     src/curling.h
     src/curling.c
     src/jsson.h

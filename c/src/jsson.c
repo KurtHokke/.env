@@ -9,12 +9,13 @@
 
 
 
-bool jsson(char *jsonData, gSTATS **ptr, bool init) {
+bool jsson(char *jsonData, gSTATS *ptr) {
 
+    bool init = false;
     int i = 0;
-    char *playerTeam = ORDER;
     const char *playerName;
     if (*ptr == NULL) {
+        init = true;
         *ptr = malloc(sizeof(gSTATS));
         if (*ptr == NULL) {
             fprintf(stderr, "Failed to allocate struct memory\n");

@@ -24,7 +24,7 @@
     return false; \
 } while (0)
 
-bool jsson(char *jsonData, gSTATS **ptr, bool init);
+bool jsson(char *jsonData, gSTATS *ptr);
 
 
 

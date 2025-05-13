@@ -12,7 +12,7 @@ int main() {
 
     //int i = 0;
 
-    gSTATS *gold_stats = NULL;
+    gSTATS gold_stats = NULL;
     /*
     if (!gSTATS_handler(&gold_s, INITIATE)) {
         msg(stderr, "(ln16)ERROR: 'if (!gSTATS_handler(&gold_s, INITIATE))'");
@@ -33,9 +33,8 @@ int main() {
         return 1;
     }
     free(response.data);
-    printf("\n\n\n%s\n", gold_stats->playerTeam);
 
-    free(gold_stats);
+    //free(gold_stats);
     //gSTATS_handler(&gold_stats, DESTROY);
 
     return 0;
