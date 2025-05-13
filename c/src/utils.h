@@ -4,17 +4,22 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <jansson.h>
 
 #define TEAMSIZE 5
 
-/**
- * @brief Struct to store values in
- */
+
 typedef struct gSTATS {
     char *champName[TEAMSIZE * 2];
     unsigned int *vs[TEAMSIZE * 2];
-} *gSTATS;
+} gSTATS;
 
+
+typedef struct aJSON {
+    json_t *root;
+    json_t *activePlayer; 
+    json_t *allPlayers;
+} aJSON;
 
 
 

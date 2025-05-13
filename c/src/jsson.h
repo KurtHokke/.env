@@ -20,7 +20,7 @@
 
 #define PRINT_AND_RETURN(x, y) do { \
     fprintf(stderr, "error: %s was not a json %s\n", #x, y); \
-    json_decref(root); \
+    json_decref(ptr->root); \
     return false; \
 } while (0)
 

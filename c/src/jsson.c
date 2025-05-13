@@ -6,7 +6,25 @@
 #include <stdbool.h>
 #include <string.h>
 
+bool update_aJSON(aJSON *ptr, char *data) {
+    json_error_t error;
 
+    ptr->root = json_loads(data, 0, &error);
+    if (!ptr->root) {
+        fprintf(stderr, "ERROR: %s\n", error.text);
+        fprintf(stderr, "Error while parsing JSON(%d): %s\n", error.line, error.text);
+        return false;
+    } 
+    if (!json_is_object(ptr->root)) {
+        PRINT_AND_RETURN(ptr->root, OBJECT);
+    }
+
+    ptr->allPlayers = json_object_get(ptr->root, "allPlayers");
+}
+
+char *get_champNames() {
+
+}
 
 
 bool jsson(char *jsonData, gSTATS *ptr) {
