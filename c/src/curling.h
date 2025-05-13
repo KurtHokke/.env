@@ -2,6 +2,8 @@
 #ifndef CURLING_H
 #define CURLING_H
 
+
+
 #include <stdio.h>
 #include <stdbool.h>
 
@@ -20,11 +22,9 @@ struct Memory {
 static size_t write_callback(void *contents, size_t size, size_t nmemb, void *userp);
 
 /**
- * @brief curl function
- * @param curl_response pass as '&curl_response'
- * @return boolean
+ * @brief do curl
  */
-bool do_curl(char **curl_response);
+struct Memory do_curl(void);
 
 
 #endif

@@ -6,59 +6,12 @@
 #define TEAMSIZE 5
 #define INITIATE 1
 #define DESTROY 0
-#define LOG_MAXSIZE 200
 
-#define get_logger(logger) __create_or_destroy_logger(logger, INITIATE)
-#define del_logger(logger) __create_or_destroy_logger(logger, DESTROY)
-
-#define DEBUG
-
-
-typedef struct _log {
-    char *msg;
-    size_t size;
-    int exitCode;
-} _log;
-
-/*
 typedef struct gSTATS {
     char *champName[TEAMSIZE * 2];
     int vs[TEAMSIZE * 2];
 } gSTATS;
-*/
 
-bool __create_or_destroy_logger(_log *logger, int I_OR_D) {
-    if (I_OR_D == INITIATE) {
-        logger->msg = malloc(LOG_MAXSIZE);
-        logger->msg[0] = '\0';
-        logger->exitCode = 0;
-#ifdef DEBUG
-        printf("Allocated logger->msg at %p\n", (void *)logger->msg);
-#endif
-        if (logger->msg == NULL) {
-            return false;
-        }
-    } else if (I_OR_D == DESTROY) {
-        free(logger->msg);
-        logger->msg = NULL;
-        logger->exitCode = 0;
-#ifdef DEBUG
-        printf("Freed logger->msg at %p\n", (void *)logger->msg);
-#endif
-    }
-    return true;
-}
-
-void msg(FILE *file, char *msg) {
-    char buffer[LOG_MAXSIZE]; // Adjust size as needed
-    if (msg != NULL) {
-        snprintf(buffer, sizeof(buffer), "Message: %s\n", msg);
-        fputs(buffer, file);
-    }
-}
-
-
-/*
 bool handle_struct(gSTATS *data, int I_OR_D) {
     int i = 0;
     if (I_OR_D == INITIATE) {
@@ -87,13 +40,19 @@ bool handle_struct(gSTATS *data, int I_OR_D) {
     }
     return true;
 }
-*/
 
 int main() {
-    int i = 0;
+    int i;
+    gSTATS mystats = {0};
 
-    if (1 == 1) {
-        msg(stderr, "this is a cool test");
+    if (!handle_struct(&mystats, INITIATE)) {
+        fprintf(stderr, "failed to initiate struct\n");
+        return 1;
+    } else {
+        if (!handle_struct(&mystats, DESTROY)) {
+            fprintf(stderr, "failed to destroy struct\n");
+            return 1;
+        }
     }
     return 0;
 }

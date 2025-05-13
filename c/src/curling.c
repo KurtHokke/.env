@@ -1,45 +1,10 @@
+#include "utils.h"
 #include "curling.h"
 #include <curl/curl.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
 #include <string.h>
-
-
-bool do_curl(char **curl_response) {
-    CURL *curl;
-    CURLcode res;
-    struct Memory response = {0};
-
-    curl_global_init(CURL_GLOBAL_DEFAULT);
-    curl = curl_easy_init();
-    if (!curl) {
-        fprintf(stderr, "curl_easy_init() Failed");
-        curl_global_cleanup();
-        return 1;
-    }
-    curl_easy_setopt(curl, CURLOPT_URL, "http://127.0.0.1:2999/liveclientdata/allgamedata");
-    curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, write_callback);
-    curl_easy_setopt(curl, CURLOPT_WRITEDATA, &response);
-    res = curl_easy_perform(curl);
-
-    if (res != CURLE_OK) {
-        fprintf(stderr, "curl_easy_perform() Failed: %s\n", curl_easy_strerror(res));
-        curl_easy_cleanup(curl);
-        curl_global_cleanup();
-        free(response.data); // Free in case of error
-        return 1;
-    }
-#ifdef DEBUG
-    printf("%.*s\n", 150, response.data);
-#endif
-    *curl_response = response.data;
-
-    // Clean up
-    curl_easy_cleanup(curl);
-    curl_global_cleanup();
-    return 0;
-}
 
 
 // Callback function to collect response data
@@ -50,7 +15,7 @@ static size_t write_callback(void *contents, size_t size, size_t nmemb, void *us
     // Reallocate memory to fit new data
     char *ptr = realloc(mem->data, mem->size + realsize + 1);
     if (!ptr) {
-        fprintf(stderr, "realloc() failed\n");
+        msg(stderr, "ERROR:'curling.c',line(52): 'if (!ptr)'");
         return 0;
     }
 
@@ -61,3 +26,37 @@ static size_t write_callback(void *contents, size_t size, size_t nmemb, void *us
 
     return realsize;
 }
+
+struct Memory do_curl(void) {
+    struct Memory response = { .data = NULL, .size = 0 }; // Initialize to safe defaults
+    CURL *curl;
+    CURLcode res;
+
+    curl_global_init(CURL_GLOBAL_DEFAULT);
+    curl = curl_easy_init();
+    if (!curl) {
+        msg(stderr, "ERROR:'curling.c',line(38): 'if (!curl)'");
+        curl_global_cleanup();
+        return response;
+    }
+    curl_easy_setopt(curl, CURLOPT_URL, "http://127.0.0.1:2999/liveclientdata/allgamedata");
+    curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, write_callback);
+    curl_easy_setopt(curl, CURLOPT_WRITEDATA, &response);
+    res = curl_easy_perform(curl);
+
+    if (res != CURLE_OK) {
+        fprintf(stderr, "ERROR:'curling.c',line(48): 'if (res != CURLE_OK)'\n%s\n", curl_easy_strerror(res));
+        free(response.data); // Free in case of error
+        response.data = NULL;
+        response.size = 0;
+        curl_easy_cleanup(curl);
+        curl_global_cleanup();
+        return response;
+    }
+    // Clean up
+    curl_easy_cleanup(curl);
+    curl_global_cleanup();
+    return response;
+}
+
+
