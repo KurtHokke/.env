@@ -40,10 +40,10 @@ bool gSTATS_handler(gSTATS *data, int I_OR_D) {
                 data->champName[i] = NULL;
 
             }
-            if (
+            if (data->vs[i] != NULL) {
                 free(data->vs[i]);
                 data->vs[i] = NULL;
-            
+            }
         }
     } else {
         return false;
