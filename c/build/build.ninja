@@ -71,6 +71,15 @@ build CMakeFiles/test.dir/src/curling.c.o: C_COMPILER__test_unscanned_ /home/src
   TARGET_COMPILE_PDB = CMakeFiles/test.dir/
   TARGET_PDB = test.pdb
 
+build CMakeFiles/test.dir/src/jsson.c.o: C_COMPILER__test_unscanned_ /home/src/.env/c/src/jsson.c || cmake_object_order_depends_target_test
+  DEFINES = -DDEBUG
+  DEP_FILE = CMakeFiles/test.dir/src/jsson.c.o.d
+  FLAGS = -std=gnu11
+  OBJECT_DIR = CMakeFiles/test.dir
+  OBJECT_FILE_DIR = CMakeFiles/test.dir/src
+  TARGET_COMPILE_PDB = CMakeFiles/test.dir/
+  TARGET_PDB = test.pdb
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target test
@@ -79,10 +88,10 @@ build CMakeFiles/test.dir/src/curling.c.o: C_COMPILER__test_unscanned_ /home/src
 #############################################
 # Link the executable test
 
-build test: C_EXECUTABLE_LINKER__test_ CMakeFiles/test.dir/src/main.c.o CMakeFiles/test.dir/src/utils.c.o CMakeFiles/test.dir/src/curling.c.o | /usr/lib/libcurl.so
+build test: C_EXECUTABLE_LINKER__test_ CMakeFiles/test.dir/src/main.c.o CMakeFiles/test.dir/src/utils.c.o CMakeFiles/test.dir/src/curling.c.o CMakeFiles/test.dir/src/jsson.c.o | /usr/lib/libcurl.so /usr/lib/libjansson.so
   DEP_FILE = CMakeFiles/test.dir/link.d
   LINK_FLAGS = -Wl,--dependency-file=CMakeFiles/test.dir/link.d
-  LINK_LIBRARIES = /usr/lib/libcurl.so
+  LINK_LIBRARIES = /usr/lib/libcurl.so  /usr/lib/libjansson.so
   OBJECT_DIR = CMakeFiles/test.dir
   POST_BUILD = :
   PRE_LINK = :
@@ -95,7 +104,7 @@ build test: C_EXECUTABLE_LINKER__test_ CMakeFiles/test.dir/src/main.c.o CMakeFil
 # Utility command for edit_cache
 
 build CMakeFiles/edit_cache.util: CUSTOM_COMMAND
-  COMMAND = cd /home/src/.env/c/build && /usr/sbin/ccmake -S/home/src/.env/c -B/home/src/.env/c/build
+  COMMAND = cd /home/src/.env/c/build && /usr/bin/ccmake -S/home/src/.env/c -B/home/src/.env/c/build
   DESC = Running CMake cache editor...
   pool = console
   restat = 1
@@ -107,7 +116,7 @@ build edit_cache: phony CMakeFiles/edit_cache.util
 # Utility command for rebuild_cache
 
 build CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
-  COMMAND = cd /home/src/.env/c/build && /usr/sbin/cmake --regenerate-during-build -S/home/src/.env/c -B/home/src/.env/c/build
+  COMMAND = cd /home/src/.env/c/build && /usr/bin/cmake --regenerate-during-build -S/home/src/.env/c -B/home/src/.env/c/build
   DESC = Running CMake to regenerate build system...
   pool = console
   restat = 1

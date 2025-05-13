@@ -8,7 +8,7 @@ app = Flask(__name__)
 def serve_game_data():
     try:
         # Read the JSON file
-        with open('res/allgamedata5.json', 'r') as file:
+        with open('res/allgamedata6.json', 'r') as file:
             data = json.load(file)
         return jsonify(data)  # Return JSON response
     except FileNotFoundError:

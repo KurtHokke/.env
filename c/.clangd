@@ -1,2 +1,0 @@
-Diagnostics:
-  Suppress: clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling

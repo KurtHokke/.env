@@ -1,6 +1,7 @@
 #include "utils.h"
 #include "curling.h"
-//#include <jansson.h>
+#include "jsson.h"
+#include <jansson.h>
 //#include <curl/curl.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -26,7 +27,12 @@ int main() {
     printf("Response (%zu bytes): %.*s\n", response.size, 500, response.data);
     #endif
 
+    if (!jsson(response.data, &gold_s, INIT_TRUE)) {
+        msg(stderr, "ERROR:'main.c',line(30): 'if (!jsson(response.data, &gold_s))'");
+        return 1;
+    }
     free(response.data);
-    
+    gSTATS_handler(&gold_s, DESTROY);
+
     return 0;
 }
