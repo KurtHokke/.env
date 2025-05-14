@@ -5,20 +5,10 @@
 #include <stdlib.h>
 #include <string.h>
 
-#define INTERACTIV
 
-#ifdef INTERACTIVE
-int main(int argc, char *argv[]) {
-#else
-int main() {
-#endif
-    #ifdef INTERACTIVE
-    if (argc < 2) {
-        e_PRINT(-1, "compiled with #define INTERACTIVE\n");
-        return 1;
-    }
-    if
-    #endif
+int main()
+{
+    int i = 0;
 
     struct Memory response = do_curl();
     if (response.data == NULL || response.size == 0) {
@@ -32,7 +22,6 @@ int main() {
         e_PRINT(-2, "get_aJSON failed\n");
         return 1;
     }
-
     if (!get_activePlayer(json)) {
         e_PRINT(-1, "get_activePlayer failed\n");
         json_decref(json->root);
@@ -46,16 +35,48 @@ int main() {
         return 1;
     }
 
-    printf("riotId: %s\n\n", json->activePlayer);
+    player **players = allocate_players();
+    if (players == NULL) {
+        e_PRINT(-2, "failed to create player structs\n");
+        return 1;
+    }
+
+    if (!update_players(json, players)) {
+        e_PRINT(-1, "update_players() error\n");
+        json_decref(json->root);
+        free(json);
+        if (!free_players(players)) {
+            e_PRINT(-1, "failed to free players struct\n");
+        }
+        return 1;
+    }
+
+    printf("riotId: %s\n\n", json->activePlayer_riotId);
 
     char *rootvalue = json_dumps(json->allPlayers, 0);
-    printf("%.*s", 100, rootvalue);
+    printf("%.*s\n\n", 100, rootvalue);
+
+    for (i = 0; i < 10; i++)
+    {
+        printf("%s\n", players[i]->riotId);
+        printf("%s\n", players[i]->champName);
+        printf("t: %d\n", players[i]->teamI);
+        printf("p: %d\n", players[i]->positionI);
+        printf("%lld\n\n", players[i]->gold);
+
+    }
+
+    if (!free_players(players)) {
+        e_PRINT(-1, "failed to free players struct\n");
+    }
+    return 1;
 
     json_decref(json->root);
     free(json);
     printf("working\n");
     return 0;
 }
+
 /*
     json->root = json_loads(response.data, 0, &error);
     free(response.data);

@@ -11,8 +11,8 @@
 # =============================================================================
 
 # =============================================================================
-# Project: test
-# Configurations: 
+# Project: main
+# Configurations: Debug
 # =============================================================================
 
 #############################################
@@ -20,6 +20,11 @@
 
 ninja_required_version = 1.5
 
+
+#############################################
+# Set configuration variable for custom commands.
+
+CONFIGURATION = Debug
 # =============================================================================
 # Include auxiliary files.
 
@@ -36,56 +41,70 @@ include CMakeFiles/rules.ninja
 
 cmake_ninja_workdir = /home/src/.env/c/build/
 # =============================================================================
-# Object build statements for EXECUTABLE target test
+# Object build statements for EXECUTABLE target main
 
 
 #############################################
-# Order-only phony target for test
+# Order-only phony target for main
 
-build cmake_object_order_depends_target_test: phony || .
+build cmake_object_order_depends_target_main: phony || .
 
-build CMakeFiles/test.dir/src/main.c.o: C_COMPILER__test_unscanned_ /home/src/.env/c/src/main.c || cmake_object_order_depends_target_test
-  DEP_FILE = CMakeFiles/test.dir/src/main.c.o.d
-  FLAGS = -std=gnu11
-  OBJECT_DIR = CMakeFiles/test.dir
-  OBJECT_FILE_DIR = CMakeFiles/test.dir/src
-  TARGET_COMPILE_PDB = CMakeFiles/test.dir/
-  TARGET_PDB = test.pdb
+build CMakeFiles/main.dir/src/main.c.o: C_COMPILER__main_unscanned_Debug /home/src/.env/c/src/main.c || cmake_object_order_depends_target_main
+  CONFIG = Debug
+  DEP_FILE = CMakeFiles/main.dir/src/main.c.o.d
+  FLAGS = -g -std=gnu11
+  OBJECT_DIR = CMakeFiles/main.dir
+  OBJECT_FILE_DIR = CMakeFiles/main.dir/src
+  TARGET_COMPILE_PDB = CMakeFiles/main.dir/
+  TARGET_PDB = main.pdb
 
-build CMakeFiles/test.dir/src/curling.c.o: C_COMPILER__test_unscanned_ /home/src/.env/c/src/curling.c || cmake_object_order_depends_target_test
-  DEP_FILE = CMakeFiles/test.dir/src/curling.c.o.d
-  FLAGS = -std=gnu11
-  OBJECT_DIR = CMakeFiles/test.dir
-  OBJECT_FILE_DIR = CMakeFiles/test.dir/src
-  TARGET_COMPILE_PDB = CMakeFiles/test.dir/
-  TARGET_PDB = test.pdb
+build CMakeFiles/main.dir/src/utils.c.o: C_COMPILER__main_unscanned_Debug /home/src/.env/c/src/utils.c || cmake_object_order_depends_target_main
+  CONFIG = Debug
+  DEP_FILE = CMakeFiles/main.dir/src/utils.c.o.d
+  FLAGS = -g -std=gnu11
+  OBJECT_DIR = CMakeFiles/main.dir
+  OBJECT_FILE_DIR = CMakeFiles/main.dir/src
+  TARGET_COMPILE_PDB = CMakeFiles/main.dir/
+  TARGET_PDB = main.pdb
 
-build CMakeFiles/test.dir/src/jsson.c.o: C_COMPILER__test_unscanned_ /home/src/.env/c/src/jsson.c || cmake_object_order_depends_target_test
-  DEP_FILE = CMakeFiles/test.dir/src/jsson.c.o.d
-  FLAGS = -std=gnu11
-  OBJECT_DIR = CMakeFiles/test.dir
-  OBJECT_FILE_DIR = CMakeFiles/test.dir/src
-  TARGET_COMPILE_PDB = CMakeFiles/test.dir/
-  TARGET_PDB = test.pdb
+build CMakeFiles/main.dir/src/curling.c.o: C_COMPILER__main_unscanned_Debug /home/src/.env/c/src/curling.c || cmake_object_order_depends_target_main
+  CONFIG = Debug
+  DEP_FILE = CMakeFiles/main.dir/src/curling.c.o.d
+  FLAGS = -g -std=gnu11
+  OBJECT_DIR = CMakeFiles/main.dir
+  OBJECT_FILE_DIR = CMakeFiles/main.dir/src
+  TARGET_COMPILE_PDB = CMakeFiles/main.dir/
+  TARGET_PDB = main.pdb
+
+build CMakeFiles/main.dir/src/jsson.c.o: C_COMPILER__main_unscanned_Debug /home/src/.env/c/src/jsson.c || cmake_object_order_depends_target_main
+  CONFIG = Debug
+  DEP_FILE = CMakeFiles/main.dir/src/jsson.c.o.d
+  FLAGS = -g -std=gnu11
+  OBJECT_DIR = CMakeFiles/main.dir
+  OBJECT_FILE_DIR = CMakeFiles/main.dir/src
+  TARGET_COMPILE_PDB = CMakeFiles/main.dir/
+  TARGET_PDB = main.pdb
 
 
 # =============================================================================
-# Link build statements for EXECUTABLE target test
+# Link build statements for EXECUTABLE target main
 
 
 #############################################
-# Link the executable test
+# Link the executable main
 
-build test: C_EXECUTABLE_LINKER__test_ CMakeFiles/test.dir/src/main.c.o CMakeFiles/test.dir/src/curling.c.o CMakeFiles/test.dir/src/jsson.c.o | /usr/lib/libcurl.so /usr/lib/libjansson.so
-  DEP_FILE = CMakeFiles/test.dir/link.d
-  LINK_FLAGS = -Wl,--dependency-file=CMakeFiles/test.dir/link.d
+build main: C_EXECUTABLE_LINKER__main_Debug CMakeFiles/main.dir/src/main.c.o CMakeFiles/main.dir/src/utils.c.o CMakeFiles/main.dir/src/curling.c.o CMakeFiles/main.dir/src/jsson.c.o | /usr/lib/libcurl.so /usr/lib/libjansson.so
+  CONFIG = Debug
+  DEP_FILE = CMakeFiles/main.dir/link.d
+  FLAGS = -g
+  LINK_FLAGS = -Wl,--dependency-file=CMakeFiles/main.dir/link.d
   LINK_LIBRARIES = /usr/lib/libcurl.so  /usr/lib/libjansson.so
-  OBJECT_DIR = CMakeFiles/test.dir
+  OBJECT_DIR = CMakeFiles/main.dir
   POST_BUILD = :
   PRE_LINK = :
-  TARGET_COMPILE_PDB = CMakeFiles/test.dir/
-  TARGET_FILE = test
-  TARGET_PDB = test.pdb
+  TARGET_COMPILE_PDB = CMakeFiles/main.dir/
+  TARGET_FILE = main
+  TARGET_PDB = main.pdb
 
 
 #############################################
@@ -129,7 +148,7 @@ build codegen: phony
 #############################################
 # Folder: /home/src/.env/c/build
 
-build all: phony test
+build all: phony main
 
 # =============================================================================
 # Built-in targets

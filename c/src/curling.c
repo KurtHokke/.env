@@ -39,9 +39,13 @@ struct Memory do_curl(void) {
         curl_global_cleanup();
         return response;
     }
-    curl_easy_setopt(curl, CURLOPT_URL, "http://127.0.0.1:2999/liveclientdata/allgamedata");
+    curl_easy_setopt(curl, CURLOPT_URL, MY_URL_CURL);
     curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, write_callback);
     curl_easy_setopt(curl, CURLOPT_WRITEDATA, &response);
+
+    curl_easy_setopt(curl, CURLOPT_SSL_VERIFYPEER, 0L);
+    curl_easy_setopt(curl, CURLOPT_SSL_VERIFYHOST, 0L);
+    
     res = curl_easy_perform(curl);
 
     if (res != CURLE_OK) {

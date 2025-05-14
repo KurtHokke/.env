@@ -2,11 +2,10 @@
 #ifndef CURLING_H
 #define CURLING_H
 
-
-
 #include <stdio.h>
 #include <stdbool.h>
 
+#define MY_URL_CURL "https://127.0.0.1:2999/liveclientdata/allgamedata"
 
 /**
  * @brief memory for curl function

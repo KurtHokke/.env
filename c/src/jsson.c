@@ -1,13 +1,12 @@
 #include "utils.h"
-//#include "jsson.h"
 #include <jansson.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
 #include <string.h>
 
-aJSON *get_aJSON(char *data) {
-
+aJSON *get_aJSON(char *data)
+{
     aJSON *json = malloc(sizeof(aJSON));
     if (json == NULL) {
         e_PRINT(-2, "malloc failed\n");
@@ -15,9 +14,10 @@ aJSON *get_aJSON(char *data) {
     }
 
     json_error_t error;
-    json->activePlayer = NULL;
+    json->activePlayer_riotId = NULL;
     json->allPlayers = NULL;
     json->root = json_loads(data, 0, &error);
+
     if (!json->root) {
         e_PRINT(-2, "ERROR: %s\n", error.text);
         e_PRINT(-2, "Error while parsing JSON(%d): %s\n", error.line, error.text);
@@ -30,11 +30,12 @@ aJSON *get_aJSON(char *data) {
         free(json);
         return NULL;
     }
+
     return json;
 }
 
-bool get_activePlayer(aJSON *json) {
-
+bool get_activePlayer(aJSON *json)
+{
     json_t *activePlayer, *riotId;
 
     if (json == NULL || json->root == NULL) {
@@ -52,12 +53,12 @@ bool get_activePlayer(aJSON *json) {
         e_PRINT(-2, "riotId is not a json STRING\n");
         return false;
     }
-    json->activePlayer = json_string_value(riotId);
+    json->activePlayer_riotId = json_string_value(riotId);
     return true;
 }
 
-bool get_allPlayers(aJSON *json) {
-
+bool get_allPlayers(aJSON *json)
+{
     if (json == NULL || json->root == NULL) {
         e_PRINT(-2, "aJSON *json faulty\n");
         return false;
@@ -67,6 +68,126 @@ bool get_allPlayers(aJSON *json) {
         e_PRINT(-2, "json->allPlayers is not a json ARRAY\n");
         return false;
     }
+    return true;
+}
+
+bool update_players(aJSON *json, player **players)
+{
+    if (json == NULL || json->allPlayers == NULL || players == NULL) {
+        e_PRINT(-3, "begin update_players() failed\n");
+        return false;
+    }
+
+    int i, j;
+    for (i = 0; i < json_array_size(json->allPlayers); i++)
+    {
+        json_t *player_json, *riotId_json, *champ_json, *team_json, *position_json;
+        json_t *items_json, *gold_json;
+        const char *champName, *teamName, *positionName;
+        long long goldValue = 0;
+
+        player_json = json_array_get(json->allPlayers, i);
+        if (!json_is_object(player_json)) {
+            e_PRINT(-2, "%s is not a json OBJECT\n", STR(player_json));
+            return false;
+        }
+
+        riotId_json = json_object_get(player_json, "riotId");
+        champ_json = json_object_get(player_json, "championName");
+        team_json = json_object_get(player_json, "team");
+        position_json = json_object_get(player_json, "position");
+
+        if (!json_is_string(riotId_json)) {
+            e_PRINT(-2, "%s is not a json STRING\n", STR(riotId_json));
+            return false;
+        }
+        if (!json_is_string(champ_json)) {
+            e_PRINT(-2, "%s is not a json STRING\n", STR(champ_json));
+            return false;
+        }
+        if (!json_is_string(team_json)) {
+            e_PRINT(-2, "%s is not a json STRING\n", STR(team_json));
+            return false;
+        }
+        if (!json_is_string(position_json)) {
+            e_PRINT(-2, "%s is not a json STRING\n", STR(position_json));
+            return false;
+        }
+
+        items_json = json_object_get(player_json, "items");
+        if (!json_is_array(items_json)) {
+            e_PRINT(-2, "%s is not a json ARRAY\n", STR(items_json));
+            return false;
+        }
+
+        for (j = 0; j < json_array_size(items_json); j++)
+        {
+            json_t *current_item, *current_gold;
+
+            current_item = json_array_get(items_json, j);
+            if (!json_is_object(current_item)) {
+                e_PRINT(-2, "%s is not a json OBJECT\n", STR(current_item));
+                return false;
+            }
+
+            current_gold = json_object_get(current_item, "price");
+            if (!json_is_integer(current_gold)) {
+                e_PRINT(-2, "%s is not a json INT\n", STR(current_gold));
+                return false;
+            }
+
+            goldValue += json_integer_value(current_gold);
+        }
+
+        snprintf(players[i]->champName, 50, "%s", json_string_value(champ_json));
+        snprintf(players[i]->riotId, 100, "%s", json_string_value(riotId_json));
+        players[i]->gold = goldValue;
+
+        teamName = json_string_value(team_json);
+        positionName = json_string_value(position_json);
+        char t = teamName[0];
+        char p = positionName[0];
+        switch (t)
+        {
+            case 'O': //ORDER
+                players[i]->teamI = 0;
+                break;
+            case 'C': //CHAOS
+                players[i]->teamI = 1;
+                break;
+            default:
+                e_PRINT(-1, "teamName[0] error\n");
+                return false;
+        }
+        switch (p)
+        {
+            case 'T': //TOP
+                players[i]->positionI = 0;
+                break;
+            case 'J': //JUNGLE
+                players[i]->positionI = 1;
+                break;
+            case 'M': //MIDDLE
+                players[i]->positionI = 2;
+                break;
+            case 'B': //BOTTOM
+                players[i]->positionI = 3;
+                break;
+            case 'U': //UTILITY
+                players[i]->positionI = 4;
+                break;
+            default:
+                e_PRINT(-1, "positionName[0] error\n");
+                return false;
+        }
+
+
+        printf("rN: %s\n", players[i]->riotId);
+        printf("cN: %s\n", players[i]->champName);
+        printf("gold: %lld\n\n", players[i]->gold);
+
+    }
+
     return true;
 }
 

@@ -54,7 +54,7 @@ bool tester(gSTATS *ptr) {
 }
 
 
-
+/*
 int main() {
     //gSTATS *test = malloc(sizeof(gSTATS));
     gSTATS *test = get_aJSON()
@@ -78,3 +78,4 @@ int main() {
     free(test);
     return 1;
 }
+*/
