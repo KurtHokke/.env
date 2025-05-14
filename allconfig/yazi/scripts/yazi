@@ -1,0 +1,55 @@
+#!/bin/sh
+
+open_nautilus() { local t="$1"
+    if [ -d "$t" ]; then 
+        nautilus "$t"
+    else 
+        nautilus "$(dirname "$t")"
+    fi
+}
+open_subl() { local file="$1"
+    minimumsize=1000000
+    actualsize=$(wc -c <"$file")
+    if [ $actualsize -lt $minimumsize ]; then
+        subl "$file"
+    fi
+}
+open_term() { local file="$1"
+    if [ -x "$file" ]; then
+        bash -c $file
+    else
+        chmod +x "$file" && bash -c $file
+    fi
+}
+vim_edit() { local file="$1"
+    if [ -f "$file" ]; then
+        vim "$file"
+    fi
+}
+open_codium() { local file="$1"
+    if [ -f "$file" -o -d "$file" ]; then
+        codium --enable-features=UseOzonePlatform,WaylandWindowDecorations --ozone-platform=wayland "$file"
+    fi
+}
+arg="$1"
+path="$(realpath "$2")"
+case "$arg" in
+  open_nautilus)
+    open_nautilus "$path"
+  ;;
+  open_subl)
+    open_subl "$path"
+  ;;
+  open_term)
+    open_term "$path"
+  ;;
+  vim_edit)
+    vim_edit "$path"
+  ;;
+  open_codium)
+    open_codium "$path"
+  ;;
+  *)
+    echo error
+  ;;
+esac

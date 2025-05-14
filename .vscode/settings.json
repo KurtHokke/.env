@@ -1,7 +1,0 @@
-{
-    "files.associations": {
-        "*.wsb": "xml",
-        "jansson.h": "c",
-        "stdio.h": "c"
-    }
-}

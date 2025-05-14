@@ -1,0 +1,78 @@
+
+[manager]
+show_hidden = true
+ratio = [1, 4, 3]
+
+[opener]
+subl_file = [
+    { run = '${ySCRIPTS}/yazi "open_subl" "$0"', orphan = true, desc = "Open in Sublime Text" },
+]
+man_view = [
+    { run = 'man -l "$0"', block = true, desc = "View ManPage" },
+]
+code_dir = [
+    { run = '${ySCRIPTS}/yazi "open_codium" "$0"', orphan = true, desc = "Open folder in Codium" },
+]
+code_file = [
+    { run = '${ySCRIPTS}/yazi "open_codium" "$0"', orphan = true, desc = "Open file in Codium" },
+]
+nautilus = [
+    { run = '${ySCRIPTS}/yazi "open_nautilus" "$0"', orphan = true, desc = "Open in Nautilus" },
+]
+termopen = [
+    { run = '${ySCRIPTS}/yazi "open_term" "$0"', block = true, desc = "Run in Terminal" }
+]
+vim_edit = [
+    { run = '${ySCRIPTS}/yazi "vim_edit" "$0"', block = true, desc = "Edit with Vim" }
+]
+
+[open]
+rules = [
+    { name = "*", use = ["subl_file", "vim_edit"] },
+    { mime = "inode/directory", use = "code_dir" },
+
+]
+prepend_rules = [
+    { mime = "application/executable", use = "termopen" },
+]
+append_rules = [
+    { name = "*.{man,gz}", use = "man_view" },
+    { mime = "text/*", use = "man_view" },
+]
+
+previewers = [
+    { name = "*/", run = "folder" },
+    # Code
+    { mime = "text/*", run = "code" },
+    { mime = "application/{mbox,javascript,wine-extension-ini}", run = "code" },
+    # JSON
+    { mime = "application/{json,ndjson}", run = "json" },
+    # Image
+    { mime = "image/{avif,hei?,jxl}", run = "magick" },
+    { mime = "image/svg+xml", run = "svg" },
+    { mime = "image/*", run = "image" },
+    # Video
+    { mime = "video/*", run = "video" },
+    # PDF
+    { mime = "application/pdf", run = "pdf" },
+    # Archive
+    { mime = "application/{zip,rar,7z*,tar,gzip,xz,zstd,bzip*,lzma,compress,archive,cpio,arj,xar,ms-cab*}", run = "archive" },
+    { mime = "application/{debian*-package,redhat-package-manager,rpm,android.package-archive}", run = "archive" },
+    { name = "*.{AppImage,appimage}", run = "archive" },
+    # Virtual Disk / Disk Image
+    { mime = "application/{iso9660-image,qemu-disk,ms-wim,apple-diskimage}", run = "archive" },
+    { mime = "application/virtualbox-{vhd,vhdx}", run = "archive" },
+    { name = "*.{img,fat,ext,ext2,ext3,ext4,squashfs,ntfs,hfs,hfsx}", run = "archive" },
+    # Font
+    { mime = "font/*", run = "font" },
+    { mime = "application/ms-opentype", run = "font" },
+    # Empty file
+    { mime = "inode/empty", run = "empty" },
+    # Fallback
+    { name = "*", run = "file" },
+]
+
+[preview]
+max_width  = 1440
+max_height = 1440
+

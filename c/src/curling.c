@@ -15,7 +15,7 @@ static size_t write_callback(void *contents, size_t size, size_t nmemb, void *us
     // Reallocate memory to fit new data
     char *ptr = realloc(mem->data, mem->size + realsize + 1);
     if (!ptr) {
-        msg(stderr, "ERROR:'curling.c',line(52): 'if (!ptr)'");
+        e_PRINT(-2, "ERROR");
         return 0;
     }
 
@@ -35,7 +35,7 @@ struct Memory do_curl(void) {
     curl_global_init(CURL_GLOBAL_DEFAULT);
     curl = curl_easy_init();
     if (!curl) {
-        msg(stderr, "ERROR:'curling.c',line(38): 'if (!curl)'");
+        e_PRINT(-2, "ERROR");
         curl_global_cleanup();
         return response;
     }
@@ -45,7 +45,7 @@ struct Memory do_curl(void) {
     res = curl_easy_perform(curl);
 
     if (res != CURLE_OK) {
-        fprintf(stderr, "ERROR:'curling.c',line(48): 'if (res != CURLE_OK)'\n%s\n", curl_easy_strerror(res));
+        e_PRINT(-3, "ERROR: %s\n", curl_easy_strerror(res));
         free(response.data); // Free in case of error
         response.data = NULL;
         response.size = 0;

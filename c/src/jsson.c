@@ -1,11 +1,76 @@
 #include "utils.h"
-#include "jsson.h"
+//#include "jsson.h"
 #include <jansson.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
 #include <string.h>
 
+aJSON *get_aJSON(char *data) {
+
+    aJSON *json = malloc(sizeof(aJSON));
+    if (json == NULL) {
+        e_PRINT(-2, "malloc failed\n");
+        return NULL;
+    }
+
+    json_error_t error;
+    json->activePlayer = NULL;
+    json->allPlayers = NULL;
+    json->root = json_loads(data, 0, &error);
+    if (!json->root) {
+        e_PRINT(-2, "ERROR: %s\n", error.text);
+        e_PRINT(-2, "Error while parsing JSON(%d): %s\n", error.line, error.text);
+        free(json);
+        return NULL;
+    }
+    if (!json_is_object(json->root)) {
+        e_PRINT(-6, "error: %s was not a json OBJECT\n", STR(json->root));
+        json_decref(json->root);
+        free(json);
+        return NULL;
+    }
+    return json;
+}
+
+bool get_activePlayer(aJSON *json) {
+
+    json_t *activePlayer, *riotId;
+
+    if (json == NULL || json->root == NULL) {
+        e_PRINT(-2, "aJSON *json faulty\n");
+        return false;
+    }
+
+    activePlayer = json_object_get(json->root, "activePlayer");
+    if (!json_is_object(activePlayer)) {
+        e_PRINT(-2, "activePlayer is not a json OBJECT\n");
+        return false;
+    }
+    riotId = json_object_get(activePlayer, "riotId");
+    if (!json_is_string(riotId)) {
+        e_PRINT(-2, "riotId is not a json STRING\n");
+        return false;
+    }
+    json->activePlayer = json_string_value(riotId);
+    return true;
+}
+
+bool get_allPlayers(aJSON *json) {
+
+    if (json == NULL || json->root == NULL) {
+        e_PRINT(-2, "aJSON *json faulty\n");
+        return false;
+    }
+    json->allPlayers = json_object_get(json->root, "allPlayers");
+    if (!json_is_array(json->allPlayers)) {
+        e_PRINT(-2, "json->allPlayers is not a json ARRAY\n");
+        return false;
+    }
+    return true;
+}
+
+/*
 bool update_aJSON(aJSON *ptr, char *data) {
     json_error_t error;
 
@@ -119,3 +184,4 @@ bool jsson(char *jsonData, gSTATS *ptr) {
     json_decref(root);
     return true;
 }
+*/

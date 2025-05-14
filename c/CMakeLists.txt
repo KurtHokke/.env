@@ -10,7 +10,6 @@ set(SOURCES
     src/utils.h
     src/curling.h
     src/curling.c
-    src/jsson.h
     src/jsson.c
 )
 add_executable(test ${SOURCES})

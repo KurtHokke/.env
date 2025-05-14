@@ -1,0 +1,44 @@
+[[plugin.deps]]
+use = "yazi-rs/plugins:smart-enter"
+rev = "f202fa8"
+hash = "c1a2739e9ef2d837030ccb4267be3ed1"
+
+[[plugin.deps]]
+use = "yazi-rs/plugins:max-preview"
+rev = "f202fa8"
+hash = "9bc26d10d2f6e2aa93b10905b1b76979"
+
+[[plugin.deps]]
+use = "KurtHokke/my-plugins.yazi:big-preview"
+rev = "2dd81b4"
+hash = "30af4093314c12803e78352a172949f5"
+
+[[plugin.deps]]
+use = "yazi-rs/plugins:full-border"
+rev = "f202fa8"
+hash = "882ed23839778f82dc137248979c8681"
+
+[[plugin.deps]]
+use = "yazi-rs/plugins:jump-to-char"
+rev = "f202fa8"
+hash = "72c66a0b3d60f8377eb9db5e1d8b60b2"
+
+[[plugin.deps]]
+use = "yazi-rs/plugins:mime-ext"
+rev = "f202fa8"
+hash = "3da1f54d921508e2ce15bdca6ce5d291"
+
+[[plugin.deps]]
+use = "yazi-rs/plugins:sudo-demo"
+rev = "f202fa8"
+hash = "99b7ec80ba0ce504e1d8e5036e425d95"
+
+[[plugin.deps]]
+use = "TD-Sky/sudo"
+rev = "af70636"
+hash = "a94dcbe9266512806c677138e8591ddb"
+
+[[flavor.deps]]
+use = "PinThePenguine/sunset"
+rev = "181acd4"
+hash = "cc4c39af7098f02c42fec223fc1fc967"
