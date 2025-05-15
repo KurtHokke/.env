@@ -18,13 +18,14 @@
 ->(int)positionI
 ->(long long)gold
 */
-typedef struct player {
+typedef struct aPLAYER {
     char *riotId;
     char *champName;
+    char *spacing;
     int teamI;
     int positionI;
     long long gold;
-} player;
+} aPLAYER;
 
 /*
 ->(json_t*)root; 
@@ -38,13 +39,15 @@ typedef struct aJSON {
 } aJSON;
 
 
-player **allocate_players();
-bool free_players(player **players);
+aPLAYER **allocate_players();
+bool free_players(aPLAYER **players);
 
 aJSON *get_aJSON(char *data);
 bool get_activePlayer(aJSON *json);
 bool get_allPlayers(aJSON *json);
-bool update_players(aJSON *json, player **players);
+
+bool init_players(aJSON *json, aPLAYER **players);
+bool update_players(aJSON *json, aPLAYER **players);
 
 
 #endif

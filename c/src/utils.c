@@ -6,16 +6,17 @@
 #include <string.h>
 
 
-player **allocate_players()
+aPLAYER **allocate_players()
 {
     int i;
-    player **players = malloc(10 * sizeof(player *));
+    aPLAYER **players = malloc(10 * sizeof(aPLAYER *));
 
     for (i = 0; i < 10; i++)
     {
-        players[i]            = malloc(sizeof(player));
+        players[i]            = malloc(sizeof(aPLAYER));
         players[i]->riotId    = malloc(100 * sizeof(char));
         players[i]->champName = malloc(50 * sizeof(char));
+        players[i]->spacing   = malloc(21 * sizeof(char));
 
         if (players[i] == NULL || players[i]->champName == NULL) {
             e_PRINT(-2, "malloc failed\n");
@@ -29,6 +30,7 @@ player **allocate_players()
         }
         snprintf(players[i]->riotId, 100, "riotId#%d", i);
         snprintf(players[i]->champName, 50, "champName#%d", i);
+        snprintf(players[i]->spacing, 21, "");
         players[i]->teamI = (i < 5)? 0 : 1;
         players[i]->positionI = i;
         players[i]->gold = 1000 * (i + 1);
@@ -36,7 +38,7 @@ player **allocate_players()
     return players;
 }
 
-bool free_players(player **players)
+bool free_players(aPLAYER **players)
 {
     int i;
 
@@ -52,6 +54,9 @@ bool free_players(player **players)
         }
         if (players[i]->champName != NULL) {
             free(players[i]->champName);
+        }
+        if (players[i]->spacing != NULL) {
+            free(players[i]->spacing);
         }
         if (players[i] != NULL) {
             free(players[i]);

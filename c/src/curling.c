@@ -1,14 +1,15 @@
-#include "utils.h"
 #include "curling.h"
+#include "utils.h"
 #include <curl/curl.h>
+#include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <stdbool.h>
 #include <string.h>
 
-
 // Callback function to collect response data
-static size_t write_callback(void *contents, size_t size, size_t nmemb, void *userp) {
+static size_t write_callback(void *contents, size_t size, size_t nmemb,
+                             void *userp)
+{
     size_t realsize = size * nmemb;
     struct Memory *mem = (struct Memory *)userp;
 
@@ -27,8 +28,10 @@ static size_t write_callback(void *contents, size_t size, size_t nmemb, void *us
     return realsize;
 }
 
-struct Memory do_curl(void) {
-    struct Memory response = { .data = NULL, .size = 0 }; // Initialize to safe defaults
+struct Memory do_curl(void)
+{
+    struct Memory response = {.data = NULL,
+                              .size = 0}; // Initialize to safe defaults
     CURL *curl;
     CURLcode res;
 
@@ -43,9 +46,11 @@ struct Memory do_curl(void) {
     curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, write_callback);
     curl_easy_setopt(curl, CURLOPT_WRITEDATA, &response);
 
+    curl_easy_setopt(curl, CURLOPT_TIMEOUT, 5L);
+
     curl_easy_setopt(curl, CURLOPT_SSL_VERIFYPEER, 0L);
     curl_easy_setopt(curl, CURLOPT_SSL_VERIFYHOST, 0L);
-    
+
     res = curl_easy_perform(curl);
 
     if (res != CURLE_OK) {
@@ -62,5 +67,3 @@ struct Memory do_curl(void) {
     curl_global_cleanup();
     return response;
 }
-
-
