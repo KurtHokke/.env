@@ -5,7 +5,7 @@
 	// same ids are connected.
 	// Example:
  "basic include": {
- 	"prefix": "basic include",
+ 	"prefix": "bincl",
  	"body": [
  		"#include <stdio.h>",
  		"#include <stdlib.h>"

@@ -213,33 +213,26 @@
     "editor.useTabStops": true,
     "editor.multiCursorModifier": "ctrlCmd",
     "editor.snippetSuggestions": "top",
-
     "explorer.confirmDelete": false,
-
     "files.autoSave": "off",
     //"files.autoSave": "afterDelay",
     "files.autoSaveDelay": 20,
-
     "zig.path": "zig",
     "zig.zls.enabled": "on",
     "zig.zls.path": "zls",
     "zig.formattingProvider": "extension",
     "zig.zls.enableSnippets": false,
-
     "rust-analyzer.restartServerOnConfigChange": true,
     "rust-analyzer.showSyntaxTree": true,
     "rust-analyzer.testExplorer": true,
     "rust-analyzer.hover.actions.references.enable": true,
     "rust-analyzer.server.path": "/usr/local/bin/rust-analyzer",
-
     "workbench.colorTheme": "GitHub Dark Default",
-
     "C_Cpp_Runner.cStandard": "gnu23",
     "C_Cpp_Runner.cppStandard": "gnu++23",
     "C_Cpp_Runner.cCompilerPath": "clang",
     "C_Cpp_Runner.cppCompilerPath": "clang++",
     "C_Cpp_Runner.debuggerPath": "lldb",
-
     "intellicode-completions-cdk.loggingLevel": "ALL",
     "workbench.iconTheme": "vscode-icons",
     "bashIde.shellcheckPath": "/usr/bin/shellcheck",
@@ -254,9 +247,17 @@
     "cmake.configureOnEdit": false,
     "cmake.configureOnOpen": false,
     "C_Cpp.default.cStandard": "gnu11",
-    "C_Cpp.default.intelliSenseMode": "linux-gcc-x64",
+    "C_Cpp.default.intelliSenseMode": "linux-clang-x64",
     "C_Cpp.formatting": "clangFormat",
     "C_Cpp.clang_format_sortIncludes": true,
     "C_Cpp.clang_format_fallbackStyle": "GNU",
     "C_Cpp.clang_format_path": "/usr/bin/clang-format",
+    "C_Cpp.autocompleteAddParentheses": true,
+    "C_Cpp.default.compilerPath": "/usr/bin/clang",
+    "workbench.editor.empty.hint": "hidden",
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "xaver.clang-format",
+    "editor.formatOnPaste": true,
+    "C_Cpp.clang_format_style": "file:/home/src/.env/.clang-format",
+    "clang-format.style": "file:/home/src/.env/.clang-format",
 }
