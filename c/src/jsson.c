@@ -289,6 +289,8 @@ bool init_players(aJSON *json, aPLAYER **players)
         snprintf(players[i]->champName, 50, "%s", json_string_value(champ_json));
         snprintf(players[i]->riotId, 100, "%s", json_string_value(riotId_json));
         
+
+
         int len = strlen(players[i]->champName);
         int spaces_needed = 15 - len;
         
@@ -334,6 +336,12 @@ bool init_players(aJSON *json, aPLAYER **players)
         default:
             e_PRINT(-1, "positionName[0] error\n");
             return false;
+        }
+        if (strncmp(json->activePlayer_riotId, players[i]->riotId, 100) == 0) {
+#ifdef DEBUG
+            printf("found you: %s, %s, %s", (players[i]->teamI == 0)? "ORDER" : "CHAOS", players[i]->champName, players[i]->riotId);
+#endif
+            json->myTeam = players[i]->teamI;
         }
 
 #ifdef DEBUG

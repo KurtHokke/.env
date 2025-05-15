@@ -36,6 +36,7 @@ typedef struct aJSON {
     json_t *root; 
     json_t *allPlayers;
     const char *activePlayer_riotId;
+    int myTeam;
 } aJSON;
 
 

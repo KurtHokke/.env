@@ -6,6 +6,8 @@
 #include <string.h>
 #include <unistd.h>
 
+#define DEBUG
+
 int main()
 {
     int i = 0;
@@ -61,9 +63,8 @@ int main()
     bool shouldExit = false;
     system("clear");
     do {
-        // Move cursor to top-left (ANSI escape code)
+        #ifndef DEBUG
         printf("\033[H");
-        // Ensure the output is flushed immediately
         fflush(stdout);
         printf("=====ORDER====================CHAOS=====\n");
         for (i = 0; i < 5; i++) {
@@ -71,37 +72,38 @@ int main()
                                      players[i]->gold - players[i + 1]->gold, 
                                      players[i + 1]->spacing, players[i + 1]->champName);
         }
-        /*
+        #else
         for (i = 0; i < 10; i++)
         {
-
-            //printf("riotId=%s\n", players[i]->riotId);
-            printf("champName=%s\n", players[i]->champName);
-            (players[i]->teamI == 0) ? printf("team: ORDER\n")
-                                    : printf("team: CHAOS\n");
+            (players[i]->teamI == 0) ? printf("ORDER ") 
+                                     : printf("CHAOS ");
+            printf("%s\t   ", players[i]->champName);
             switch (players[i]->positionI) {
             case 0:
-                printf("position: TOP\n");
+                printf("TOP ");
                 break;
             case 1:
-                printf("position: JUNGLE\n");
+                printf("JUNGLE ");
                 break;
             case 2:
-                printf("position: MIDDLE\n");
+                printf("MIDDLE ");
                 break;
             case 3:
-                printf("position: BOTTOM\n");
+                printf("BOTTOM ");
                 break;
             case 4:
-                printf("position: UTILITY\n");
+                printf("UTILITY ");
                 break;
             default:
-                printf("position: INVALID!!!!!\n");
+                printf("INVALID!!!!! ");
                 break;
             }
-            printf("%lld\n\n", players[i]->gold);
-        }*/
-
+            printf("%lld ", players[i]->gold);
+            printf("%s\n", players[i]->riotId);
+        }
+        shouldExit = true;
+        continue;
+        #endif
         response = do_curl();
         if (response.data == NULL || response.size == 0) {
             shouldExit = true;
