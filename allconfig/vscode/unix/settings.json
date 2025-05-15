@@ -253,4 +253,10 @@
     "cmake.automaticReconfigure": false,
     "cmake.configureOnEdit": false,
     "cmake.configureOnOpen": false,
+    "C_Cpp.default.cStandard": "gnu11",
+    "C_Cpp.default.intelliSenseMode": "linux-gcc-x64",
+    "C_Cpp.formatting": "clangFormat",
+    "C_Cpp.clang_format_sortIncludes": true,
+    "C_Cpp.clang_format_fallbackStyle": "GNU",
+    "C_Cpp.clang_format_path": "/usr/bin/clang-format",
 }
