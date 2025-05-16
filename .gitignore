@@ -1,4 +1,5 @@
-.vscode
+**/.vscode
+**/main
 allconfig/yazi/plugins/big-preview.yazi/*
 allconfig/yazi/plugins/smart-enter.yazi/*
 allconfig/yazi/plugins/mime-ext.yazi/*
