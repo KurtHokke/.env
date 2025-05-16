@@ -6,7 +6,9 @@ if [[ $# -gt 0 ]]; then
     [[ $1 == "optsetter" ]] && optsetter && return
 fi
 code() {
-    /usr/bin/codium --ozone-platform=wayland "$@"
+    [[ -f "/usr/bin/codium" ]] \
+    && /usr/bin/codium --ozone-platform=wayland "$@" \
+    || /usr/bin/code "$@"
 }
 cp() { local dest
     if [[ "$1" != "--mkdir" ]]; then
