@@ -1,24 +1,60 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <time.h>
+#include <stdint.h>
 
-static inline int get_RandomNumber(int min, int max)
+#include <fcntl.h>
+#include <unistd.h>
+
+
+#define e_PRINT(l, fmt, ...) fprintf(stderr, "%s:%d: " fmt "\n", __FILE__, __LINE__ + l, ##__VA_ARGS__)
+
+
+int get_random(uint8_t *result)
 {
-    int i;
-    unsigned int seed = time(NULL);
-    int rand_num = rand_r(&seed) % (max - min + 1) + min;
+    int fd = open("/dev/urandom", O_RDONLY);
+    if (fd < 0) return -1;
 
-    return rand_num;
+    ssize_t bytes_read = read(fd, result, sizeof(uint8_t));
+    close(fd);
+    if (bytes_read != sizeof(uint8_t)) {
+        return -1; // Read failed
+    }
+    return 0;
 }
 
 int main()
 {
-    // int num;
-    // srand(time(NULL));
-    // num = (int)((float)100 * rand() / (RAND_MAX + 1.0));
-    //  int guess;
-    // printf("%d\n", num);
-    int num = get_RandomNumber(0, 100);
-    printf("%d\n", num);
+    uint8_t rand_num;
+    if (get_random(&rand_num) != 0) {
+        e_PRINT(-1, "error");
+        return 1;
+    }
+    int guess;
+    printf("Guess ");
+
+    while (1) {
+        printf("number(0-255): ");
+        if (scanf("%d", &guess) != 1) {
+            int c;
+            while ((c = getchar()) != '\n' && c != EOF) {
+
+            }
+            printf("Invalid guess!\n Guess again ");
+            continue;
+        }
+        int c;
+        while ((c = getchar()) != '\n' && c != EOF) {
+            
+        }
+        if (guess < 0 || guess > 255) {
+            printf("Invalid guess!\n Guess again ");
+            continue;
+        }
+        break;
+    }
+    
+
+    printf("%d\n", guess);
+    printf("%d\n", rand_num);
     return 0;
 }

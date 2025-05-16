@@ -4,12 +4,21 @@
 	// $1, $2 for tab stops, $0 for the final cursor position, and ${1:label}, ${2:another} for placeholders. Placeholders with the 
 	// same ids are connected.
 	// Example:
- "basic include": {
- 	"prefix": "bincl",
- 	"body": [
- 		"#include <stdio.h>",
- 		"#include <stdlib.h>"
- 	],
- 	"description": "basic include"
- }
+    "basic include": {
+        "prefix": "bincl",
+        "body": [
+            "#include <stdio.h>",
+            "#include <stdlib.h>"
+        ],
+        "description": "basic include"
+    },
+    "ifdef": {
+        "prefix": "ifdef",
+        "body": [
+            "#ifdef ${1:DEBUG}",
+            "${TM_SELECTED_TEXT}",
+            "#endif$2"
+        ],
+        "description": "ifdef"
+    }
 }
