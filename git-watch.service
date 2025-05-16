@@ -1,0 +1,11 @@
+[Unit]
+Description=Dotfiles sync with entr
+After=network-online.target
+
+[Service]
+ExecStart=/usr/bin/bash -c 'cd /home/src/.env && ls -a | /usr/bin/entr -r sh -c "git add . && git commit -m \"Auto-sync: \$(date)\""'
+Restart=always
+User=arcno
+
+[Install]
+WantedBy=multi-user.target
