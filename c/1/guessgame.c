@@ -1,3 +1,4 @@
+#include <math.h>
 #include <stdint.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -67,10 +68,10 @@ Guesser:
         break;
     }
 
-    printf("%d\n", guess);
-    printf("%d\n", rand_num);
+    // printf("%d\n", guess);
+    // printf("%d\n", rand_num);
     proximity = abs(guess - rand_num);
-    printf("%d\n", proximity);
+    // printf("%d\n", proximity);
     if (proximity == 99)
     {
         printf("can't get worse than this\n");
@@ -122,7 +123,10 @@ Guesser:
     else if (proximity == 0)
     {
         printf("you won\n");
+        printf("guess: %d\n", guess);
+        printf("number: %d\n", rand_num);
+        return 0;
     }
-
-    return 0;
+    // printf("\033[A");
+    goto Guesser;
 }

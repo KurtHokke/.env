@@ -255,7 +255,6 @@
     "C_Cpp.autocompleteAddParentheses": true,
     "C_Cpp.default.compilerPath": "/usr/bin/clang",
     "workbench.editor.empty.hint": "hidden",
-    "editor.formatOnSave": true,
     "editor.defaultFormatter": "xaver.clang-format",
     "editor.formatOnPaste": true,
     "C_Cpp.clang_format_style": "file:/home/src/.env/.clang-format",

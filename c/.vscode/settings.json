@@ -1,6 +1,10 @@
 {
     "files.associations": {
+        "*.zsh": "shellscript",
         "*.wsb": "xml",
-        "jansson.h": "c"
+        "jansson.h": "c",
+        "magic.h": "c",
+        "math.h": "c",
+        "stdlib.h": "c"
     }
 }
