@@ -43,7 +43,6 @@ alias -- tar.pigz='tar --use-compress-program=pigz'
 alias -- tarz='tar-use-zstd'
 alias -- rust-by-practice='cd "${PROJECTS_DIR}/rust/rust-by-practice" && mdbook serve en/'
 
-alias code='/usr/bin/codium --enable-features=UseOzonePlatform,WaylandWindowDecorations --ozone-platform=wayland '
 
 alias \?='questionmark'
 alias sudu='sudo -u $USER'
