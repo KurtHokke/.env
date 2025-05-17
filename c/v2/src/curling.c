@@ -1,4 +1,4 @@
-#include "curling.h"
+
 #include "utils.h"
 #include <curl/curl.h>
 #include <stdbool.h>
@@ -21,7 +21,7 @@ static size_t write_callback(void *contents, size_t size, size_t nmemb,
     }
 
     mem->data = ptr;
-    mempcpy(&(mem->data[mem->size]), contents, realsize);
+    memcpy(&(mem->data[mem->size]), contents, realsize);
     mem->size += realsize;
     mem->data[mem->size] = 0; // Null-terminate
 
@@ -30,8 +30,7 @@ static size_t write_callback(void *contents, size_t size, size_t nmemb,
 
 struct Memory do_curl(void)
 {
-    struct Memory response = {.data = NULL,
-                              .size = 0}; // Initialize to safe defaults
+    struct Memory response = {.data = NULL, .size = 0}; // Initialize to safe defaults
     CURL *curl;
     CURLcode res;
 

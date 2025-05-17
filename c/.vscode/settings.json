@@ -1,11 +1,6 @@
 {
     "files.associations": {
-        "*.zsh": "shellscript",
         "*.wsb": "xml",
-        "jansson.h": "c",
-        "magic.h": "c",
-        "math.h": "c",
-        "stdlib.h": "c"
-    },
-    "C_Cpp.default.compilerPath": "/usr/bin/gcc"
+        "string.h": "c"
+    }
 }

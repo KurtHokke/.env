@@ -1,4 +1,4 @@
-CFLAGS=("-Wall" "-Wextra" "-Wpedantic" "-g" "-O0" "-std=gnu11")
+CFLAGS=("-Wall" "-Wextra" "-Wpedantic" "-g" "-O0" "-std=c11")
 SCRIPT_DIR=$(realpath "$(dirname "$0")")
 
 cmakebuild()

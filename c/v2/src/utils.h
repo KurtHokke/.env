@@ -9,46 +9,21 @@
 
 #define STR(x) #x
 #define Pf(fmt, ...) printf(fmt "\n", ##__VA_ARGS__)
-#define TEAMSIZE 5
 
-/*
-->(char*)riotId
-->(char*)champName
-->(int)teamI
-->(int)positionI
-->(long long)gold
-*/
-typedef struct aPLAYER {
-    char *riotId;
-    char *champName;
-    char *spacing;
-    int teamI;
-    int positionI;
-    long long gold;
-} aPLAYER;
-
-/*
-->(json_t*)root; 
-->(json_t*)allPlayers;
-->(const char*)activePlayer_riotId;
-*/
-typedef struct aJSON {
-    json_t *root; 
-    json_t *allPlayers;
-    const char *activePlayer_riotId;
-    int myTeam;
-} aJSON;
+#define MY_URL_CURL "https://127.0.0.1:2999/liveclientdata/allgamedata"
 
 
-aPLAYER **allocate_players();
-bool free_players(aPLAYER **players);
 
-aJSON *get_aJSON(char *data);
-bool get_activePlayer(aJSON *json);
-bool get_allPlayers(aJSON *json);
+struct errorbox {
+    json_error_t json;
+    int e;
+};
 
-bool init_players(aJSON *json, aPLAYER **players);
-bool update_players(aJSON *json, aPLAYER **players);
-
+struct Memory {
+    char *data;
+    size_t size;
+};
+static size_t write_callback(void *contents, size_t size, size_t nmemb, void *userp);
+struct Memory do_curl(void);
 
 #endif

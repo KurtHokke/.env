@@ -10,7 +10,7 @@ set(CMAKE_C_STANDARD_REQUIRED ON)
 set(CMAKE_BUILD_TYPE Debug)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
-set(CMAKE_C_FLAGS "-O0 -Wall -Wextra -Wpedantic")
+set(CMAKE_C_FLAGS "-O0 -Wall -Wextra -Wpedantic -std=c11")
 
 
 find_package(PkgConfig REQUIRED)
@@ -27,7 +27,10 @@ else()
     set(SOURCES
         src/main.c
         src/utils.h
+        src/utils.c
+        src/curling.h
         src/curling.c
+        src/jsson.c
     )
     set(EXE main)
     pkg_check_modules(libcurl REQUIRED IMPORTED_TARGET libcurl>=8.13.0)
