@@ -1,0 +1,8 @@
+*.* binary
+*.c text
+*.h text
+*.json text
+*.py text
+*.txt text
+
+
