@@ -1,0 +1,3 @@
+/home/src/.env/c/v2/build/CMakeFiles/test.dir
+/home/src/.env/c/v2/build/CMakeFiles/edit_cache.dir
+/home/src/.env/c/v2/build/CMakeFiles/rebuild_cache.dir

@@ -1,11 +1,16 @@
+//#include "../src/curling.h"
+#include "../src/utils.h"
+
+#include <stdbool.h>
+#include <stdint.h>
 #include <stdio.h>
 #include <stdlib.h>
 
-int main() {
-    int arr[5] = {1, 2, 3, 4, 5};
-    int *ptr = arr;
-    printf("%d\n", *ptr);
-    // Your code here
-    
+int main(int argc, char *argv[])
+{
+    if (argc > 1)
+    {
+        Pf("hello there");
+    }
     return 0;
 }

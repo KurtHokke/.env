@@ -8,7 +8,7 @@
 #include <jansson.h>
 
 #define STR(x) #x
-#define e_PRINT(l, fmt, ...) fprintf(stderr, "%s:%d: " fmt "\n", __FILE__, __LINE__ + l, ##__VA_ARGS__)
+#define Pf(fmt, ...) printf(fmt "\n", ##__VA_ARGS__)
 #define TEAMSIZE 5
 
 /*

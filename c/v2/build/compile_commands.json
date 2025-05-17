@@ -1,0 +1,8 @@
+[
+{
+  "directory": "/home/src/.env/c/v2/build",
+  "command": "/usr/sbin/cc -O0 -Wall -Wextra -Wpedantic -g -std=gnu11 -o CMakeFiles/test.dir/test/test.c.o -c /home/src/.env/c/v2/test/test.c",
+  "file": "/home/src/.env/c/v2/test/test.c",
+  "output": "CMakeFiles/test.dir/test/test.c.o"
+}
+]
