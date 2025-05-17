@@ -122,7 +122,7 @@ CMAKE_PROJECT_DESCRIPTION:STATIC=
 CMAKE_PROJECT_HOMEPAGE_URL:STATIC=
 
 //Value Computed by CMake
-CMAKE_PROJECT_NAME:STATIC=test
+CMAKE_PROJECT_NAME:STATIC=main
 
 //Value Computed by CMake
 CMAKE_PROJECT_VERSION:STATIC=1.0
@@ -204,23 +204,26 @@ CMAKE_TAPI:FILEPATH=CMAKE_TAPI-NOTFOUND
 // Studio IDE projects all commands are done without /nologo.
 CMAKE_VERBOSE_MAKEFILE:BOOL=FALSE
 
+//OFF
+DEBUG:BOOL=OFF
+
 //Arguments to supply to pkg-config
 PKG_CONFIG_ARGN:STRING=
 
 //pkg-config executable
 PKG_CONFIG_EXECUTABLE:FILEPATH=/usr/sbin/pkg-config
 
-//No help, variable specified on the command line.
-TEST:UNINITIALIZED=ON
+//OFF
+TESTING:BOOL=ON
 
 //Value Computed by CMake
-test_BINARY_DIR:STATIC=/home/src/.env/c/v2/build
+main_BINARY_DIR:STATIC=/home/src/.env/c/v2/build
 
 //Value Computed by CMake
-test_IS_TOP_LEVEL:STATIC=ON
+main_IS_TOP_LEVEL:STATIC=ON
 
 //Value Computed by CMake
-test_SOURCE_DIR:STATIC=/home/src/.env/c/v2
+main_SOURCE_DIR:STATIC=/home/src/.env/c/v2
 
 
 ########################

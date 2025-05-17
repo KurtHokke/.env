@@ -19,7 +19,7 @@ aPLAYER **allocate_players()
         players[i]->spacing   = malloc(21 * sizeof(char));
 
         if (players[i] == NULL || players[i]->champName == NULL) {
-            e_PRINT(-2, "malloc failed\n");
+            Pf("malloc failed\n");
             for (--i; i >= 0; i--) {
                 free(players[i]->riotId);
                 free(players[i]->champName);
@@ -43,7 +43,7 @@ bool free_players(aPLAYER **players)
     int i;
 
     if (players == NULL) {
-        e_PRINT(-1, "players was unallocated\n");
+        Pf("players was unallocated\n");
         return false;
     }
 

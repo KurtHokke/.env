@@ -43,6 +43,7 @@ fi
 
 export PAGER="less"
 export CMAKE_GENERATOR=Ninja
+export EDITOR="vim"
 
 if [[ -f "$HOME/.sship" ]]; then
     export SSHIP=$(cat "$HOME/.sship")
@@ -63,7 +64,7 @@ export PATH="$PATH:$VCPKG_ROOT:$MYPATH"
 export XDG_DATA_HOME="$HOME/.local/share"
 export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/opt/cuda/lib64:/opt/cuda/lib"
 
-export EDITOR="subl"
+
 
 export VCPKG_DISABLE_METRICS=true
 

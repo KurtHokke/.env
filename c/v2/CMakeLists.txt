@@ -1,32 +1,27 @@
 cmake_minimum_required(VERSION 4.0.0)
 
-set(option(DEBUG OFF))
-set(option(TEST OFF))
+project(main VERSION 1.0 LANGUAGES C)
 
-if(TEST)
-    project(test VERSION 1.0 LANGUAGES C)
-else()
-    project(main VERSION 1.0 LANGUAGES C) 
-endif()
-
+option(DEBUG OFF)
+option(TESTING OFF)
 
 set(CMAKE_C_STANDARD 11)
 set(CMAKE_C_STANDARD_REQUIRED ON)
 set(CMAKE_BUILD_TYPE Debug)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
-set(CMAKE_C_FLAGS "-O0 -Wall -Wextra -Wpedantic")
+set(CMAKE_C_FLAGS "-O0 -Wall -Wextra -Wpedantic -std=c11")
 
 
 find_package(PkgConfig REQUIRED)
 
 
-if(TEST)
+if(TESTING STREQUAL "ON")
     set(SOURCES
-        test/test.c
+        src/test.c
         src/utils.h
     )
-    set(EXE test)
+    set(EXE testing)
 
 else()
     set(SOURCES
@@ -40,7 +35,6 @@ else()
     set(EXE main)
     pkg_check_modules(libcurl REQUIRED IMPORTED_TARGET libcurl>=8.13.0)
     pkg_check_modules(jansson REQUIRED IMPORTED_TARGET jansson>=2.14.1)
-    target_link_libraries(main PUBLIC PkgConfig::libcurl PkgConfig::jansson)
     
 endif()
 
@@ -48,9 +42,13 @@ message("\nSetting SOURCES:\n${SOURCES}\n\nSetting EXE:\n${EXE}\n")
 
 add_executable(${EXE} ${SOURCES})
 
-if(DEBUG)
+if(TESTING STREQUAL "OFF")
+    target_link_libraries(${EXE} PUBLIC PkgConfig::libcurl PkgConfig::jansson)
+endif()
+
+if(DEBUG STREQUAL "ON" OR TESTING STREQUAL "ON")
     message("Running with -DDEBUG=ON")
-    target_compile_definitions(main PRIVATE DEBUG)
+    target_compile_definitions(${EXE} PRIVATE DEBUG)
 endif()
 
 #target_link_libraries(main PUBLIC PkgConfig::libcurl)

@@ -11,7 +11,7 @@
 # =============================================================================
 
 # =============================================================================
-# Project: test
+# Project: main
 # Configurations: Debug
 # =============================================================================
 
@@ -41,42 +41,43 @@ include CMakeFiles/rules.ninja
 
 cmake_ninja_workdir = /home/src/.env/c/v2/build/
 # =============================================================================
-# Object build statements for EXECUTABLE target test
+# Object build statements for EXECUTABLE target testing
 
 
 #############################################
-# Order-only phony target for test
+# Order-only phony target for testing
 
-build cmake_object_order_depends_target_test: phony || .
+build cmake_object_order_depends_target_testing: phony || .
 
-build CMakeFiles/test.dir/test/test.c.o: C_COMPILER__test_unscanned_Debug /home/src/.env/c/v2/test/test.c || cmake_object_order_depends_target_test
+build CMakeFiles/testing.dir/src/test.c.o: C_COMPILER__testing_unscanned_Debug /home/src/.env/c/v2/src/test.c || cmake_object_order_depends_target_testing
   CONFIG = Debug
-  DEP_FILE = CMakeFiles/test.dir/test/test.c.o.d
-  FLAGS = -O0 -Wall -Wextra -Wpedantic -g -std=gnu11
-  OBJECT_DIR = CMakeFiles/test.dir
-  OBJECT_FILE_DIR = CMakeFiles/test.dir/test
-  TARGET_COMPILE_PDB = CMakeFiles/test.dir/
-  TARGET_PDB = test.pdb
+  DEFINES = -DDEBUG
+  DEP_FILE = CMakeFiles/testing.dir/src/test.c.o.d
+  FLAGS = -O0 -Wall -Wextra -Wpedantic -std=c11 -g -std=gnu11
+  OBJECT_DIR = CMakeFiles/testing.dir
+  OBJECT_FILE_DIR = CMakeFiles/testing.dir/src
+  TARGET_COMPILE_PDB = CMakeFiles/testing.dir/
+  TARGET_PDB = testing.pdb
 
 
 # =============================================================================
-# Link build statements for EXECUTABLE target test
+# Link build statements for EXECUTABLE target testing
 
 
 #############################################
-# Link the executable test
+# Link the executable testing
 
-build test: C_EXECUTABLE_LINKER__test_Debug CMakeFiles/test.dir/test/test.c.o
+build testing: C_EXECUTABLE_LINKER__testing_Debug CMakeFiles/testing.dir/src/test.c.o
   CONFIG = Debug
-  DEP_FILE = CMakeFiles/test.dir/link.d
-  FLAGS = -O0 -Wall -Wextra -Wpedantic -g
-  LINK_FLAGS = -Wl,--dependency-file=CMakeFiles/test.dir/link.d
-  OBJECT_DIR = CMakeFiles/test.dir
+  DEP_FILE = CMakeFiles/testing.dir/link.d
+  FLAGS = -O0 -Wall -Wextra -Wpedantic -std=c11 -g
+  LINK_FLAGS = -Wl,--dependency-file=CMakeFiles/testing.dir/link.d
+  OBJECT_DIR = CMakeFiles/testing.dir
   POST_BUILD = :
   PRE_LINK = :
-  TARGET_COMPILE_PDB = CMakeFiles/test.dir/
-  TARGET_FILE = test
-  TARGET_PDB = test.pdb
+  TARGET_COMPILE_PDB = CMakeFiles/testing.dir/
+  TARGET_FILE = testing
+  TARGET_PDB = testing.pdb
 
 
 #############################################
@@ -120,7 +121,7 @@ build codegen: phony
 #############################################
 # Folder: /home/src/.env/c/v2/build
 
-build all: phony test
+build all: phony testing
 
 # =============================================================================
 # Built-in targets

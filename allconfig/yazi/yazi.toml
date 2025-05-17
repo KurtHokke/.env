@@ -28,7 +28,7 @@ vim_edit = [
 
 [open]
 rules = [
-    { name = "*", use = ["subl_file", "vim_edit"] },
+    { name = "*", use = ["vim_edit"] },
     { mime = "inode/directory", use = "code_dir" },
 
 ]
