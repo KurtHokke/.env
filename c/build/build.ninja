@@ -52,7 +52,7 @@ build cmake_object_order_depends_target_main: phony || .
 build CMakeFiles/main.dir/src/main.c.o: C_COMPILER__main_unscanned_Debug /home/src/.env/c/src/main.c || cmake_object_order_depends_target_main
   CONFIG = Debug
   DEP_FILE = CMakeFiles/main.dir/src/main.c.o.d
-  FLAGS = -g -std=gnu11
+  FLAGS = -O0 -Wall -Wextra -Wpedantic -g -std=gnu11
   OBJECT_DIR = CMakeFiles/main.dir
   OBJECT_FILE_DIR = CMakeFiles/main.dir/src
   TARGET_COMPILE_PDB = CMakeFiles/main.dir/
@@ -61,7 +61,7 @@ build CMakeFiles/main.dir/src/main.c.o: C_COMPILER__main_unscanned_Debug /home/s
 build CMakeFiles/main.dir/src/utils.c.o: C_COMPILER__main_unscanned_Debug /home/src/.env/c/src/utils.c || cmake_object_order_depends_target_main
   CONFIG = Debug
   DEP_FILE = CMakeFiles/main.dir/src/utils.c.o.d
-  FLAGS = -g -std=gnu11
+  FLAGS = -O0 -Wall -Wextra -Wpedantic -g -std=gnu11
   OBJECT_DIR = CMakeFiles/main.dir
   OBJECT_FILE_DIR = CMakeFiles/main.dir/src
   TARGET_COMPILE_PDB = CMakeFiles/main.dir/
@@ -70,7 +70,7 @@ build CMakeFiles/main.dir/src/utils.c.o: C_COMPILER__main_unscanned_Debug /home/
 build CMakeFiles/main.dir/src/curling.c.o: C_COMPILER__main_unscanned_Debug /home/src/.env/c/src/curling.c || cmake_object_order_depends_target_main
   CONFIG = Debug
   DEP_FILE = CMakeFiles/main.dir/src/curling.c.o.d
-  FLAGS = -g -std=gnu11
+  FLAGS = -O0 -Wall -Wextra -Wpedantic -g -std=gnu11
   OBJECT_DIR = CMakeFiles/main.dir
   OBJECT_FILE_DIR = CMakeFiles/main.dir/src
   TARGET_COMPILE_PDB = CMakeFiles/main.dir/
@@ -79,7 +79,7 @@ build CMakeFiles/main.dir/src/curling.c.o: C_COMPILER__main_unscanned_Debug /hom
 build CMakeFiles/main.dir/src/jsson.c.o: C_COMPILER__main_unscanned_Debug /home/src/.env/c/src/jsson.c || cmake_object_order_depends_target_main
   CONFIG = Debug
   DEP_FILE = CMakeFiles/main.dir/src/jsson.c.o.d
-  FLAGS = -g -std=gnu11
+  FLAGS = -O0 -Wall -Wextra -Wpedantic -g -std=gnu11
   OBJECT_DIR = CMakeFiles/main.dir
   OBJECT_FILE_DIR = CMakeFiles/main.dir/src
   TARGET_COMPILE_PDB = CMakeFiles/main.dir/
@@ -96,7 +96,7 @@ build CMakeFiles/main.dir/src/jsson.c.o: C_COMPILER__main_unscanned_Debug /home/
 build main: C_EXECUTABLE_LINKER__main_Debug CMakeFiles/main.dir/src/main.c.o CMakeFiles/main.dir/src/utils.c.o CMakeFiles/main.dir/src/curling.c.o CMakeFiles/main.dir/src/jsson.c.o | /usr/lib/libcurl.so /usr/lib/libjansson.so
   CONFIG = Debug
   DEP_FILE = CMakeFiles/main.dir/link.d
-  FLAGS = -g
+  FLAGS = -O0 -Wall -Wextra -Wpedantic -g
   LINK_FLAGS = -Wl,--dependency-file=CMakeFiles/main.dir/link.d
   LINK_LIBRARIES = /usr/lib/libcurl.so  /usr/lib/libjansson.so
   OBJECT_DIR = CMakeFiles/main.dir

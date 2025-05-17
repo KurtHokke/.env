@@ -1,0 +1,26 @@
+[
+{
+  "directory": "/home/src/.env/c/build",
+  "command": "/usr/sbin/cc -O0 -Wall -Wextra -Wpedantic -g -std=gnu11 -o CMakeFiles/main.dir/src/main.c.o -c /home/src/.env/c/src/main.c",
+  "file": "/home/src/.env/c/src/main.c",
+  "output": "CMakeFiles/main.dir/src/main.c.o"
+},
+{
+  "directory": "/home/src/.env/c/build",
+  "command": "/usr/sbin/cc -O0 -Wall -Wextra -Wpedantic -g -std=gnu11 -o CMakeFiles/main.dir/src/utils.c.o -c /home/src/.env/c/src/utils.c",
+  "file": "/home/src/.env/c/src/utils.c",
+  "output": "CMakeFiles/main.dir/src/utils.c.o"
+},
+{
+  "directory": "/home/src/.env/c/build",
+  "command": "/usr/sbin/cc -O0 -Wall -Wextra -Wpedantic -g -std=gnu11 -o CMakeFiles/main.dir/src/curling.c.o -c /home/src/.env/c/src/curling.c",
+  "file": "/home/src/.env/c/src/curling.c",
+  "output": "CMakeFiles/main.dir/src/curling.c.o"
+},
+{
+  "directory": "/home/src/.env/c/build",
+  "command": "/usr/sbin/cc -O0 -Wall -Wextra -Wpedantic -g -std=gnu11 -o CMakeFiles/main.dir/src/jsson.c.o -c /home/src/.env/c/src/jsson.c",
+  "file": "/home/src/.env/c/src/jsson.c",
+  "output": "CMakeFiles/main.dir/src/jsson.c.o"
+}
+]

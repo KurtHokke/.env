@@ -88,12 +88,12 @@ bool update_players(aJSON *json, aPLAYER **players)
         return false;
     }
 
-    int i, j;
+    size_t i, j;
     for (i = 0; i < json_array_size(json->allPlayers); i++)
     {
         json_t *player_json,
             *riotId_json; //, *champ_json, *team_json, *position_json;
-        json_t *items_json, *gold_json;
+        json_t *items_json;//q, *gold_json;
         // const char *champName, *teamName, *positionName;
         long long goldValue = 0;
 
@@ -216,13 +216,14 @@ bool init_players(aJSON *json, aPLAYER **players)
         return false;
     }
 
-    int i, j;
+    size_t i, j;
+    int k;
     for (i = 0; i < json_array_size(json->allPlayers); i++)
     {
         json_t *player_json, *riotId_json, *champ_json, *team_json,
             *position_json;
-        json_t *items_json, *gold_json;
-        const char *champName, *teamName, *positionName;
+        json_t *items_json;//, *gold_json;
+        const char *teamName, *positionName;//, *champName;
         long long goldValue = 0;
 
         player_json = json_array_get(json->allPlayers, i);
@@ -294,7 +295,7 @@ bool init_players(aJSON *json, aPLAYER **players)
         int len = strlen(players[i]->champName);
         int spaces_needed = 15 - len;
         
-        for (j = 0; j < spaces_needed; j++) {
+        for (k = 0; k < spaces_needed; k++) {
             strlcat(players[i]->spacing, "_", 20);
         }
 
