@@ -19,13 +19,30 @@ void free_all_exit(int e, const char *msg)
     printf("%s\n", msg);
     printf("freeing all\n");
 
-             (ctx->root != NULL)? json_decref(ctx->root)   : (void)printf("ctx->root was NULL\n");
-    (ctx->response.data != NULL)? free(ctx->response.data) : (void)printf("ctx->response.data was NULL\n");
-       (ctx->playergold != NULL)? free(ctx->playergold)    : (void)printf("ctx->playergold was NULL\n");
+             (ctx->root != NULL)? json_decref(ctx->root)      : (void)printf("ctx->root was NULL\n");
+           (ctx->root_v != NULL)? json_decref(ctx->root_v)    : (void)printf("ctx->root_v was NULL\n");
+           (ctx->root_i != NULL)? json_decref(ctx->root_i)    : (void)printf("ctx->root_i was NULL\n");
+    (ctx->response.data != NULL)? free(ctx->response.data)    : (void)printf("ctx->response.data was NULL\n");
+ (ctx->lolVersions.data != NULL)? free(ctx->lolVersions.data) : (void)printf("ctx->lolVersions.data was NULL\n");
+    (ctx->lolItems.data != NULL)? free(ctx->lolItems.data)    : (void)printf("ctx->lolItems.data was NULL\n");
+       (ctx->playergold != NULL)? free(ctx->playergold)       : (void)printf("ctx->playergold was NULL\n");
+            (ctx->lol_V != NULL)? free(ctx->lol_V)            : (void)printf("ctx->lol_V was NULL\n");
+        (ctx->items_URL != NULL)? free(ctx->items_URL)        : (void)printf("ctx->items_URL was NULL\n");
+    
+    ctx->root = NULL;
+    ctx->root_v = NULL;
+    ctx->root_i = NULL;
+    ctx->response.data = NULL;
+    ctx->lolVersions.data = NULL;
+    ctx->lolItems.data = NULL;
+    ctx->playergold = NULL;
+    ctx->lol_V = NULL;
+    ctx->items_URL = NULL;
 
     if (ctx->champNames != NULL) {
         for (int i = 0; i < 10; i++) {
             (ctx->champNames[i] != NULL)? free(ctx->champNames[i]) : (void)printf("ctx->champNames[%d] was NULL\n", i);
+            ctx->champNames[i] = NULL;
         }
         free(ctx->champNames);
     }
