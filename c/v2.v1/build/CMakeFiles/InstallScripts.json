@@ -1,0 +1,7 @@
+{
+	"InstallScripts" : 
+	[
+		"/home/src/.env/c/v2/build/cmake_install.cmake"
+	],
+	"Parallel" : false
+}

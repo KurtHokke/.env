@@ -1,0 +1,14 @@
+[
+{
+  "directory": "/home/src/.env/c/v2/build",
+  "command": "/usr/sbin/cc   -O0 -Wall -Wextra -Wpedantic -g -std=gnu11 -o CMakeFiles/main.dir/src/main.c.o -c /home/src/.env/c/v2/src/main.c",
+  "file": "/home/src/.env/c/v2/src/main.c",
+  "output": "CMakeFiles/main.dir/src/main.c.o"
+},
+{
+  "directory": "/home/src/.env/c/v2/build",
+  "command": "/usr/sbin/cc   -O0 -Wall -Wextra -Wpedantic -g -std=gnu11 -o CMakeFiles/main.dir/src/curling.c.o -c /home/src/.env/c/v2/src/curling.c",
+  "file": "/home/src/.env/c/v2/src/curling.c",
+  "output": "CMakeFiles/main.dir/src/curling.c.o"
+}
+]

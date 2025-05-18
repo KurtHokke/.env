@@ -8,22 +8,29 @@
 #include <jansson.h>
 
 #define STR(x) #x
-#define Pf(fmt, ...) printf(fmt "\n", ##__VA_ARGS__)
+//#define Pf(fmt, ...) printf(fmt "\n", ##__VA_ARGS__)
 
 #define MY_URL_CURL "https://127.0.0.1:2999/liveclientdata/allgamedata"
-
-
-
-struct errorbox {
-    json_error_t json;
-    int e;
-};
 
 struct Memory {
     char *data;
     size_t size;
 };
-//static size_t write_callback(void *contents, size_t size, size_t nmemb, void *userp);
+
+typedef struct context_t {
+    int *playergold;
+    struct Memory response;
+    json_t *root;
+    char **champNames;
+    int myTeam;
+    bool firstRun;
+} context_t;
+
+void set_context(context_t *context);
+void free_all_exit(int e, const char *msg);
+void handle_sigint(int sig);
+void setup_signal_handler(void);
+void do_job(context_t *ctx);
 struct Memory do_curl(void);
 
 #endif

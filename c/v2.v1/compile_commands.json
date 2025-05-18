@@ -1,0 +1,8 @@
+[
+{
+  "directory": "/home/src/.env/c/v2",
+  "command": "/usr/sbin/cc   -O0 -Wall -Wextra -Wpedantic -g -std=gnu11 -o main.c.o -c test.c",
+  "file": "test.c",
+  "output": "main.c.o"
+}
+]

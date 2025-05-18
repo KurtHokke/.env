@@ -1,86 +1,73 @@
 #include "utils.h"
 #include <stdio.h>
 #include <stdlib.h>
-
+#include <signal.h>
 #include <stdint.h>
 #include <stdbool.h>
 #include <string.h>
 #include <unistd.h>
 #include <jansson.h>
-#include <curl/curl.h>
 
-#include <curses.h>
+bool firstRun = true;
+json_t *root = NULL;
+int myTeam;
+char **champNames = NULL;
+int playergold[10];
+
+struct Memory response = {.data = NULL, .size = 0};
+struct errorbox err = {.e = 0};
 
 
-static context_t *context = NULL;
+void free_all_exit(int e, const char *msg);
+void handle_sigint(int sig);
+void setup_signal_handler(void);
+void init_job();
+void do_job();
 
-int main(void) 
+int main() 
 {
     setup_signal_handler();
-    curl_global_init(CURL_GLOBAL_DEFAULT);
 
-    context_t ctx = {
-        .playergold = NULL, //{0,0,0,0,0,
-                       //0,0,0,0,0},
-        .response.data = NULL,
-        .response.size = 0,
-        .root = NULL,
-        
-        .champNames = NULL,
-        .myTeam = 0,
-        .firstRun = true
-    };
-    context = &ctx;
-    set_context(&ctx);
-
-    ctx.champNames = malloc(10 * sizeof(char *));
-    if (ctx.champNames == NULL) {
-        free_all_exit(1, "first malloc failed");
-    }
-    ctx.playergold = malloc(10 * sizeof(int));
-    if (ctx.playergold == NULL) {
-        free_all_exit(1, "secound malloc failed");
+    champNames = malloc(10 * sizeof(char *));
+    if (champNames == NULL) {
+        free_all_exit(1, "first mallocs failed");
     }
 
     int i;
     for (i = 0; i < 10; i++) {
-        if (ctx.champNames != NULL) {
-            ctx.champNames[i] = NULL;
-        }
+        champNames[i] = NULL;
     }
 
     while (true) {
-        do_job(&ctx);
+        do_job();
         system("clear");
         for (i = 0; i < 5; i++) {
-            if (ctx.myTeam == 0) {
-                if (ctx.playergold[i] - ctx.playergold[i + 5] < 0) {
+            if (myTeam == 0) {
+                if (playergold[i] - playergold[i + 5] < 0) {
                     printf("\033[1;38;5;33m%s\033[0m\n \033[38;5;196m%d\033[0m\n\033[1;38;5;162m%s\033[0m\n\n", 
-                            ctx.champNames[i], ctx.playergold[i] - ctx.playergold[i + 5], ctx.champNames[i + 5]);
+                            champNames[i], playergold[i] - playergold[i + 5], champNames[i + 5]);
                 } else {
                     printf("\033[1;38;5;33m%s\033[0m\n \033[38;5;40m%d\033[0m\n\033[1;38;5;162m%s\033[0m\n\n", 
-                            ctx.champNames[i], ctx.playergold[i] - ctx.playergold[i + 5], ctx.champNames[i + 5]);
+                            champNames[i], playergold[i] - playergold[i + 5], champNames[i + 5]);
                 }
             } else {
-                if (ctx.playergold[i + 5] - ctx.playergold[i] < 0) {
+                if (playergold[i + 5] - playergold[i] < 0) {
                     printf("\033[1;38;5;33m%s\033[0m\n \033[38;5;196m%d\033[0m\n\033[1;38;5;162m%s\033[0m\n\n", 
-                            ctx.champNames[i + 5], ctx.playergold[i + 5] - ctx.playergold[i], ctx.champNames[i]);
+                            champNames[i + 5], playergold[i + 5] - playergold[i], champNames[i]);
                 } else {
                     printf("\033[1;38;5;33m%s\033[0m\n \033[38;5;40m%d\033[0m\n\033[1;38;5;162m%s\033[0m\n\n", 
-                            ctx.champNames[i + 5], ctx.playergold[i + 5] - ctx.playergold[i], ctx.champNames[i]);
+                            champNames[i + 5], playergold[i + 5] - playergold[i], champNames[i]);
                 }
             }
         }
-        ctx.firstRun = false;
         usleep(2500000);
     }
-    free_all_exit(0, "WORKING!");
+    free_all_exit(err.e, "WORKING!");
 }
 
 
-void do_job(context_t *ctx)
+void do_job()
 {
-    json_error_t error;
     json_t *myplayer     = NULL;
     json_t *myriotId   = NULL;
     json_t *myplayerTeam = NULL;
@@ -88,29 +75,29 @@ void do_job(context_t *ctx)
     json_t *players = NULL;
 
     for (int i = 0; i < 10; i++) {
-        (ctx->champNames[i] != NULL)? free(ctx->champNames[i]) : (void)printf("champNames[%d] was NULL\n", i);
-        ctx->champNames[i] = NULL;
+        (champNames[i] != NULL)? free(champNames[i]) : (void)printf("champNames[%d] was NULL\n", i);
+        champNames[i] = NULL;
     }
-    ctx->response = do_curl();
-    if (ctx->response.data == NULL || ctx->response.size == 0) {
+    response = do_curl();
+    if (response.data == NULL || response.size == 0) {
         free_all_exit(1, "curl failed");
     }
 
-    ctx->root = json_loads(ctx->response.data, 0, &error);
-    free(ctx->response.data);
-    ctx->response.data = NULL;
+    root = json_loads(response.data, 0, &err.json);
+    free(response.data);
+    response.data = NULL;
 
-    if (!ctx->root) {
-        printf("ERROR: %s\n", error.text);
-        printf("Error while parsing JSON(%d): %s\n", error.line, error.text);
+    if (!root) {
+        printf("ERROR: %s\n", err.json.text);
+        printf("Error while parsing JSON(%d): %s\n", err.json.line, err.json.text);
         free_all_exit(1, "err");
     }
-    if (!json_is_object(ctx->root)) {
+    if (!json_is_object(root)) {
         free_all_exit(1, "root !object");
     }
 
-    if (ctx->firstRun) {
-        myplayer = json_object_get(ctx->root, "activePlayer");
+    if (firstRun) {
+        myplayer = json_object_get(root, "activePlayer");
         if (!json_is_object(myplayer)) {
             free_all_exit(1, "myplayer !object");
         }
@@ -120,7 +107,7 @@ void do_job(context_t *ctx)
         }
     }
 
-    players = json_object_get(ctx->root, "allPlayers");
+    players = json_object_get(root, "allPlayers");
     if (!json_is_array(players)) {
         free_all_exit(1, "players !array");
     }
@@ -141,7 +128,7 @@ void do_job(context_t *ctx)
             free_all_exit(1, "champ !object");
         }
 
-        if (ctx->firstRun) {
+        if (firstRun) {
             riotId = json_object_get(champ, "riotId");
             if (!json_is_string(riotId)) {
                 free_all_exit(1, "riotId !string");
@@ -151,7 +138,7 @@ void do_job(context_t *ctx)
                 if (!json_is_string(myplayerTeam)) {
                     free_all_exit(1, "myplayerTeam !string");
                 }
-                ctx->myTeam = (strcmp(json_string_value(myplayerTeam), "ORDER") == 0)? 0 : 1;
+                myTeam = (strcmp(json_string_value(myplayerTeam), "ORDER") == 0)? 0 : 1;
             }
         }
 
@@ -174,7 +161,7 @@ void do_job(context_t *ctx)
 
             totalgold += json_integer_value(itemgold);
         }
-        ctx->playergold[i] = totalgold;
+        playergold[i] = totalgold;
 
 
         champName = json_object_get(champ, "championName");
@@ -182,10 +169,46 @@ void do_job(context_t *ctx)
             free_all_exit(1, "champName !string");
         }
 
-        ctx->champNames[i] = strdup(json_string_value(champName));
+        champNames[i] = strdup(json_string_value(champName));
     }
-    json_decref(ctx->root);
-    ctx->root = NULL;
+    json_decref(root);
+    root = NULL;
 }
 
 
+void free_all_exit(int e, const char *msg)
+{
+    printf("%s\n", msg);
+    printf("freeing all\n");
+
+             (root != NULL)? json_decref(root)   : (void)printf("root was NULL\n");
+    (response.data != NULL)? free(response.data) : (void)printf("response.data was NULL\n");
+
+    if (champNames != NULL) {
+        for (int i = 0; i < 10; i++) {
+            (champNames[i] != NULL)? free(champNames[i]) : (void)printf("champNames[%d] was NULL\n", i);
+        }
+        free(champNames);
+    }
+    exit(e);
+}
+
+void handle_sigint(int sig)
+{
+    printf("%d Exiting..\n", sig);
+    free_all_exit(0, "Ctrl+C detected");
+}
+
+void setup_signal_handler(void)
+{
+    struct sigaction sa;
+
+    sa.sa_handler = handle_sigint;
+    sigemptyset(&sa.sa_mask);
+    sa.sa_flags = 0;
+
+    if (sigaction(SIGINT, &sa, NULL) == -1) {
+        perror("Failed to set up SIGINT handler");
+        exit(1); // Exit if handler setup fails
+    }
+}
