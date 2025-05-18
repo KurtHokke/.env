@@ -1,0 +1,27 @@
+{
+    "edit scope color": {
+    "prefix": "bddbdsdbb",
+    "body": [
+        "{",
+        "    scope: \"\",",
+        "    settings: {",
+        "        foreground: \"#ae00ff\",",
+        "    }",
+        "},",
+    ],
+    "description": "edit color of scopes"
+    },
+    "addsnippet": {
+    "prefix": "snipp",
+    "body": [
+        "\"${1:NAME}\": {",
+        "    \"prefix\": \"${2:prefix}\",",
+        "    \"body\": [",
+        "        \"${3:body}\"",
+        "    ],",
+        "    \"description\": \"${4:desc}\"",
+        "    },"
+    ],
+    "description": "addsnippet"
+    }
+}

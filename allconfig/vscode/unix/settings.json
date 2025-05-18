@@ -1,4 +1,5 @@
 {
+
     "editor.tokenColorCustomizations": {
         "textMateRules": [
             {
@@ -86,9 +87,12 @@
                 }
             },
             {
-                "scope": "variable.other.local.c",
+                "scope": [ 
+                    "variable.other.local.c", 
+                    "variable.other.object.access.c"
+                ],
                 "settings": {
-                    "foreground": "#ebe1ff"
+                    "foreground": "#ffc2e2"
                 }
             },
             {
@@ -241,7 +245,6 @@
         "*.zsh": "shellscript"
     },
     "bashIde.shellcheckArguments": "--exclude=SC2066,SC2296,SC2086",
-    "workbench.sideBar.location": "right",
     "editor.defaultColorDecorators": "always",
     "cmake.automaticReconfigure": false,
     "cmake.configureOnEdit": false,

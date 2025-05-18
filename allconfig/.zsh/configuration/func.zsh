@@ -5,7 +5,7 @@ optsetter() {
 if [[ $# -gt 0 ]]; then
     [[ $1 == "optsetter" ]] && optsetter && return
 fi
-code() {
+codium() {
     [[ -f "/usr/bin/codium" ]] \
     && /usr/bin/codium --ozone-platform=wayland "$@" \
     || /usr/bin/code "$@"

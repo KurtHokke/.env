@@ -44,10 +44,10 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /usr/sbin/cmake
+CMAKE_COMMAND = /usr/bin/cmake
 
 # The command to remove a file.
-RM = /usr/sbin/cmake -E rm -f
+RM = /usr/bin/cmake -E rm -f
 
 # Escaping for special characters.
 EQUALS = =
@@ -76,43 +76,43 @@ CMakeFiles/main.dir/src/main.c.o: CMakeFiles/main.dir/flags.make
 CMakeFiles/main.dir/src/main.c.o: /home/src/.env/c/v2/src/main.c
 CMakeFiles/main.dir/src/main.c.o: CMakeFiles/main.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/src/.env/c/v2/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/main.dir/src/main.c.o"
-	/usr/sbin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/main.dir/src/main.c.o -MF CMakeFiles/main.dir/src/main.c.o.d -o CMakeFiles/main.dir/src/main.c.o -c /home/src/.env/c/v2/src/main.c
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/main.dir/src/main.c.o -MF CMakeFiles/main.dir/src/main.c.o.d -o CMakeFiles/main.dir/src/main.c.o -c /home/src/.env/c/v2/src/main.c
 
 CMakeFiles/main.dir/src/main.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/main.dir/src/main.c.i"
-	/usr/sbin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/src/.env/c/v2/src/main.c > CMakeFiles/main.dir/src/main.c.i
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/src/.env/c/v2/src/main.c > CMakeFiles/main.dir/src/main.c.i
 
 CMakeFiles/main.dir/src/main.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/main.dir/src/main.c.s"
-	/usr/sbin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/src/.env/c/v2/src/main.c -o CMakeFiles/main.dir/src/main.c.s
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/src/.env/c/v2/src/main.c -o CMakeFiles/main.dir/src/main.c.s
 
 CMakeFiles/main.dir/src/sighandle.c.o: CMakeFiles/main.dir/flags.make
 CMakeFiles/main.dir/src/sighandle.c.o: /home/src/.env/c/v2/src/sighandle.c
 CMakeFiles/main.dir/src/sighandle.c.o: CMakeFiles/main.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/src/.env/c/v2/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/main.dir/src/sighandle.c.o"
-	/usr/sbin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/main.dir/src/sighandle.c.o -MF CMakeFiles/main.dir/src/sighandle.c.o.d -o CMakeFiles/main.dir/src/sighandle.c.o -c /home/src/.env/c/v2/src/sighandle.c
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/main.dir/src/sighandle.c.o -MF CMakeFiles/main.dir/src/sighandle.c.o.d -o CMakeFiles/main.dir/src/sighandle.c.o -c /home/src/.env/c/v2/src/sighandle.c
 
 CMakeFiles/main.dir/src/sighandle.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/main.dir/src/sighandle.c.i"
-	/usr/sbin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/src/.env/c/v2/src/sighandle.c > CMakeFiles/main.dir/src/sighandle.c.i
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/src/.env/c/v2/src/sighandle.c > CMakeFiles/main.dir/src/sighandle.c.i
 
 CMakeFiles/main.dir/src/sighandle.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/main.dir/src/sighandle.c.s"
-	/usr/sbin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/src/.env/c/v2/src/sighandle.c -o CMakeFiles/main.dir/src/sighandle.c.s
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/src/.env/c/v2/src/sighandle.c -o CMakeFiles/main.dir/src/sighandle.c.s
 
 CMakeFiles/main.dir/src/curling.c.o: CMakeFiles/main.dir/flags.make
 CMakeFiles/main.dir/src/curling.c.o: /home/src/.env/c/v2/src/curling.c
 CMakeFiles/main.dir/src/curling.c.o: CMakeFiles/main.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/src/.env/c/v2/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/main.dir/src/curling.c.o"
-	/usr/sbin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/main.dir/src/curling.c.o -MF CMakeFiles/main.dir/src/curling.c.o.d -o CMakeFiles/main.dir/src/curling.c.o -c /home/src/.env/c/v2/src/curling.c
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/main.dir/src/curling.c.o -MF CMakeFiles/main.dir/src/curling.c.o.d -o CMakeFiles/main.dir/src/curling.c.o -c /home/src/.env/c/v2/src/curling.c
 
 CMakeFiles/main.dir/src/curling.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/main.dir/src/curling.c.i"
-	/usr/sbin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/src/.env/c/v2/src/curling.c > CMakeFiles/main.dir/src/curling.c.i
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/src/.env/c/v2/src/curling.c > CMakeFiles/main.dir/src/curling.c.i
 
 CMakeFiles/main.dir/src/curling.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/main.dir/src/curling.c.s"
-	/usr/sbin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/src/.env/c/v2/src/curling.c -o CMakeFiles/main.dir/src/curling.c.s
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/src/.env/c/v2/src/curling.c -o CMakeFiles/main.dir/src/curling.c.s
 
 # Object files for target main
 main_OBJECTS = \

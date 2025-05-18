@@ -385,12 +385,53 @@ main: /usr/lib/Scrt1.o \
   /usr/lib/libunistring.so.5 \
   /usr/lib/libz.so.1 \
   /usr/lib/libzstd.so.1 \
+  /usr/lib32/libbrotlicommon.so.1 \
+  /usr/lib32/libbrotlidec.so.1 \
+  /usr/lib32/libcom_err.so.2 \
+  /usr/lib32/libcrypto.so.3 \
+  /usr/lib32/libgssapi_krb5.so.2 \
+  /usr/lib32/libidn2.so.0 \
+  /usr/lib32/libk5crypto.so.3 \
+  /usr/lib32/libkeyutils.so.1 \
+  /usr/lib32/libkrb5.so.3 \
+  /usr/lib32/libkrb5support.so.0 \
+  /usr/lib32/libnghttp2.so.14 \
+  /usr/lib32/libnghttp3.so.9 \
+  /usr/lib32/libpsl.so.5 \
+  /usr/lib32/libresolv.so.2 \
+  /usr/lib32/libssh2.so.1 \
+  /usr/lib32/libssl.so.3 \
+  /usr/lib32/libunistring.so.5 \
+  /usr/lib32/libz.so.1 \
+  /usr/lib32/libzstd.so.1 \
   CMakeFiles/main.dir/src/curling.c.o \
   CMakeFiles/main.dir/src/main.c.o \
   CMakeFiles/main.dir/src/sighandle.c.o
 
 
 CMakeFiles/main.dir/src/sighandle.c.o:
+
+/usr/lib32/libz.so.1:
+
+/usr/lib32/libssl.so.3:
+
+/usr/lib32/libnghttp3.so.9:
+
+/usr/lib32/libnghttp2.so.14:
+
+/usr/lib32/libkrb5support.so.0:
+
+/usr/lib32/libkrb5.so.3:
+
+/usr/lib32/libk5crypto.so.3:
+
+/usr/lib32/libgssapi_krb5.so.2:
+
+/usr/lib32/libcrypto.so.3:
+
+/usr/lib32/libcom_err.so.2:
+
+/usr/lib32/libbrotlicommon.so.1:
 
 /usr/lib/libz.so.1:
 
@@ -404,7 +445,11 @@ CMakeFiles/main.dir/src/sighandle.c.o:
 
 /usr/lib/libkrb5.so.3:
 
+/usr/lib32/libunistring.so.5:
+
 /usr/lib/libk5crypto.so.3:
+
+/usr/lib32/libssh2.so.1:
 
 /usr/lib/libgssapi_krb5.so.2:
 
@@ -445,6 +490,8 @@ CMakeFiles/main.dir/src/sighandle.c.o:
 /usr/include/bits/socket_type.h:
 
 /usr/lib/gcc/x86_64-pc-linux-gnu/15.1.1/include/limits.h:
+
+/usr/lib32/libidn2.so.0:
 
 /usr/lib/libssh2.so.1:
 
@@ -516,15 +563,21 @@ CMakeFiles/main.dir/src/main.c.o:
 
 /usr/include/asm/bitsperlong.h:
 
+/usr/lib32/libkeyutils.so.1:
+
 /usr/include/jansson_config.h:
 
 /usr/include/bits/pthreadtypes.h:
+
+/usr/lib32/libzstd.so.1:
 
 /home/src/.env/c/v2/src/utils.h:
 
 /usr/include/bits/stdlib-float.h:
 
 /usr/include/bits/time64.h:
+
+/usr/lib32/libpsl.so.5:
 
 /usr/include/string.h:
 
@@ -537,6 +590,8 @@ CMakeFiles/main.dir/src/main.c.o:
 /usr/include/asm-generic/sockios.h:
 
 /usr/include/bits/pthread_stack_min-dynamic.h:
+
+/usr/lib32/libresolv.so.2:
 
 /usr/include/asm/sockios.h:
 
@@ -665,6 +720,8 @@ CMakeFiles/main.dir/src/curling.c.o:
 /usr/include/features.h:
 
 /usr/include/gnu/stubs-64.h:
+
+/usr/lib32/libbrotlidec.so.1:
 
 /usr/lib/libcom_err.so.2:
 

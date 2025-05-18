@@ -28,7 +28,7 @@ static size_t write_callback(void *contents, size_t size, size_t nmemb,
     return realsize;
 }
 
-struct Memory do_curl(void)
+struct Memory do_curl(const char *url)
 {
     struct Memory response = {.data = NULL, .size = 0}; // Initialize to safe defaults
     CURL *curl;
@@ -40,7 +40,7 @@ struct Memory do_curl(void)
         printf("ERROR\n");
         return response;
     }
-    curl_easy_setopt(curl, CURLOPT_URL, MY_URL_CURL);
+    curl_easy_setopt(curl, CURLOPT_URL, url);
     curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, write_callback);
     curl_easy_setopt(curl, CURLOPT_WRITEDATA, &response);
 

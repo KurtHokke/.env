@@ -254,34 +254,33 @@
     "editor.tabSize": 4,
     "editor.useTabStops": true,
     "editor.multiCursorModifier": "ctrlCmd",
-    "editor.snippetSuggestions": "top",
-
+    //"editor.snippetSuggestions": "top",
+    "editor.snippetSuggestions": "inline",
+    "editor.quickSuggestions": {
+        "other": "on",
+        "comments": "off",
+        "strings": "off"
+    },
     "explorer.confirmDelete": false,
-
     "files.autoSave": "off",
     //"files.autoSave": "afterDelay",
     "files.autoSaveDelay": 20,
-
     "zig.path": "zig",
     "zig.zls.enabled": "on",
     "zig.zls.path": "zls",
     "zig.formattingProvider": "extension",
     "zig.zls.enableSnippets": false,
-
     "rust-analyzer.restartServerOnConfigChange": true,
     "rust-analyzer.showSyntaxTree": true,
     "rust-analyzer.testExplorer": true,
     "rust-analyzer.hover.actions.references.enable": true,
     "rust-analyzer.server.path": "/usr/local/bin/rust-analyzer",
-
     "workbench.colorTheme": "GitHub Dark Default",
-
     "C_Cpp_Runner.cStandard": "gnu23",
     "C_Cpp_Runner.cppStandard": "gnu++23",
     "C_Cpp_Runner.cCompilerPath": "clang",
     "C_Cpp_Runner.cppCompilerPath": "clang++",
     "C_Cpp_Runner.debuggerPath": "lldb",
-
     "gitlens.ai.model": "gitkraken",
     "gitlens.ai.gitkraken.model": "gemini:gemini-2.0-flash",
     "git.enableSmartCommit": true,
@@ -291,7 +290,8 @@
     "telemetry.telemetryLevel": "off",
     "editor.experimental.preferTreeSitter.ini": false,
     "files.associations": {
-        "*.wsb": "xml"
+        "*.wsb": "xml",
+        "*.h": "c"
     },
     "powershellInlineValues.startLocation": "document",
     "powershell.powerShellDefaultVersion": "PowerShell Preview (x64)",
@@ -315,4 +315,16 @@
     ],
     "cmake.configureOnEdit": false,
     "cmake.configureOnOpen": false,
+    "C_Cpp.doxygen.generatedStyle": "/**",
+    "C_Cpp.caseSensitiveFileSupport": "enabled",
+    "C_Cpp.experimentalFeatures": "enabled",
+    "C_Cpp.loggingLevel": "Debug",
+    "C_Cpp.autocompleteAddParentheses": true,
+    "C_Cpp.codeAnalysis.clangTidy.checks.disabled": [ "clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling" ],
+    "git.openRepositoryInParentFolders": "never",
+    "files.eol": "\n",
+    
+    "C_Cpp.default.cStandard": "gnu11",
+    "C_Cpp.codeAnalysis.clangTidy.enabled": true,
+    "workbench.iconTheme": "vscode-icons",
 }

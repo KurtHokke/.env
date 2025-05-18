@@ -12,26 +12,63 @@
 //#include <curses.h>
 
 
+
+
 static context_t *context = NULL;
 
-int main(void) 
+char *get_lol_v(void)
+{
+    struct Memory lolVersions = do_curl(LOL_VERSIONS_LOOKUP);
+    if (lolVersions.data == NULL || lolVersions.size == 0) {
+        free_all_exit(1, "get_lol_v() curl failed");
+    }
+
+    json_error_t error_v;
+    json_t *root_v    = NULL;
+    json_t *current_v = NULL;
+
+    root_v = json_loads(lolVersions.data, 0, &error_v);
+    free(lolVersions.data);
+    if (!root_v) {
+        printf("ERROR: %s\n", error_v.text);
+        printf("Error while parsing JSON(%d): %s\n", error_v.line, error_v.text);
+        free_all_exit(1, "err");
+    }
+    if (!json_is_array(root_v)) {
+        free_all_exit(1, "root_v !array");
+    }
+    current_v = json_array_get(root_v, 0);
+    if (!json_is_string(current_v)) {
+        free_all_exit(1, "current_v !string");
+    }
+    printf("%ld\n%ld\n", root_v->refcount, current_v->refcount);
+    char *version_string = json_string_value(current_v);
+    json_decref(root_v);
+    return &version_string;
+}
+
+int main(void)
 {
     setup_signal_handler();
     curl_global_init(CURL_GLOBAL_DEFAULT);
 
     context_t ctx = {
-        .playergold = NULL, //{0,0,0,0,0,
-                       //0,0,0,0,0},
+        .playergold = NULL,
         .response.data = NULL,
         .response.size = 0,
         .root = NULL,
-        
         .champNames = NULL,
         .myTeam = 0,
         .firstRun = true
     };
     context = &ctx;
     set_context(&ctx);
+
+    char *lol_V = get_lol_v();
+    printf("%s\n", lol_V);
+    if (1) {
+        free_all_exit(0, "working");
+    }
 
     ctx.champNames = malloc(10 * sizeof(char *));
     if (ctx.champNames == NULL) {
@@ -78,6 +115,7 @@ int main(void)
 }
 
 
+
 void do_job(context_t *ctx)
 {
     json_error_t error;
@@ -91,7 +129,7 @@ void do_job(context_t *ctx)
         (ctx->champNames[i] != NULL)? free(ctx->champNames[i]) : (void)printf("champNames[%d] was NULL\n", i);
         ctx->champNames[i] = NULL;
     }
-    ctx->response = do_curl();
+    ctx->response = do_curl(MY_URL_CURL);
     if (ctx->response.data == NULL || ctx->response.size == 0) {
         free_all_exit(1, "curl failed");
     }

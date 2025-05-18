@@ -4,6 +4,13 @@
 	// $1, $2 for tab stops, $0 for the final cursor position, and ${1:label}, ${2:another} for placeholders. Placeholders with the 
 	// same ids are connected.
 	// Example:
+    "printf": {
+        "prefix": "p",
+        "body": [
+            "printf(\"%${1:s}\", $2);$3"
+        ],
+        "description": "printf"
+    },
     "basic include": {
         "prefix": "bincl",
         "body": [
