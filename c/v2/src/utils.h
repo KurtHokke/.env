@@ -23,7 +23,7 @@ struct Memory {
     char *data;
     size_t size;
 };
-static size_t write_callback(void *contents, size_t size, size_t nmemb, void *userp);
+//static size_t write_callback(void *contents, size_t size, size_t nmemb, void *userp);
 struct Memory do_curl(void);
 
 #endif

@@ -14,8 +14,11 @@ build()
     if gcc "${CFLAGS[@]}" "$@" -o main; then
         printf "\n\e[36;5;38mgcc exited 0\e[0m\n"
     fi
-    
 }
 
+memtest()
+{
+    valgrind --leak-check=full "$@"
+}
 
 export CFLAGS=("${CFLAGS[@]}")
