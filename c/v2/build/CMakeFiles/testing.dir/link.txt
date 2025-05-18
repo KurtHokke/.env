@@ -1,1 +1,0 @@
-/usr/sbin/cc -O0 -Wall -Wextra -Wpedantic -g -Wl,--dependency-file=CMakeFiles/testing.dir/link.d CMakeFiles/testing.dir/test.c.o -o testing  /usr/lib/libncursesw.so

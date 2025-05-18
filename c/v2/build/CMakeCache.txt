@@ -214,7 +214,7 @@ PKG_CONFIG_ARGN:STRING=
 PKG_CONFIG_EXECUTABLE:FILEPATH=/usr/sbin/pkg-config
 
 //OFF
-TESTING:BOOL=ON
+TESTING:BOOL=OFF
 
 //Value Computed by CMake
 main_BINARY_DIR:STATIC=/home/src/.env/c/v2/build
@@ -226,7 +226,10 @@ main_IS_TOP_LEVEL:STATIC=ON
 main_SOURCE_DIR:STATIC=/home/src/.env/c/v2
 
 //Path to a library.
-pkgcfg_lib_ncursesw_ncursesw:FILEPATH=/usr/lib/libncursesw.so
+pkgcfg_lib_jansson_jansson:FILEPATH=/usr/lib/libjansson.so
+
+//Path to a library.
+pkgcfg_lib_libcurl_curl:FILEPATH=/usr/lib/libcurl.so
 
 
 ########################
@@ -372,44 +375,83 @@ FIND_PACKAGE_MESSAGE_DETAILS_PkgConfig:INTERNAL=[/usr/sbin/pkg-config][v2.4.3()]
 PKG_CONFIG_ARGN-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: PKG_CONFIG_EXECUTABLE
 PKG_CONFIG_EXECUTABLE-ADVANCED:INTERNAL=1
-__pkg_config_arguments_ncursesw:INTERNAL=REQUIRED;IMPORTED_TARGET;ncursesw>=6.5.20240427
-__pkg_config_checked_ncursesw:INTERNAL=1
-ncursesw_CFLAGS:INTERNAL=-D_DEFAULT_SOURCE;-D_XOPEN_SOURCE=600
-ncursesw_CFLAGS_I:INTERNAL=
-ncursesw_CFLAGS_OTHER:INTERNAL=-D_DEFAULT_SOURCE;-D_XOPEN_SOURCE=600
-ncursesw_FOUND:INTERNAL=1
-ncursesw_INCLUDEDIR:INTERNAL=/usr/include
-ncursesw_INCLUDE_DIRS:INTERNAL=
-ncursesw_LDFLAGS:INTERNAL=-lncursesw
-ncursesw_LDFLAGS_OTHER:INTERNAL=
-ncursesw_LIBDIR:INTERNAL=/usr/lib
-ncursesw_LIBRARIES:INTERNAL=ncursesw
-ncursesw_LIBRARY_DIRS:INTERNAL=
-ncursesw_LIBS:INTERNAL=
-ncursesw_LIBS_L:INTERNAL=
-ncursesw_LIBS_OTHER:INTERNAL=
-ncursesw_LIBS_PATHS:INTERNAL=
-ncursesw_MODULE_NAME:INTERNAL=ncursesw
-ncursesw_PREFIX:INTERNAL=/usr
-ncursesw_STATIC_CFLAGS:INTERNAL=-D_DEFAULT_SOURCE;-D_XOPEN_SOURCE=600
-ncursesw_STATIC_CFLAGS_I:INTERNAL=
-ncursesw_STATIC_CFLAGS_OTHER:INTERNAL=-D_DEFAULT_SOURCE;-D_XOPEN_SOURCE=600
-ncursesw_STATIC_INCLUDE_DIRS:INTERNAL=
-ncursesw_STATIC_LDFLAGS:INTERNAL=-lncursesw
-ncursesw_STATIC_LDFLAGS_OTHER:INTERNAL=
-ncursesw_STATIC_LIBDIR:INTERNAL=
-ncursesw_STATIC_LIBRARIES:INTERNAL=ncursesw
-ncursesw_STATIC_LIBRARY_DIRS:INTERNAL=
-ncursesw_STATIC_LIBS:INTERNAL=
-ncursesw_STATIC_LIBS_L:INTERNAL=
-ncursesw_STATIC_LIBS_OTHER:INTERNAL=
-ncursesw_STATIC_LIBS_PATHS:INTERNAL=
-ncursesw_VERSION:INTERNAL=6.5.20240427
-ncursesw_ncursesw_INCLUDEDIR:INTERNAL=
-ncursesw_ncursesw_LIBDIR:INTERNAL=
-ncursesw_ncursesw_PREFIX:INTERNAL=
-ncursesw_ncursesw_VERSION:INTERNAL=
-//ADVANCED property for variable: pkgcfg_lib_ncursesw_ncursesw
-pkgcfg_lib_ncursesw_ncursesw-ADVANCED:INTERNAL=1
+__pkg_config_arguments_jansson:INTERNAL=REQUIRED;IMPORTED_TARGET;jansson>=2.14.1
+__pkg_config_arguments_libcurl:INTERNAL=REQUIRED;IMPORTED_TARGET;libcurl>=8.13.0
+__pkg_config_checked_jansson:INTERNAL=1
+__pkg_config_checked_libcurl:INTERNAL=1
+jansson_CFLAGS:INTERNAL=-I/usr/include
+jansson_CFLAGS_I:INTERNAL=
+jansson_CFLAGS_OTHER:INTERNAL=
+jansson_FOUND:INTERNAL=1
+jansson_INCLUDEDIR:INTERNAL=/usr/include
+jansson_INCLUDE_DIRS:INTERNAL=/usr/include
+jansson_LDFLAGS:INTERNAL=-L/usr/lib;-ljansson
+jansson_LDFLAGS_OTHER:INTERNAL=
+jansson_LIBDIR:INTERNAL=/usr/lib
+jansson_LIBRARIES:INTERNAL=jansson
+jansson_LIBRARY_DIRS:INTERNAL=/usr/lib
+jansson_LIBS:INTERNAL=
+jansson_LIBS_L:INTERNAL=
+jansson_LIBS_OTHER:INTERNAL=
+jansson_LIBS_PATHS:INTERNAL=
+jansson_MODULE_NAME:INTERNAL=jansson
+jansson_PREFIX:INTERNAL=/usr
+jansson_STATIC_CFLAGS:INTERNAL=-I/usr/include
+jansson_STATIC_CFLAGS_I:INTERNAL=
+jansson_STATIC_CFLAGS_OTHER:INTERNAL=
+jansson_STATIC_INCLUDE_DIRS:INTERNAL=/usr/include
+jansson_STATIC_LDFLAGS:INTERNAL=-L/usr/lib;-ljansson
+jansson_STATIC_LDFLAGS_OTHER:INTERNAL=
+jansson_STATIC_LIBDIR:INTERNAL=
+jansson_STATIC_LIBRARIES:INTERNAL=jansson
+jansson_STATIC_LIBRARY_DIRS:INTERNAL=/usr/lib
+jansson_STATIC_LIBS:INTERNAL=
+jansson_STATIC_LIBS_L:INTERNAL=
+jansson_STATIC_LIBS_OTHER:INTERNAL=
+jansson_STATIC_LIBS_PATHS:INTERNAL=
+jansson_VERSION:INTERNAL=2.14.1
+jansson_jansson_INCLUDEDIR:INTERNAL=
+jansson_jansson_LIBDIR:INTERNAL=
+jansson_jansson_PREFIX:INTERNAL=
+jansson_jansson_VERSION:INTERNAL=
+libcurl_CFLAGS:INTERNAL=-I/usr/include
+libcurl_CFLAGS_I:INTERNAL=
+libcurl_CFLAGS_OTHER:INTERNAL=
+libcurl_FOUND:INTERNAL=1
+libcurl_INCLUDEDIR:INTERNAL=/usr/include
+libcurl_INCLUDE_DIRS:INTERNAL=/usr/include
+libcurl_LDFLAGS:INTERNAL=-L/usr/lib;-lcurl
+libcurl_LDFLAGS_OTHER:INTERNAL=
+libcurl_LIBDIR:INTERNAL=/usr/lib
+libcurl_LIBRARIES:INTERNAL=curl
+libcurl_LIBRARY_DIRS:INTERNAL=/usr/lib
+libcurl_LIBS:INTERNAL=
+libcurl_LIBS_L:INTERNAL=
+libcurl_LIBS_OTHER:INTERNAL=
+libcurl_LIBS_PATHS:INTERNAL=
+libcurl_MODULE_NAME:INTERNAL=libcurl
+libcurl_PREFIX:INTERNAL=/usr
+libcurl_STATIC_CFLAGS:INTERNAL=-I/usr/include;-DCURL_STATICLIB
+libcurl_STATIC_CFLAGS_I:INTERNAL=
+libcurl_STATIC_CFLAGS_OTHER:INTERNAL=-DCURL_STATICLIB
+libcurl_STATIC_INCLUDE_DIRS:INTERNAL=/usr/include
+libcurl_STATIC_LDFLAGS:INTERNAL=-L/usr/lib;-lcurl;-lssh2;-lssl;-lcrypto;-lcrypto;-lz;-lidn2;-L/usr/lib;-lunistring;-lbrotlidec;-lbrotlicommon;-lzstd;-lgssapi_krb5;-lkrb5;-lk5crypto;-lcom_err;-lkrb5support;-lssl;-lpsl;-lssh2;-L/usr/lib;-lssl;-L/usr/lib;-L/usr/lib;-lcrypto;-ldl;-pthread;-lz;-lnghttp2;-lnghttp3
+libcurl_STATIC_LDFLAGS_OTHER:INTERNAL=-pthread
+libcurl_STATIC_LIBDIR:INTERNAL=
+libcurl_STATIC_LIBRARIES:INTERNAL=curl;ssh2;ssl;crypto;crypto;z;idn2;unistring;brotlidec;brotlicommon;zstd;gssapi_krb5;krb5;k5crypto;com_err;krb5support;ssl;psl;ssh2;ssl;crypto;dl;z;nghttp2;nghttp3
+libcurl_STATIC_LIBRARY_DIRS:INTERNAL=/usr/lib;/usr/lib;/usr/lib;/usr/lib;/usr/lib
+libcurl_STATIC_LIBS:INTERNAL=
+libcurl_STATIC_LIBS_L:INTERNAL=
+libcurl_STATIC_LIBS_OTHER:INTERNAL=
+libcurl_STATIC_LIBS_PATHS:INTERNAL=
+libcurl_VERSION:INTERNAL=8.13.0
+libcurl_libcurl_INCLUDEDIR:INTERNAL=
+libcurl_libcurl_LIBDIR:INTERNAL=
+libcurl_libcurl_PREFIX:INTERNAL=
+libcurl_libcurl_VERSION:INTERNAL=
+//ADVANCED property for variable: pkgcfg_lib_jansson_jansson
+pkgcfg_lib_jansson_jansson-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: pkgcfg_lib_libcurl_curl
+pkgcfg_lib_libcurl_curl-ADVANCED:INTERNAL=1
 prefix_result:INTERNAL=/usr/lib
 

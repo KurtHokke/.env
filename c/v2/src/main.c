@@ -9,7 +9,7 @@
 #include <jansson.h>
 #include <curl/curl.h>
 
-#include <curses.h>
+//#include <curses.h>
 
 
 static context_t *context = NULL;
