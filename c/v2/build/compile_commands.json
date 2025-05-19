@@ -1,20 +1,8 @@
 [
 {
   "directory": "/home/src/.env/c/v2/build",
-  "command": "/usr/bin/cc   -O0 -Wall -Wextra -Wpedantic -g -std=gnu11 -o CMakeFiles/main.dir/src/main.c.o -c /home/src/.env/c/v2/src/main.c",
-  "file": "/home/src/.env/c/v2/src/main.c",
-  "output": "CMakeFiles/main.dir/src/main.c.o"
-},
-{
-  "directory": "/home/src/.env/c/v2/build",
-  "command": "/usr/bin/cc   -O0 -Wall -Wextra -Wpedantic -g -std=gnu11 -o CMakeFiles/main.dir/src/sighandle.c.o -c /home/src/.env/c/v2/src/sighandle.c",
-  "file": "/home/src/.env/c/v2/src/sighandle.c",
-  "output": "CMakeFiles/main.dir/src/sighandle.c.o"
-},
-{
-  "directory": "/home/src/.env/c/v2/build",
-  "command": "/usr/bin/cc   -O0 -Wall -Wextra -Wpedantic -g -std=gnu11 -o CMakeFiles/main.dir/src/curling.c.o -c /home/src/.env/c/v2/src/curling.c",
-  "file": "/home/src/.env/c/v2/src/curling.c",
-  "output": "CMakeFiles/main.dir/src/curling.c.o"
+  "command": "/usr/bin/cc -DDEBUG  -O0 -Wall -Wextra -Wpedantic -g -std=gnu11 -D_DEFAULT_SOURCE -D_XOPEN_SOURCE=600 -o CMakeFiles/testing.dir/test1.c.o -c /home/src/.env/c/v2/test1.c",
+  "file": "/home/src/.env/c/v2/test1.c",
+  "output": "CMakeFiles/testing.dir/test1.c.o"
 }
 ]

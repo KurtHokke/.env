@@ -18,7 +18,7 @@ find_package(PkgConfig REQUIRED)
 
 if(TESTING STREQUAL "ON")
     set(SOURCES
-        test.c
+        test1.c
         #test.h
         #test1.c
     )

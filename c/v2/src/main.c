@@ -10,9 +10,10 @@
 #include <curl/curl.h>
 //#include <curses.h>
 
-
+//for sharing with sighandle.c
 static context_t *context = NULL;
 
+//retrieve items json database
 void get_lol_items(json_t **root_i, char *data)
 {
     json_error_t error_i;
@@ -24,24 +25,27 @@ void get_lol_items(json_t **root_i, char *data)
     if (!root_tmp) {
         printf("ERROR: %s\n", error_i.text);
         printf("Error while parsing JSON(%d): %s\n", error_i.line, error_i.text);
+        json_decref(root_tmp);
         free_all_exit(1, "err");
     }
 
     if (!json_is_object(root_tmp)) {
+        json_decref(root_tmp);
         free_all_exit(1, "root_tmp !object");
     }
 
     data_tmp = json_object_get(root_tmp, "data");
     if (!json_is_object(data_tmp)) {
+        json_decref(root_tmp);
         free_all_exit(1, "data_tmp !object");
     }
 
+    //make a deep copy of items database so layers above it can be freed
     *root_i = json_deep_copy(data_tmp);
-    
     json_decref(root_tmp);
-
 }
 
+//get total price of given itemID
 int get_price_of(json_t *root_i, int id)
 {
     if (root_i == NULL) {
@@ -76,8 +80,6 @@ int get_price_of(json_t *root_i, int id)
 int main(void)
 {
     setup_signal_handler();
-    curl_global_init(CURL_GLOBAL_DEFAULT);
-
     context_t ctx = {
         .playergold       = NULL,
         .response.data    = NULL,
@@ -87,7 +89,6 @@ int main(void)
         .lolItems.data    = NULL,
         .lolItems.size    = 0,
         .root             = NULL,
-        .root_v           = NULL,
         .root_i           = NULL,
         .champNames       = NULL,
         .lol_V            = NULL,
@@ -96,74 +97,80 @@ int main(void)
         .firstRun         = true
     };
     context = &ctx;
-    set_context(&ctx);
+    set_context(&ctx); //shares ctx with sighandle.c
+    curl_global_init(CURL_GLOBAL_DEFAULT);
 
     ctx.lolVersions = do_curl(LOL_VERSIONS_URL);
     if (ctx.lolVersions.data == NULL || ctx.lolVersions.size == 0) {
         free_all_exit(1, "curl failed");
     }
 
+    //extract latest game version by parsing json data
     ctx.lol_V = get_lol_v(ctx.lolVersions.data);
-    free(ctx.lolVersions.data);
-    ctx.lolVersions.data = NULL;
-    ctx.lolVersions.size = 0;
+    free(ctx.lolVersions.data);   //
+    ctx.lolVersions.data = NULL;  //  instantly free leftover data
+    ctx.lolVersions.size = 0;     //
 
     ctx.items_URL = malloc(101);
     if (ctx.items_URL == NULL) {
         free_all_exit(1, "items_URL malloc failed");
     }
-
+    //construct the final items.json url
     snprintf(ctx.items_URL, 101, LOL_ITEMS_URL(ctx.lol_V));
-    free(ctx.lol_V);
-    ctx.lol_V = NULL;
+    free(ctx.lol_V);   //
+    ctx.lol_V = NULL;  //  instantly free leftover data
 
+    //request items.json from url and store it temporarily in char*
     ctx.lolItems = do_curl(ctx.items_URL);
-    free(ctx.items_URL);
-    ctx.items_URL = NULL;
+    free(ctx.items_URL);   //
+    ctx.items_URL = NULL;  //  instantly free leftover data
+
     if (ctx.lolItems.data == NULL || ctx.lolItems.size == 0) {
         free_all_exit(1, "curl failed");
     }
 
+    //convert char* items.json to (jansson.h)json_t type
     get_lol_items(&ctx.root_i, ctx.lolItems.data);
+    free(ctx.lolItems.data);   //
+    ctx.lolItems.data = NULL;  //  instantly free leftover data
+    ctx.lolItems.size = 0;     //
 
-    //int priceof = get_price_of(ctx.root_i, 3152);
-    //printf("\n\npriceof: %d\n\n", priceof);
-
-    ctx.champNames = malloc(10 * sizeof(char *));
+    //allocate size for 10 pointers
+    ctx.champNames = calloc(10, sizeof(char *));
     if (ctx.champNames == NULL) {
         free_all_exit(1, "ctx.champNames malloc failed");
     }
-    ctx.playergold = malloc(10 * sizeof(int));
+    ctx.playergold = calloc(10, sizeof(int));
     if (ctx.playergold == NULL) {
         free_all_exit(1, "ctx.playergold malloc failed");
     }
 
-    int i;
-    for (i = 0; i < 10; i++) {
-        if (ctx.champNames != NULL) {
-            ctx.champNames[i] = NULL;
-        }
-    }
+    //explicity set all array to NULL
+    //for (size_t i = 0; i < 10; i++) {
+    //    if (ctx.champNames != NULL) {
+    //        ctx.champNames[i] = NULL;
+    //    }
+    //}
 
     while (true) {
         do_job(&ctx);
         system("clear");
-        for (i = 0; i < 5; i++) {
+        for (size_t i = 0; i < 5; i++) {
             if (ctx.myTeam == 0) {
                 if (ctx.playergold[i] - ctx.playergold[i + 5] < 0) {
-                    printf("\033[1;38;5;33m%s\033[0m\n \033[38;5;196m%d\033[0m\n\033[1;38;5;162m%s\033[0m\n\n", 
-                            ctx.champNames[i], ctx.playergold[i] - ctx.playergold[i + 5], ctx.champNames[i + 5]);
+                    printf(GOLD_COLOR_RED, 
+                           ctx.champNames[i], ctx.playergold[i] - ctx.playergold[i + 5], ctx.champNames[i + 5]);
                 } else {
-                    printf("\033[1;38;5;33m%s\033[0m\n \033[38;5;40m%d\033[0m\n\033[1;38;5;162m%s\033[0m\n\n", 
-                            ctx.champNames[i], ctx.playergold[i] - ctx.playergold[i + 5], ctx.champNames[i + 5]);
+                    printf(GOLD_COLOR_GREEN, 
+                           ctx.champNames[i], ctx.playergold[i] - ctx.playergold[i + 5], ctx.champNames[i + 5]);
                 }
             } else {
                 if (ctx.playergold[i + 5] - ctx.playergold[i] < 0) {
-                    printf("\033[1;38;5;33m%s\033[0m\n \033[38;5;196m%d\033[0m\n\033[1;38;5;162m%s\033[0m\n\n", 
-                            ctx.champNames[i + 5], ctx.playergold[i + 5] - ctx.playergold[i], ctx.champNames[i]);
+                    printf(GOLD_COLOR_RED, 
+                           ctx.champNames[i + 5], ctx.playergold[i + 5] - ctx.playergold[i], ctx.champNames[i]);
                 } else {
-                    printf("\033[1;38;5;33m%s\033[0m\n \033[38;5;40m%d\033[0m\n\033[1;38;5;162m%s\033[0m\n\n", 
-                            ctx.champNames[i + 5], ctx.playergold[i + 5] - ctx.playergold[i], ctx.champNames[i]);
+                    printf(GOLD_COLOR_GREEN, 
+                           ctx.champNames[i + 5], ctx.playergold[i + 5] - ctx.playergold[i], ctx.champNames[i]);
                 }
             }
         }
@@ -184,10 +191,10 @@ void do_job(context_t *ctx)
 
     json_t *players = NULL;
 
-    for (int i = 0; i < 10; i++) {
-        (ctx->champNames[i] != NULL)? free(ctx->champNames[i]) : (void)printf("champNames[%d] was NULL\n", i);
-        ctx->champNames[i] = NULL;
-    }
+    //for (int i = 0; i < 10; i++) {
+    //    (ctx->champNames[i] != NULL)? free(ctx->champNames[i]) : (void)printf("champNames[%d] was NULL\n", i);
+    //    ctx->champNames[i] = NULL;
+    //}
     ctx->response = do_curl(LOL_GAME_URL);
     if (ctx->response.data == NULL || ctx->response.size == 0) {
         free_all_exit(1, "curl failed");
@@ -196,6 +203,7 @@ void do_job(context_t *ctx)
     ctx->root = json_loads(ctx->response.data, 0, &error);
     free(ctx->response.data);
     ctx->response.data = NULL;
+    ctx->response.size = 0;
 
     if (!ctx->root) {
         printf("ERROR: %s\n", error.text);
@@ -279,7 +287,22 @@ void do_job(context_t *ctx)
             free_all_exit(1, "champName !string");
         }
 
-        ctx->champNames[i] = strdup(json_string_value(champName));
+        if ((ctx->champNames[i] != NULL) || (ctx->firstRun))
+        {
+            if (ctx->firstRun)
+            {
+                ctx->champNames[i] = strdup(json_string_value(champName));
+            } 
+            else if (strcmp(ctx->champNames[i], 
+                       json_string_value(champName)) != 0)
+            {
+                free(ctx->champNames[i]);
+                ctx->champNames[i] = NULL;
+
+                ctx->champNames[i] = strdup(json_string_value(champName));
+            }
+        }
+        
     }
     json_decref(ctx->root);
     ctx->root = NULL;
@@ -298,20 +321,22 @@ char *get_lol_v(char *data)
     if (!root_v) {
         printf("ERROR: %s\n", error_v.text);
         printf("Error while parsing JSON(%d): %s\n", error_v.line, error_v.text);
+        json_decref(root_v);
         free_all_exit(1, "err");
     }
 
     if (!json_is_array(root_v)) {
+        json_decref(root_v);
         free_all_exit(1, "root_v !array");
     }
 
     current_v = json_array_get(root_v, 0);
     if (!json_is_string(current_v)) {
+        json_decref(root_v);
         free_all_exit(1, "current_v !string");
     }
 
     char *version_string = strdup(json_string_value(current_v));
-    
     json_decref(root_v);
 
     return version_string;

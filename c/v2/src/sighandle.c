@@ -20,7 +20,6 @@ void free_all_exit(int e, const char *msg)
     printf("freeing all\n");
 
              (ctx->root != NULL)? json_decref(ctx->root)      : (void)printf("ctx->root was NULL\n");
-           (ctx->root_v != NULL)? json_decref(ctx->root_v)    : (void)printf("ctx->root_v was NULL\n");
            (ctx->root_i != NULL)? json_decref(ctx->root_i)    : (void)printf("ctx->root_i was NULL\n");
     (ctx->response.data != NULL)? free(ctx->response.data)    : (void)printf("ctx->response.data was NULL\n");
  (ctx->lolVersions.data != NULL)? free(ctx->lolVersions.data) : (void)printf("ctx->lolVersions.data was NULL\n");
@@ -30,7 +29,6 @@ void free_all_exit(int e, const char *msg)
         (ctx->items_URL != NULL)? free(ctx->items_URL)        : (void)printf("ctx->items_URL was NULL\n");
     
     ctx->root = NULL;
-    ctx->root_v = NULL;
     ctx->root_i = NULL;
     ctx->response.data = NULL;
     ctx->lolVersions.data = NULL;

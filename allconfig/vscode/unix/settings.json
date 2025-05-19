@@ -254,5 +254,8 @@
     "C_Cpp.codeAnalysis.clangTidy.path": "clang-tidy",
     "C_Cpp.experimentalFeatures": "enabled",
     "C_Cpp.default.intelliSenseMode": "linux-clang-x64",
-    "clang-tidy.checks": [ "-*,portability-*" ],
+    "clang-tidy.checks": [
+        "-*,portability-*"
+    ],
+    "C_Cpp.default.cStandard": "gnu11",
 }

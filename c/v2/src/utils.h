@@ -14,6 +14,9 @@
 #define LOL_VERSIONS_URL "https://ddragon.leagueoflegends.com/api/versions.json"
 #define LOL_ITEMS_URL(LOL_VERSION) "https://ddragon.leagueoflegends.com/cdn/%s/data/en_US/item.json", LOL_VERSION
 
+#define GOLD_COLOR_RED   "\033[1;38;5;33m%s\033[0m\n \033[38;5;196m%d\033[0m\n\033[1;38;5;162m%s\033[0m\n\n"
+#define GOLD_COLOR_GREEN "\033[1;38;5;33m%s\033[0m\n \033[38;5;40m%d\033[0m\n\033[1;38;5;162m%s\033[0m\n\n"
+
 struct Memory {
     char *data;
     size_t size;

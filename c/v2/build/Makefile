@@ -124,89 +124,41 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named main
+# Target rules for targets named testing
 
 # Build rule for target.
-main: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 main
-.PHONY : main
+testing: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 testing
+.PHONY : testing
 
 # fast build rule for target.
-main/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/build
-.PHONY : main/fast
+testing/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/testing.dir/build.make CMakeFiles/testing.dir/build
+.PHONY : testing/fast
 
-src/curling.o: src/curling.c.o
-.PHONY : src/curling.o
-
-# target to build an object file
-src/curling.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/curling.c.o
-.PHONY : src/curling.c.o
-
-src/curling.i: src/curling.c.i
-.PHONY : src/curling.i
-
-# target to preprocess a source file
-src/curling.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/curling.c.i
-.PHONY : src/curling.c.i
-
-src/curling.s: src/curling.c.s
-.PHONY : src/curling.s
-
-# target to generate assembly for a file
-src/curling.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/curling.c.s
-.PHONY : src/curling.c.s
-
-src/main.o: src/main.c.o
-.PHONY : src/main.o
+test1.o: test1.c.o
+.PHONY : test1.o
 
 # target to build an object file
-src/main.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/main.c.o
-.PHONY : src/main.c.o
+test1.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/testing.dir/build.make CMakeFiles/testing.dir/test1.c.o
+.PHONY : test1.c.o
 
-src/main.i: src/main.c.i
-.PHONY : src/main.i
-
-# target to preprocess a source file
-src/main.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/main.c.i
-.PHONY : src/main.c.i
-
-src/main.s: src/main.c.s
-.PHONY : src/main.s
-
-# target to generate assembly for a file
-src/main.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/main.c.s
-.PHONY : src/main.c.s
-
-src/sighandle.o: src/sighandle.c.o
-.PHONY : src/sighandle.o
-
-# target to build an object file
-src/sighandle.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/sighandle.c.o
-.PHONY : src/sighandle.c.o
-
-src/sighandle.i: src/sighandle.c.i
-.PHONY : src/sighandle.i
+test1.i: test1.c.i
+.PHONY : test1.i
 
 # target to preprocess a source file
-src/sighandle.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/sighandle.c.i
-.PHONY : src/sighandle.c.i
+test1.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/testing.dir/build.make CMakeFiles/testing.dir/test1.c.i
+.PHONY : test1.c.i
 
-src/sighandle.s: src/sighandle.c.s
-.PHONY : src/sighandle.s
+test1.s: test1.c.s
+.PHONY : test1.s
 
 # target to generate assembly for a file
-src/sighandle.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/sighandle.c.s
-.PHONY : src/sighandle.c.s
+test1.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/testing.dir/build.make CMakeFiles/testing.dir/test1.c.s
+.PHONY : test1.c.s
 
 # Help Target
 help:
@@ -217,16 +169,10 @@ help:
 	@echo "... codegen"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... main"
-	@echo "... src/curling.o"
-	@echo "... src/curling.i"
-	@echo "... src/curling.s"
-	@echo "... src/main.o"
-	@echo "... src/main.i"
-	@echo "... src/main.s"
-	@echo "... src/sighandle.o"
-	@echo "... src/sighandle.i"
-	@echo "... src/sighandle.s"
+	@echo "... testing"
+	@echo "... test1.o"
+	@echo "... test1.i"
+	@echo "... test1.s"
 .PHONY : help
 
 

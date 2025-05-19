@@ -1,17 +1,59 @@
 
-#include "test.h"
+#include <ncurses.h>
 #include <stdio.h>
+#include <stdbool.h>
+#include <unistd.h>
 
-static context_t *ctx = NULL;
+#define DELAY 350000
 
-void set_context(context_t *context)
+int main(void)
 {
-    ctx = context;
-}
+    WINDOW *mainwin;
+    int y = 0, 
+        x = 0;
+    int max_y = 0, 
+        max_x = 0;
 
-void diditwork()
-{
-    for (int i = 0; i < 10; i++) {
-        printf("%d\n", ctx->playergold[i]);
-    }
+    int next_x = 0;
+
+    int direction = 1;
+
+    initscr();
+    noecho();
+    curs_set(false);
+    getmaxyx(stdscr, max_y, max_x);
+
+    x = max_x / 2;
+    y = max_y / 2;
+
+    mainwin = newwin(max_y, max_x, 0, 0);
+
+    start_color();
+    init_pair(1, 40, 0);
+    init_pair(2, 39, 0);
+    init_pair(3, 13, 0);
+
+    wcolor_set(mainwin, 1, NULL);
+    wrefresh(mainwin);
+    while (1) {
+        getmaxyx(mainwin, max_y, max_x);
+
+        y = max_y / 2;
+
+        wclear(mainwin);
+        //mvprintw(y, x, "o");
+        box(mainwin, 0, 0);
+        wattron(mainwin, COLOR_PAIR(2));
+        mvwprintw(mainwin, 20, 20, "order");
+        wattroff(mainwin, COLOR_PAIR(2));
+        wattron(mainwin, COLOR_PAIR(3));
+        mvwprintw(mainwin, 40, 20, "chaos");
+        wattroff(mainwin, COLOR_PAIR(3));
+        wrefresh(mainwin);
+
+        usleep(DELAY);
+
+  }
+    delwin(mainwin);
+    endwin();
 }

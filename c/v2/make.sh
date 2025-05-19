@@ -18,7 +18,7 @@ build()
 
 memtest()
 {
-    valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes "$@"
+    valgrind --leak-check=full "$@"
 }
 
 export CFLAGS=("${CFLAGS[@]}")
