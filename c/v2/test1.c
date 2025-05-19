@@ -6,6 +6,15 @@
 
 #define DELAY 350000
 
+
+
+enum colors {
+    ORDER=1,
+    CHAOS,
+    GREEN_GOLD,
+    RED_GOLD
+};
+
 int main(void)
 {
     WINDOW *mainwin;
@@ -29,11 +38,13 @@ int main(void)
     mainwin = newwin(max_y, max_x, 0, 0);
 
     start_color();
-    init_pair(1, 40, 0);
-    init_pair(2, 39, 0);
-    init_pair(3, 13, 0);
+    init_pair(ORDER, 39, 0);
+    init_pair(CHAOS, 197, 0);
+    init_pair(GREEN_GOLD, 40, 0);
+    init_pair(RED_GOLD, 196, 0);
+    //init_pair(3, 13, 0);
 
-    wcolor_set(mainwin, 1, NULL);
+    //wcolor_set(mainwin, 1, NULL);
     wrefresh(mainwin);
     while (1) {
         getmaxyx(mainwin, max_y, max_x);
@@ -43,12 +54,12 @@ int main(void)
         wclear(mainwin);
         //mvprintw(y, x, "o");
         box(mainwin, 0, 0);
-        wattron(mainwin, COLOR_PAIR(2));
+        wattron(mainwin, COLOR_PAIR(ORDER));
         mvwprintw(mainwin, 20, 20, "order");
-        wattroff(mainwin, COLOR_PAIR(2));
-        wattron(mainwin, COLOR_PAIR(3));
-        mvwprintw(mainwin, 40, 20, "chaos");
-        wattroff(mainwin, COLOR_PAIR(3));
+        wattroff(mainwin, COLOR_PAIR(ORDER));
+        wattron(mainwin, COLOR_PAIR(CHAOS));
+        mvwprintw(mainwin, 22, 20, "chaos");
+        wattroff(mainwin, COLOR_PAIR(CHAOS));
         wrefresh(mainwin);
 
         usleep(DELAY);
