@@ -327,4 +327,8 @@
     "C_Cpp.default.cStandard": "gnu11",
     "C_Cpp.codeAnalysis.clangTidy.enabled": true,
     "workbench.iconTheme": "vscode-icons",
+    "C_Cpp.default.compileCommands": [
+
+        "/usr/bin/cc -O0 -Wall -Wextra -Wpedantic -g -std=gnu11"
+    ],
 }
