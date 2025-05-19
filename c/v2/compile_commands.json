@@ -4,5 +4,11 @@
   "command": "/usr/sbin/cc   -O0 -Wall -Wextra -Wpedantic -g -std=gnu11 -o main.c.o -c test.c",
   "file": "test.c",
   "output": "main.c.o"
+},
+{
+  "directory": "/home/src/.env/c/v2/build",
+  "command": "/usr/sbin/cc -DDEBUG  -O0 -Wall -Wextra -Wpedantic -g -std=gnu11 -D_DEFAULT_SOURCE -D_XOPEN_SOURCE=600 -o CMakeFiles/testing.dir/test1.c.o -c /home/src/.env/c/v2/test1.c",
+  "file": "/home/src/.env/c/v2/test1.c",
+  "output": "CMakeFiles/testing.dir/test1.c.o"
 }
 ]

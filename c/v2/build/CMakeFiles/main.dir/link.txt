@@ -1,0 +1,1 @@
+/usr/sbin/cc -O0 -Wall -Wextra -Wpedantic -g -Wl,--dependency-file=CMakeFiles/main.dir/link.d CMakeFiles/main.dir/src/main.c.o CMakeFiles/main.dir/src/sighandle.c.o CMakeFiles/main.dir/src/curling.c.o CMakeFiles/main.dir/src/tui.c.o -o main  /usr/lib/libcurl.so /usr/lib/libjansson.so /usr/lib/libncursesw.so

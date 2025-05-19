@@ -1,4 +1,5 @@
 #include "utils.h"
+#include <ncurses.h>
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -8,74 +9,10 @@
 #include <unistd.h>
 #include <jansson.h>
 #include <curl/curl.h>
-//#include <curses.h>
+#include <assert.h>
 
 //for sharing with sighandle.c
 static context_t *context = NULL;
-
-//retrieve items json database
-void get_lol_items(json_t **root_i, char *data)
-{
-    json_error_t error_i;
-    json_t *root_tmp = NULL;
-    json_t *data_tmp = NULL;
-
-    root_tmp = json_loads(data, 0, &error_i);
-
-    if (!root_tmp) {
-        printf("ERROR: %s\n", error_i.text);
-        printf("Error while parsing JSON(%d): %s\n", error_i.line, error_i.text);
-        json_decref(root_tmp);
-        free_all_exit(1, "err");
-    }
-
-    if (!json_is_object(root_tmp)) {
-        json_decref(root_tmp);
-        free_all_exit(1, "root_tmp !object");
-    }
-
-    data_tmp = json_object_get(root_tmp, "data");
-    if (!json_is_object(data_tmp)) {
-        json_decref(root_tmp);
-        free_all_exit(1, "data_tmp !object");
-    }
-
-    //make a deep copy of items database so layers above it can be freed
-    *root_i = json_deep_copy(data_tmp);
-    json_decref(root_tmp);
-}
-
-//get total price of given itemID
-int get_price_of(json_t *root_i, int id)
-{
-    if (root_i == NULL) {
-        return -1;
-    }
-    
-    int price;
-    json_t *item = NULL;
-    json_t *gold = NULL;
-    json_t *total = NULL;
-
-    char itemID[6];
-    snprintf(itemID, sizeof(itemID), "%d", id);
-
-    item = json_object_get(root_i, itemID);
-    if (!json_is_object(item)) {
-        return -1;
-    }
-    gold = json_object_get(item, "gold");
-    if (!json_is_object(gold)) {
-        return -1;
-    }
-    total = json_object_get(gold, "total");
-    if (!json_is_integer(total)) {
-        return -1;
-    }
-
-    price = json_integer_value(total);
-    return price;
-}
 
 int main(void)
 {
@@ -90,6 +27,7 @@ int main(void)
         .lolItems.size    = 0,
         .root             = NULL,
         .root_i           = NULL,
+        .mainwin          = NULL,
         .champNames       = NULL,
         .lol_V            = NULL,
         .items_URL        = NULL,
@@ -210,29 +148,20 @@ void do_job(context_t *ctx)
         printf("Error while parsing JSON(%d): %s\n", error.line, error.text);
         free_all_exit(1, "err");
     }
-    if (!json_is_object(ctx->root)) {
-        free_all_exit(1, "root !object");
-    }
+    ASSERT_JSON_TYPE(ctx->root, JSON_T_OBJECT, 0);
 
     if (ctx->firstRun) {
         myplayer = json_object_get(ctx->root, "activePlayer");
-        if (!json_is_object(myplayer)) {
-            free_all_exit(1, "myplayer !object");
-        }
+        ASSERT_JSON_TYPE(myplayer, JSON_T_OBJECT, 0);
+
         myriotId = json_object_get(myplayer, "riotId");
-        if (!json_is_string(myriotId)) {
-            free_all_exit(1, "myriotId !string");
-        }
+        ASSERT_JSON_TYPE(myriotId, JSON_T_STRING, 0);
     }
 
     players = json_object_get(ctx->root, "allPlayers");
-    if (!json_is_array(players)) {
-        free_all_exit(1, "players !array");
-    }
+    ASSERT_JSON_TYPE(players, JSON_T_ARRAY, 0);
 
-    
-    size_t i, j;
-    for (i = 0; i < json_array_size(players); i++)
+    for (size_t i = 0; i < json_array_size(players); i++)
     {
         json_t *riotId    = NULL;
 
@@ -242,50 +171,50 @@ void do_job(context_t *ctx)
         int totalgold = 0;
 
         champ = json_array_get(players, i);
-        if (!json_is_object(champ)) {
-            free_all_exit(1, "champ !object");
-        }
+        ASSERT_JSON_TYPE(champ, JSON_T_OBJECT, 0);
 
         if (ctx->firstRun) {
             riotId = json_object_get(champ, "riotId");
-            if (!json_is_string(riotId)) {
-                free_all_exit(1, "riotId !string");
-            }
+            ASSERT_JSON_TYPE(riotId, JSON_T_STRING, 0);
+
             if (json_equal(riotId, myriotId)) {
                 myplayerTeam = json_object_get(champ, "team");
-                if (!json_is_string(myplayerTeam)) {
-                    free_all_exit(1, "myplayerTeam !string");
-                }
+                ASSERT_JSON_TYPE(myplayerTeam, JSON_T_STRING, 0);
+
                 ctx->myTeam = (strcmp(json_string_value(myplayerTeam), "ORDER") == 0)? 0 : 1;
             }
         }
 
         items = json_object_get(champ, "items");
-        if (!json_is_array(items)) {
-            free_all_exit(1, "items !array");
-        }
-        for (j = 0; j < json_array_size(items); j++) {
-            json_t *item, *itemID;
+        ASSERT_JSON_TYPE(items, JSON_T_ARRAY, 0);
+
+        for (size_t j = 0; j < json_array_size(items); j++) {
+            json_t *item   = NULL; 
+            json_t *itemID = NULL;
+            json_t *count  = NULL;
+
+            uint8_t itemstack = 1;
 
             item = json_array_get(items, j);
-            if (!json_is_object(item)) {
-                free_all_exit(1, "item !object");
-            }
+            ASSERT_JSON_TYPE(item, JSON_T_OBJECT, 0);
 
             itemID = json_object_get(item, "itemID");
-            if (!json_is_integer(itemID)) {
-                free_all_exit(1, "itemID !int");
+            ASSERT_JSON_TYPE(itemID, JSON_T_INTEGER, 0);
+
+            count = json_object_get(item, "count");
+            if ((json_is_integer(count)) && (json_integer_value(count) > itemstack)) {
+                itemstack = json_integer_value(count);
             }
-            
-            totalgold += get_price_of(ctx->root_i, (int)json_integer_value(itemID));
+
+            ASSERT_JSON_TYPE(count, JSON_T_INTEGER, 0);
+
+            totalgold += ( itemstack * get_price_of(ctx->root_i, (int)json_integer_value(itemID)) );
         }
         ctx->playergold[i] = totalgold;
 
 
         champName = json_object_get(champ, "championName");
-        if (!json_is_string(champName)) {
-            free_all_exit(1, "champName !string");
-        }
+        ASSERT_JSON_TYPE(champName, JSON_T_STRING, 0);
 
         if ((ctx->champNames[i] != NULL) || (ctx->firstRun))
         {
@@ -324,20 +253,65 @@ char *get_lol_v(char *data)
         json_decref(root_v);
         free_all_exit(1, "err");
     }
-
-    if (!json_is_array(root_v)) {
-        json_decref(root_v);
-        free_all_exit(1, "root_v !array");
-    }
+    ASSERT_JSON_TYPE(root_v, JSON_T_ARRAY, JSON_T_DO_DECREF);
 
     current_v = json_array_get(root_v, 0);
-    if (!json_is_string(current_v)) {
-        json_decref(root_v);
-        free_all_exit(1, "current_v !string");
-    }
+    ASSERT_JSON_TYPE(current_v, JSON_T_STRING, JSON_T_DO_DECREF);
 
     char *version_string = strdup(json_string_value(current_v));
     json_decref(root_v);
 
     return version_string;
+}
+
+
+//retrieve items json database
+void get_lol_items(json_t **root_i, char *data)
+{
+
+    json_error_t error_i;
+    json_t *root_tmp = NULL;
+    json_t *data_tmp = NULL;
+    root_tmp = json_loads(data, 0, &error_i);
+
+    if (!root_tmp) {
+        printf("ERROR: %s\n", error_i.text);
+        printf("Error while parsing JSON(%d): %s\n", error_i.line, error_i.text);
+        json_decref(root_tmp);
+        free_all_exit(1, "err");
+    }
+    ASSERT_JSON_TYPE(root_tmp, JSON_T_OBJECT, JSON_T_DO_DECREF);
+
+    data_tmp = json_object_get(root_tmp, "data");
+    ASSERT_JSON_TYPE(root_tmp, JSON_T_OBJECT, JSON_T_DO_DECREF);
+
+    *root_i = json_deep_copy(data_tmp); //make a deep copy of items database so layers above it can be freed
+    json_decref(root_tmp);
+}
+
+//get total price of given itemID
+int get_price_of(json_t *root_i, int id)
+{
+    if (root_i == NULL) {
+        return -1;
+    }
+    int price;
+    json_t *item = NULL;
+    json_t *gold = NULL;
+    json_t *total = NULL;
+
+    char itemID[6];
+    snprintf(itemID, sizeof(itemID), "%d", id);
+
+    item = json_object_get(root_i, itemID);
+    ASSERT_JSON_TYPE(item, JSON_T_OBJECT, 0);
+
+    gold = json_object_get(item, "gold");
+    ASSERT_JSON_TYPE(gold, JSON_T_OBJECT, 0);
+
+    total = json_object_get(gold, "total");
+    ASSERT_JSON_TYPE(total, JSON_T_INTEGER, 0);
+
+    price = json_integer_value(total);
+    return price;
 }

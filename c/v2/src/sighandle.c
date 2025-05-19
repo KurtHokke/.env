@@ -1,5 +1,5 @@
-
 #include "utils.h"
+#include <ncurses.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -21,6 +21,7 @@ void free_all_exit(int e, const char *msg)
 
              (ctx->root != NULL)? json_decref(ctx->root)      : (void)printf("ctx->root was NULL\n");
            (ctx->root_i != NULL)? json_decref(ctx->root_i)    : (void)printf("ctx->root_i was NULL\n");
+          (ctx->mainwin != NULL)? cleanup_tui(ctx->mainwin)   : (void)printf("ctx->mainwin was NULL\n");
     (ctx->response.data != NULL)? free(ctx->response.data)    : (void)printf("ctx->response.data was NULL\n");
  (ctx->lolVersions.data != NULL)? free(ctx->lolVersions.data) : (void)printf("ctx->lolVersions.data was NULL\n");
     (ctx->lolItems.data != NULL)? free(ctx->lolItems.data)    : (void)printf("ctx->lolItems.data was NULL\n");
@@ -30,6 +31,7 @@ void free_all_exit(int e, const char *msg)
     
     ctx->root = NULL;
     ctx->root_i = NULL;
+    ctx->mainwin = NULL;
     ctx->response.data = NULL;
     ctx->lolVersions.data = NULL;
     ctx->lolItems.data = NULL;
