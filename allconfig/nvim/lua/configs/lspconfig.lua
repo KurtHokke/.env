@@ -51,6 +51,14 @@ lspconfig.clangd.setup({
     on_attach = function(client, bufnr)
         client.server_capabilities.documentFormattingProvider = false
         client.server_capabilities.documentRangeFormattingProvider = false
+        -- client.server_capabilities.semanticTokensProvider= {
+            -- legend = {
+                -- tokenTypes = { "variable", "function", "class", "method", "parameter", "keyword", "string", "number", "operator" },
+                -- tokenModifiers = { "declaration", "definition", "readonly", "static", "deprecated" },
+            -- },
+            -- range = true,
+            -- full = true,
+        -- }
         on_attach(client, bufnr)
     end,
     on_init = on_init,
