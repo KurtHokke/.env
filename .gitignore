@@ -1,4 +1,5 @@
 **/.vscode
 **/main
-
+**/.cache
+**/cache
 
