@@ -22,13 +22,13 @@ nautilus = [
 termopen = [
     { run = '${ySCRIPTS}/yazi "open_term" "$0"', block = true, desc = "Run in Terminal" }
 ]
-vim_edit = [
-    { run = '${ySCRIPTS}/yazi "vim_edit" "$0"', block = true, desc = "Edit with Vim" }
+nvim_edit = [
+    { run = '${ySCRIPTS}/yazi "nvim_edit" "$0"', block = true, desc = "Edit with NeoVim" }
 ]
 
 [open]
 rules = [
-    { name = "*", use = ["vim_edit"] },
+    { name = "*", use = ["nvim_edit"] },
     { mime = "inode/directory", use = "code_dir" },
 
 ]

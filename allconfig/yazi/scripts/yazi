@@ -21,9 +21,9 @@ open_term() { local file="$1"
         chmod +x "$file" && bash -c $file
     fi
 }
-vim_edit() { local file="$1"
+nvim_edit() { local file="$1"
     if [ -f "$file" ]; then
-        vim "$file"
+        nvim "$file"
     fi
 }
 open_codium() { local file="$1"
@@ -43,8 +43,8 @@ case "$arg" in
   open_term)
     open_term "$path"
   ;;
-  vim_edit)
-    vim_edit "$path"
+  nvim_edit)
+    nvim_edit "$path"
   ;;
   open_codium)
     open_codium "$path"
