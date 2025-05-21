@@ -258,4 +258,5 @@
         "-*,portability-*"
     ],
     "C_Cpp.default.cStandard": "gnu11",
+    "workbench.editor.empty.hint": "hidden",
 }

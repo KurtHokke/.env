@@ -1,0 +1,6 @@
+Find the Maximum and Minimum Elements in an Array
+
+
+
+
+int arr[10] = {12, 45, 7, 23, 56, 89, 34, 16, 78, 90};
