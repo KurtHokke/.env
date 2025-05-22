@@ -1,16 +1,22 @@
 return {
   {
+    "mason-org/mason.nvim",
+    opts = {}
+  },
+  {
     "neovim/nvim-lspconfig",
+  },
+  {
+    "mason-org/mason-lspconfig.nvim",
     dependencies = {
-      -- Mason for managing LSP servers
-      { "williamboman/mason.nvim", config = true },
-      { "williamboman/mason-lspconfig.nvim" },
+        "mason-org/mason.nvim",
+        "neovim/nvim-lspconfig",
     },
     config = function()
       -- Mason setup
       require("mason").setup()
       require("mason-lspconfig").setup({
-        ensure_installed = { "clangd" }, -- Automatically install clangd
+        ensure_installed = { "lua_ls", "clangd" }, -- Automatically install clangd
       })
 
       -- LSP server setup for clangd
@@ -97,6 +103,37 @@ return {
         cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
       end
     end,
+  },
+  {
+    "ray-x/lsp_signature.nvim",
+    event = "InsertEnter",
+    opts = {
+      bind = true,
+      handler_opts = {
+        border = "rounded"
+      }
+    },
+    -- or use config
+    -- config = function(_, opts) require'lsp_signature'.setup({you options}) end
+  },
+  {
+    "rmagatti/logger.nvim",
+  },
+  {
+    "rmagatti/goto-preview",
+    dependencies = { "rmagatti/logger.nvim" },
+    event = "BufEnter",
+    config = true, -- necessary as per https://github.com/rmagatti/goto-preview/issues/88
+    opts = {
+      vim.keymap.set("n", "gp", "<cmd>lua require('goto-preview').goto_preview_definition()<CR>", {noremap=true}),
+      vim.keymap.set("n", "gP", "<cmd>lua require('goto-preview').close_all_win()<CR>", {noremap=true})
+    }
+  },
+  {
+    "Kasama/nvim-custom-diagnostic-highlight",
+    config = function()
+      require("nvim-custom-diagnostic-highlight").setup {}
+    end
   },
 }
 

@@ -17,12 +17,28 @@ return {
       "nvim-tree/nvim-web-devicons",
     },
     config = function()
+      local api = require("nvim-tree.api")
+      local function toggle_tree()
+        if api.tree.is_visible() then
+          api.tree.close()
+        else
+          api.tree.open()
+        end
+      end
+      local function my_on_attach(bufnr)
+        local function opts(desc)
+          return { desc = "nvim-tree: " .. desc, buffer = bufnr, noremap = true, silent = true, nowait = true }
+        end
+        api.config.mappings.default_on_attach(bufnr)
+        vim.keymap.set("n", "<leader>y", api.tree.close, opts("Close Tree"))
+      end
       require("nvim-tree").setup {
+        on_attach = my_on_attach,
         sort = {
           sorter = "case_sensitive",
         },
         view = {
-          width = 30,
+          width = 20,
         },
         renderer = {
           group_empty = true,
@@ -31,6 +47,7 @@ return {
           dotfiles = true,
         },
       }
+      vim.keymap.set("n", "<leader>y", toggle_tree, { desc = "Toggle NvimTree", noremap = true, silent = true })
     end,
   },
   {
@@ -40,10 +57,10 @@ return {
       local configs = require("nvim-treesitter.configs")
 
       configs.setup({
-        ensure_installed = { "c", "lua", "vim", "vimdoc", "query", "elixir", "heex", "javascript", "html" },
+        ensure_installed = { "c", "hyprlang", "lua", "vim", "vimdoc", "query", "elixir", "heex", "javascript", "html" },
         sync_install = false,
         highlight = { enable = true },
-        indent = { enable = true },  
+        indent = { enable = true }
       })
     end,
   },

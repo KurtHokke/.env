@@ -259,4 +259,6 @@
     ],
     "C_Cpp.default.cStandard": "gnu11",
     "workbench.editor.empty.hint": "hidden",
+    "doxdocgen.generic.authorName": "Erik Johansson",
+    "doxdocgen.generic.authorEmail": "rednoxsafeg@gmail.com",
 }
