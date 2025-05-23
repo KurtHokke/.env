@@ -16,7 +16,7 @@ map("n", "<leader>`", "<CMD>Inspect<CR>")
 -- map("n", "<A-r>", "<CMD>luafile ~/.config/nvim/lua/hlConfig.lua<CR>")
 -- local quotejump = require("quotejump")
 -- map({"n","i"}, "<A-j>", quotejump.jump_to_closing_quote, { desc = "Jump to before closing quote" })
-
+-- map("v", "<C-c>", "!echo <C-r>=escape(substitute(shellescape(getreg('\"')), '\n', '\r', 'g'), '#%!')<CR> <Bar> clip.exe<CR><CR>")
 
 map({"n", "i"}, "<A-u>", "<CMD>u<CR>")
 
@@ -24,6 +24,8 @@ map("c", "<C-a>", "<home>")
 map("c", "<C-e>", "<end>")
 
 map("n", "<A-r>", "<CMD>luafile ~/.config/nvim/lua/hlConfig.lua<CR>")
+
+map("n", "<leader>win", "<CMD>set clipboard+=unnamedplus<CR>")
 
 local treetoggle = require("funcs.treetoggle")
 map("n", "<leader>e", treetoggle.f)
