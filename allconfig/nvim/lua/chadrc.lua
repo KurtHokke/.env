@@ -8,10 +8,11 @@ local M = {}
 M.base46 = {
 	theme = "ayu_dark",
 
-	-- hl_override = {
-	-- 	Comment = { italic = true },
-	-- 	["@comment"] = { italic = true },
-	-- },
+	hl_override = {
+	  -- ["@lsp.typemod.function.globalScope.c"] = {  }
+  -- Comment = { italic = true },
+	-- ["@comment"] = { italic = true },
+	},
 }
 
 -- M.nvdash = { load_on_startup = true }

@@ -44,6 +44,7 @@ alias -- tarz='tar-use-zstd'
 alias -- rust-by-practice='cd "${PROJECTS_DIR}/rust/rust-by-practice" && mdbook serve en/'
 
 alias hyprcfg='nvim ~/.config/hypr/hyprland.conf'
+alias nvimcfg='prevloc="$(pwd)"; cd ~/.config/nvim && nvim && cd "$prevloc"'
 
 alias \?='questionmark'
 alias sudu='sudo -u $USER'
