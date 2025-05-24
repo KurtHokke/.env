@@ -15,6 +15,10 @@ desc = "Jump to char"
 on   = "<Enter>"
 run  = "plugin smart-enter"
 desc = "Enter the child directory, or open the file"
+[[manager.prepend_keymap]]
+on   = "e"
+run  = "plugin smart-enter"
+desc = "Enter the child directory, or open the file"
 
 [[manager.prepend_keymap]]
 on   = "<C-t>"
@@ -57,8 +61,8 @@ keymap = [
 	{ on = "<S-PageDown>",   run = "arrow bot",  desc = "Move cursor to the bottom" },
 
 	# Navigation
-	{ on = "<Left>", run = "leave", desc = "Go back to the parent directory" },
-	{ on = "<Right>", run = "enter", desc = "Enter the child directory" },
+	{ on = "h", run = "leave", desc = "Go back to the parent directory" },
+	{ on = "l", run = "enter", desc = "Enter the child directory" },
 
 	{ on = "<Left>",  run = "leave", desc = "Go back to the parent directory" },
 	{ on = "<Right>", run = "enter", desc = "Enter the child directory" },
@@ -102,7 +106,7 @@ keymap = [
 	{ on = "r",         run = "rename --cursor=before_ext",  desc = "Rename selected file(s)" },
 	{ on = ";",         run = "shell --interactive",         desc = "Run a shell command" },
 	{ on = ":",         run = "shell --block --interactive", desc = "Run a shell command (block until finishes)" },
-	{ on = "h",         run = "hidden toggle",               desc = "Toggle the visibility of hidden files" },
+	{ on = "<C-h>",         run = "hidden toggle",               desc = "Toggle the visibility of hidden files" },
 	{ on = "s",         run = "search --via=fd",             desc = "Search files by name via fd" },
 	{ on = "S",         run = "search --via=rg",             desc = "Search files by content via ripgrep" },
 	{ on = "<C-s>",     run = "escape --search",             desc = "Cancel the ongoing search" },
@@ -212,8 +216,8 @@ keymap = [
 
 	{ on = "k",     run = "arrow -1", desc = "Move cursor up" },
 	{ on = "j",     run = "arrow 1",  desc = "Move cursor down" },
-	{ on = "<C-h>", run = "swipe -1", desc = "Swipe to the previous file" },
-	{ on = "l",     run = "swipe 1",  desc = "Swipe to the next file" },
+	# { on = "<C-h>", run = "swipe -1", desc = "Swipe to the previous file" },
+	# { on = "l",     run = "swipe 1",  desc = "Swipe to the next file" },
 
 	{ on = "<Up>",    run = "arrow -1", desc = "Move cursor up" },
 	{ on = "<Down>",  run = "arrow 1",  desc = "Move cursor down" },
@@ -265,8 +269,8 @@ keymap = [
 	{ on = "r", run = "replace",                            desc = "Replace a single character" },
 
 	# Character-wise movement
-	{ on = "<C-h>",       run = "move -1", desc = "Move back a character" },
-	{ on = "l",           run = "move 1",  desc = "Move forward a character" },
+	# { on = "<C-h>",       run = "move -1", desc = "Move back a character" },
+	# { on = "l",           run = "move 1",  desc = "Move forward a character" },
 	{ on = "<Left>",      run = "move -1", desc = "Move back a character" },
 	{ on = "<Right>",     run = "move 1",  desc = "Move forward a character" },
 	{ on = "<C-b>",       run = "move -1", desc = "Move back a character" },
@@ -277,7 +281,7 @@ keymap = [
 	{ on = "B",     run = "backward --far",              desc = "Move back to the start of the current or previous WORD" },
 	{ on = "w",     run = "forward",                     desc = "Move forward to the start of the next word" },
 	{ on = "W",     run = "forward --far",               desc = "Move forward to the start of the next WORD" },
-	{ on = "e",     run = "forward --end-of-word",       desc = "Move forward to the end of the current or next word" },
+	# { on = "e",     run = "forward --end-of-word",       desc = "Move forward to the end of the current or next word" },
 	{ on = "E",     run = "forward --far --end-of-word", desc = "Move forward to the end of the current or next WORD" },
 	{ on = "<A-b>", run = "backward",                    desc = "Move back to the start of the current or previous word" },
 	{ on = "<A-f>", run = "forward --end-of-word",       desc = "Move forward to the end of the current or next word" },
@@ -295,7 +299,7 @@ keymap = [
 	# Delete
 	{ on = "<Backspace>", run = "backspace",         desc = "Delete the character before the cursor" },
 	{ on = "<Delete>",    run = "backspace --under", desc = "Delete the character under the cursor" },
-	{ on = "<C-h>",       run = "backspace",         desc = "Delete the character before the cursor" },
+	# { on = "<C-h>",       run = "backspace",         desc = "Delete the character before the cursor" },
 	{ on = "<C-d>",       run = "backspace --under", desc = "Delete the character under the cursor" },
 
 	# Kill

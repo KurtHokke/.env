@@ -100,12 +100,12 @@ int main(void)
     mvprintw(y - 1, x - 4, "#%.02x%.02x%.02x", rgb[0][0], rgb[0][1], rgb[0][2]);
     refresh();
     attroff(COLOR_PAIR(20));
-    for (int i = 0; i < 3; i++)
-    {
-      mvprintw(10 + i, 10, "%d", rgb[0][i]);
-      mvprintw(10 + i, 15, "%d", rgb[1][i]);
-      refresh();
-    }
+    // for (int i = 0; i < 3; i++)
+    // {
+    //   mvprintw(10 + i, 10, "%d", rgb[0][i]);
+    //   mvprintw(10 + i, 15, "%d", rgb[1][i]);
+    //   refresh();
+    // }
     // printw("%d\n", rgb[0]);
     // printw("%d\n", rgb[1]);
     // printw("%d\n", rgb[2]);

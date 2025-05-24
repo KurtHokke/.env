@@ -4,6 +4,18 @@ require "nvchad.mappings"
 local map = vim.keymap.set
 local umap = vim.keymap.del
 
+vim.keymap.set({'n', 'v'}, '<Up>', '<Nop>', { noremap = true })
+vim.keymap.set({'n', 'v'}, '<Down>', '<Nop>', { noremap = true })
+vim.keymap.set({'n', 'v'}, '<Left>', '<Nop>', { noremap = true })
+vim.keymap.set({'n', 'v'}, '<Right>', '<Nop>', { noremap = true })
+
+map("n", "e", "<Enter>")
+
+map("i", "<A-h>", "<Left>")
+map("i", "<A-j>", "<Down>")
+map("i", "<A-k>", "<Up>")
+map("i", "<A-l>", "<Right>")
+
 map("n", ";", ":", { desc = "CMD enter command mode" })
 map("i", "jk", "<ESC>")
 map("n", "<leader>W", "<CMD>wqa<CR>")
@@ -17,7 +29,6 @@ map("n", "<leader>`", "<CMD>Inspect<CR>")
 -- local quotejump = require("quotejump")
 -- map({"n","i"}, "<A-j>", quotejump.jump_to_closing_quote, { desc = "Jump to before closing quote" })
 -- map("v", "<C-c>", "!echo <C-r>=escape(substitute(shellescape(getreg('\"')), '\n', '\r', 'g'), '#%!')<CR> <Bar> clip.exe<CR><CR>")
-
 map({"n", "i"}, "<A-u>", "<CMD>u<CR>")
 
 map("c", "<C-a>", "<home>")
@@ -27,9 +38,16 @@ map("n", "<A-r>", "<CMD>luafile ~/.config/nvim/lua/hlConfig.lua<CR>")
 
 map("n", "<leader>win", "<CMD>set clipboard+=unnamedplus<CR>")
 
-local treetoggle = require("funcs.treetoggle")
-map("n", "<leader>e", treetoggle.f)
-map("n", "<A-e>", treetoggle.f)
+local mytree = require("funcs.myNvimTree")
+map("n", "<A-e>", function()
+  mytree.f({ toggle = true })
+end)
+map("n", "<C-=>", function()
+  mytree.f({ resize = { relative = 1 } })
+end)
+map("n", "<C-->", function()
+  mytree.f({ resize = { relative = -1 } })
+end)
 
 local quotejump = require("funcs.quotejump")
 map({"n", "i"}, "<A-.>", quotejump.jump_to_closing_quote)
