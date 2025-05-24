@@ -64,8 +64,6 @@ export PATH="$PATH:$VCPKG_ROOT:$MYPATH"
 export XDG_DATA_HOME="$HOME/.local/share"
 export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/opt/cuda/lib64:/opt/cuda/lib"
 
-
-
 export VCPKG_DISABLE_METRICS=true
 
 prompt() {
