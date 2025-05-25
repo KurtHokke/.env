@@ -1,0 +1,8 @@
+[
+{
+  "directory": "/home/src/.env/allconfig/nvim/test",
+  "command": "/usr/sbin/cc   -O0 -Wall -Wextra -Wpedantic -g -std=gnu11 -o main.c.o -c main.c",
+  "file": "main.c",
+  "output": "main.c.o"
+}
+]

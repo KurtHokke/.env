@@ -69,6 +69,40 @@ M.defaults = function()
       },
     },
   }
+  local clangd_lsp_settings = {
+    capabilities = {
+      offsetEncoding = { "utf-8", "utf-16" },
+      textDocument = {
+        completion = {
+          editsNearCursor = true
+        }
+      }
+    },
+    cmd = {
+      "clangd",
+      "--background-index",
+      "--clang-tidy",
+      "--header-insertion=iwyu",
+      "--completion-style=detailed",
+      "--function-arg-placeholders",
+      "--fallback-style=llvm",
+    },
+    filetypes = { "c", "cpp", "h", "hpp" },
+    root_markers = {
+      ".clangd",
+      ".clang-tidy",
+      ".clang-format",
+      "compile_commands.json",
+      "compile_flags.txt",
+      "Makefile",
+      "configure.ac",
+      "configure.in",
+      "config.h.in",
+      "meson.build",
+      "meson_options.txt",
+      "build.ninja"
+    },
+  }
 
   -- Support 0.10 temporarily
 
@@ -76,6 +110,8 @@ M.defaults = function()
     vim.lsp.config("*", { capabilities = M.capabilities, on_init = M.on_init })
     vim.lsp.config("lua_ls", { settings = lua_lsp_settings })
     vim.lsp.enable "lua_ls"
+    vim.lsp.config("clangd", { settings = clangd_lsp_settings })
+    vim.lsp.enable "clangd"
   else
     require("lspconfig").lua_ls.setup {
       capabilities = M.capabilities,
