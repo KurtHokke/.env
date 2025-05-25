@@ -84,7 +84,7 @@ M.defaults = function()
       "--clang-tidy",
       "--header-insertion=iwyu",
       "--completion-style=detailed",
-      "--function-arg-placeholders",
+      "--function-arg-placeholders=false",
       "--fallback-style=llvm",
     },
     filetypes = { "c", "cpp", "h", "hpp" },
@@ -110,8 +110,8 @@ M.defaults = function()
     vim.lsp.config("*", { capabilities = M.capabilities, on_init = M.on_init })
     vim.lsp.config("lua_ls", { settings = lua_lsp_settings })
     vim.lsp.enable "lua_ls"
-    vim.lsp.config("clangd", { settings = clangd_lsp_settings })
-    vim.lsp.enable "clangd"
+    -- vim.lsp.config("clangd", { settings = clangd_lsp_settings })
+    -- vim.lsp.enable "clangd"
   else
     require("lspconfig").lua_ls.setup {
       capabilities = M.capabilities,
@@ -119,6 +119,16 @@ M.defaults = function()
       settings = lua_lsp_settings,
     }
   end
+  require("lspconfig").clangd.setup {
+    on_attach = function(client, bufnr)
+      print(vim.inspect(client.server_capabilities))
+      client.server_capabilities.signatureHelpProvider = false
+      M.on_attach(client, bufnr)
+    end,
+    -- capabilities = vim.tbl_deep_extend("force", M.capabilities, clangd_lsp_settings.capabilities),
+    cmd = clangd_lsp_settings.cmd,
+    root_markers = clangd_lsp_settings.root_markers,
+  }
 end
 
 return M

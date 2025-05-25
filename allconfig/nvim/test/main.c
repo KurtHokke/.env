@@ -10,7 +10,7 @@ enum HEJ {
 int main(int argc) {
   const int yes = 1;
   if (argc) {
-
+  
   }
   while (1) {
     if (1) {

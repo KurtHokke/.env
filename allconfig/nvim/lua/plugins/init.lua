@@ -38,6 +38,7 @@ return {
   },
   {
     "folke/which-key.nvim",
+    -- lazy = false,
     keys = { "<leader>", "<c-w>", '"', "'", "`", "c", "v", "g" },
     cmd = "WhichKey",
     opts = {},
@@ -46,7 +47,7 @@ return {
     "mason-org/mason.nvim",
     cmd = { "Mason", "MasonInstall", "MasonUpdate" },
     opts = function()
-      return require("configs.mason")
+      return require("configs.masoncfg")
     end,
   },
   {
@@ -65,6 +66,16 @@ return {
         { "mason-org/mason.nvim", opts = {} },
         "neovim/nvim-lspconfig",
     },
+  },
+  {
+    "p00f/clangd_extensions.nvim",
+    lazy = false,
+    opts = function()
+      return require("configs.lsp.clangd_ext")
+    end,
+    config = function(_, opts)
+      require("clangd_extensions").setup(opts)
+    end,
   },
   {
     "hrsh7th/nvim-cmp",
@@ -127,15 +138,15 @@ return {
     event = "BufEnter",
     config = true, -- necessary as per https://github.com/rmagatti/goto-preview/issues/88
   },
-  {
-    "rachartier/tiny-inline-diagnostic.nvim",
-    event = "VeryLazy", -- Or `LspAttach`
-    priority = 1000, -- needs to be loaded in first
-    config = function()
-        require('tiny-inline-diagnostic').setup()
-        vim.diagnostic.config({ virtual_text = false }) -- Only if needed in your configuration, if you already have native LSP diagnostics
-    end
-  },
+  -- {
+  --   "rachartier/tiny-inline-diagnostic.nvim",
+  --   event = "VeryLazy", -- Or `LspAttach`
+  --   priority = 1000, -- needs to be loaded in first
+  --   config = function()
+  --       require('tiny-inline-diagnostic').setup()
+  --       vim.diagnostic.config({ virtual_text = false }) -- Only if needed in your configuration, if you already have native LSP diagnostics
+  --   end
+  -- },
   {
     "soulis-1256/eagle.nvim",
     keys = {
