@@ -14,6 +14,11 @@ map("i", "<A-j>", "<Down>", { noremap = true, silent = true, desc = "Move down i
 map("i", "<A-k>", "<Up>", { noremap = true, silent = true, desc = "Move up in insert mode" })
 map("i", "<A-l>", "<Right>", { noremap = true, silent = true, desc = "Move right in insert mode" })
 
+map("n", "<A-h>", "5h", { noremap = true, silent = true, })
+map("n", "<A-j>", "5j", { noremap = true, silent = true, })
+map("n", "<A-k>", "5k", { noremap = true, silent = true, })
+map("n", "<A-l>", "5l", { noremap = true, silent = true, })
+
 map("n", ";", ":", { desc = "CMD enter command mode" })
 -- map("i", "jk", "<ESC>")
 map("n", "<leader>W", "<CMD>wqa<CR>")
@@ -53,7 +58,7 @@ map("n", "<A-Down>", function ()
 end)
 
 map({"n", "i"}, "<A-g>", "<CMD>lua require('goto-preview').goto_preview_definition()<CR>")
-
+map("n", "<A-w>", "<CMD>WhichKey<CR>")
 
 -- nnoremap gpd <cmd>lua require('goto-preview').goto_preview_definition()<CR>
 -- nnoremap gpt <cmd>lua require('goto-preview').goto_preview_type_definition()<CR>

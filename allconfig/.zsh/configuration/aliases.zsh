@@ -45,6 +45,7 @@ alias -- rust-by-practice='cd "${PROJECTS_DIR}/rust/rust-by-practice" && mdbook 
 
 alias hyprcfg='nvim ~/.config/hypr/hyprland.conf'
 alias nvimcfg='prevloc="$(pwd)"; cd ~/.config/nvim && nvim && cd "$prevloc"'
+alias n='nvim '
 
 alias \?='questionmark'
 alias sudu='sudo -u $USER'

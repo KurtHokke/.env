@@ -22,7 +22,6 @@ return {
   },
   {
     "romgrk/barbar.nvim",
-    -- lazy = false,
     event = "BufReadPost",
     dependencies = {
       -- 'lewis6991/gitsigns.nvim', -- OPTIONAL: for git status
@@ -39,7 +38,7 @@ return {
   {
     "folke/which-key.nvim",
     -- lazy = false,
-    keys = { "<leader>", "<c-w>", '"', "'", "`", "c", "v", "g" },
+    -- keys = { "<leader>", "<c-w>", '"', "'", "`", "c", "v", "g" },
     cmd = "WhichKey",
     opts = {},
   },
@@ -59,11 +58,14 @@ return {
   },
   {
     "mason-org/mason-lspconfig.nvim",
-    opts = {
-        ensure_installed = { "lua_ls", "clangd", "bashls" },
-    },
+    opts = {},
     dependencies = {
-        { "mason-org/mason.nvim", opts = {} },
+        {
+          "mason-org/mason.nvim",
+          opts = {
+            ensure_installed = { "lua_ls", "clangd", "codelldb", "bashls" },
+          }
+        },
         "neovim/nvim-lspconfig",
     },
   },
@@ -71,12 +73,22 @@ return {
     "p00f/clangd_extensions.nvim",
     lazy = false,
     opts = function()
-      return require("configs.lsp.clangd_ext")
+      return require("configs.lsp_config.clangd_ext")
     end,
     config = function(_, opts)
       require("clangd_extensions").setup(opts)
     end,
   },
+  -- {
+  --   "ray-x/lsp_signature.nvim",
+  --   event = "InsertEnter",
+  --   opts = function()
+  --     return require("configs.lsp_config.signature")
+  --   end,
+  --   -- or use config
+  --   config = function(_, opts) require'lsp_signature'.setup({opts})
+  --   end,
+  -- },
   {
     "hrsh7th/nvim-cmp",
     event = "InsertEnter",
@@ -138,6 +150,14 @@ return {
     event = "BufEnter",
     config = true, -- necessary as per https://github.com/rmagatti/goto-preview/issues/88
   },
+  {
+    'nvim-lualine/lualine.nvim',
+    lazy = false,
+    dependencies = { 'nvim-tree/nvim-web-devicons' },
+    opts = function()
+      return require("configs.statuslinecfg")
+    end,
+  },
   -- {
   --   "rachartier/tiny-inline-diagnostic.nvim",
   --   event = "VeryLazy", -- Or `LspAttach`
@@ -155,5 +175,9 @@ return {
     opts = {
       --override the default values found in config.lua
     },
+  },
+  {
+    "ThePrimeagen/vim-be-good",
+    cmd = { "VimBeGood" },
   },
 }

@@ -1,6 +1,6 @@
 local cmp_ui = require("configs.ui").ui.cmp
 local cmp_style = cmp_ui.style
-local format_color = require("configs.cmp.format")
+local format_color = require("configs.cmp_config.format")
 
 local atom_styled = cmp_style == "atom" or cmp_style == "atom_colored"
 local fields = (atom_styled or cmp_ui.icons_left) and { "kind", "abbr", "menu" } or { "abbr", "kind", "menu" }
@@ -8,7 +8,7 @@ local fields = (atom_styled or cmp_ui.icons_left) and { "kind", "abbr", "menu" }
 local M = {
   formatting = {
     format = function(entry, item)
-      local icons = require("configs.ui").lspkind 
+      local icons = require("configs.ui").lspkind
       local icon = icons[item.kind] or ""
       local kind = item.kind or ""
 

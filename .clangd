@@ -1,0 +1,18 @@
+---
+# Compilation database path (optional; clangd already found yours)
+CompileFlags:
+  CompilationDatabase: allconfig/nvim/test  # Relative to project root
+  Add: [-Wall, -Wextra, -Wpedantic]  # Extra compiler flags
+  Remove: [-Werror]  # Remove unwanted flags
+
+# Enable clang-tidy checks
+Diagnostics:
+  ClangTidy:
+    Add: [performance-*, bugprone-*]  # Enable specific check groups
+    Remove: [readability-identifier-naming]  # Disable specific checks
+
+# Inlay hints (if supported by your clangd version)
+InlayHints:
+  Enabled: Yes
+  ParameterNames: Yes
+  DeducedTypes: Yes

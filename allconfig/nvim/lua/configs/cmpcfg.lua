@@ -1,6 +1,6 @@
 local cmp = require "cmp"
 
-return {
+local options = {
   completion = { completeopt = "menu,menuone" },
 
   snippet = {
@@ -52,5 +52,5 @@ return {
   },
 }
 
--- return vim.tbl_deep_extend("force", options, require "nvchad.cmp")
+return vim.tbl_deep_extend("force", options, require "configs.cmp_config")
 

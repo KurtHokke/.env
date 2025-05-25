@@ -7,12 +7,13 @@ enum HEJ {
 
 #define HEHEHHE 1
 
-int main(int argc) {
+int main(int argc, char **argv) {
   const int yes = 1;
   if (argc) {
-  
+    printf("%s\n", argv[1]);
+    printf("%s")   
   }
-  while (1) {
+  while (yes) {
     if (1) {
       continue;
     } else {

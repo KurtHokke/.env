@@ -17,7 +17,7 @@ M.on_attach = function(_, bufnr)
   end, opts "List workspace folders")
 
   map("n", "<leader>D", vim.lsp.buf.type_definition, opts "Go to type definition")
-  map("n", "<leader>ra", require "configs.lsp.renamer", opts "NvRenamer")
+  map("n", "<leader>ra", require "configs.lsp_config.renamer", opts "NvRenamer")
 end
 
 -- disable semanticTokens
@@ -49,7 +49,7 @@ M.capabilities.textDocument.completion.completionItem = {
 
 M.defaults = function()
   -- dofile(vim.g.base46_cache .. "lsp")
-  require("configs.lsp").diagnostic_config()
+  require("configs.lsp_config").diagnostic_config()
 
   vim.api.nvim_create_autocmd("LspAttach", {
     callback = function(args)
@@ -121,7 +121,7 @@ M.defaults = function()
   end
   require("lspconfig").clangd.setup {
     on_attach = function(client, bufnr)
-      print(vim.inspect(client.server_capabilities))
+      -- print(vim.inspect(client.server_capabilities))
       client.server_capabilities.signatureHelpProvider = false
       M.on_attach(client, bufnr)
     end,
