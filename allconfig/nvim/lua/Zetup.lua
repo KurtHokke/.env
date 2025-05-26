@@ -128,12 +128,13 @@ Z.treesitter = {
 
 
 Z.lsp_config = {
-  lazy = true,
+  -- lazy = true,
   deps = {
     {
       "mason-org/mason-lspconfig.nvim",
       dependencies = {
         "mason-org/mason.nvim",
+        cmd = { "Mason", "MasonInstall", "MasonUpdate" },
         opts = {
           ensure_installed = { "lua_ls", "clangd", "codelldb", "bashls" },
         },
@@ -141,7 +142,35 @@ Z.lsp_config = {
       opts = {},
     },
   },
-  opts = {},
+  config = function()
+    -- LSP capabilities
+    local capabilities = require("cmp_nvim_lsp").default_capabilities()
+    local lspconfig = require("lspconfig")
+    -- LSP servers
+    local servers = { "lua_ls", "clangd", "bashls" }
+    for _, lsp in ipairs(servers) do
+      lspconfig[lsp].setup({
+        capabilities = capabilities,
+        -- Server-specific settings
+        settings = {
+          Lua = {
+            diagnostics = {
+              globals = { "vim" }, -- Recognize Vim globals
+            },
+            workspace = {
+              -- library = vim.api.nvim_get_runtime_file("", true), -- Neovim runtime files
+              library = {
+                vim.fn.expand "$VIMRUNTIME/lua",
+                vim.fn.stdpath "data" .. "/lazy/lazy.nvim/lua/lazy",
+                "${3rd}/luv/library",
+              -- checkThirdParty = false,
+              },
+            },
+          },
+        },
+      })
+    end
+  end
 }
 
 Z.autopairs = {
@@ -163,6 +192,7 @@ Z.autopairs = {
 Z.cmp = {
   event = "InsertEnter",
   deps = {
+    "neovim/nvim-lspconfig",
     "hrsh7th/cmp-path",
     "hrsh7th/cmp-nvim-lsp",
     "hrsh7th/cmp-buffer",
@@ -252,6 +282,7 @@ Z.cmp = {
         { name = 'buffer' },
       })
     })
+    Z.lsp_config.config()
   end,
 }
 
