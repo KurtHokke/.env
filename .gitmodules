@@ -1,0 +1,3 @@
+[submodule "allconfig/wallpapers/arch-minimal-wallpapers"]
+	path = allconfig/wallpapers/arch-minimal-wallpapers
+	url = https://github.com/HomeomorphicHooligan/arch-minimal-wallpapers.git

@@ -20,10 +20,10 @@ map("n", "<A-l>", "5l", { noremap = true, silent = true, })
 
 map("n", ";", ":", { desc = "CMD enter command mode" })
 -- map("i", "jk", "<ESC>")
-map("n", "<leader>W", "<CMD>wqa<CR>")
-map("n", "<leader>w", "<CMD>w<CR>")
-map("n", "<leader>Q", "<CMD>qa<CR>")
-map("n", "<leader>q", "<CMD>q<CR>")
+-- map("n", "<leader>W", "<CMD>wqa<CR>")
+-- map("n", "<leader>w", "<CMD>w<CR>")
+-- map("n", "<leader>Q", "<CMD>qa<CR>")
+-- map("n", "<leader>q", "<CMD>q<CR>")
 map("n", "q", "<CMD>q<CR>")
 map("n", "<leader>`", "<CMD>Inspect<CR>")
 
@@ -32,7 +32,7 @@ map({"n", "i"}, "<A-u>", "<CMD>u<CR>")
 map("c", "<C-a>", "<home>")
 map("c", "<C-e>", "<end>")
 
--- map("n", "<Tab>", "<CMD>BufferNext<CR>")
+map("n", "<Tab>", "<CMD>BufferNext<CR>")
 
 -- local mytree = require("funcs.myNvimTree")
 -- map("n", "<A-e>", function()
