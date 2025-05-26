@@ -54,7 +54,14 @@ return {
   dependencies = Z.lsp_config.deps,
   opts = Z.lsp_config.opts,
 },
-
+{
+  "hrsh7th/nvim-cmp",
+  event = Z.cmp.event,
+  dependencies = Z.cmp.deps,
+  config = function()
+    Z.cmp.config()
+  end,
+},
 -- {
 --   "ray-x/guihua.lua",
 --   lazy = true,
