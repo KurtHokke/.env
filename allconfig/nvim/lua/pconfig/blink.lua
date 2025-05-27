@@ -1,5 +1,5 @@
 local M = {}
-
+-- require'pconfig.trouble'
 M.opts = {
   -- 'default' (recommended) for mappings similar to built-in completions (C-y to accept)
   -- 'super-tab' for mappings similar to vscode (tab to accept)
@@ -15,11 +15,24 @@ M.opts = {
   -- See :h blink-cmp-config-keymap for defining your own keymap
   keymap = {
     preset = 'none',
-    -- ['<CR>'] = { function (cmp) cmp.select_and_accept() end },
     ['<CR>'] = {
       function (cmp)
         if not cmp.is_visible() then return end
         cmp.select_and_accept()
+        return true
+      end,
+      'fallback'
+    },
+    ['<S-CR>'] = {
+      function (cmp)
+        if not cmp.is_visible() then return end
+        cmp.select_and_accept()
+        vim.schedule(function()
+          local row, col = unpack(vim.api.nvim_win_get_cursor(0))
+          vim.api.nvim_win_set_cursor(0, {row, col + 1})
+        end)
+        -- vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes('<Right>', true, false, true),'n', false)
+        -- vim.api.nvim_feedkeys("l", "i", false)
         return true
       end,
       'fallback'
@@ -59,6 +72,8 @@ M.opts = {
       enabled = true,
     },
   },
+
+  snippets = { preset = 'luasnip' },
 
   -- Default list of enabled providers defined so that you can extend it
   -- elsewhere in your config, without redefining it, due to `opts_extend`
