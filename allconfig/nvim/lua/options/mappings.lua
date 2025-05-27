@@ -25,6 +25,7 @@ map("n", ";", ":", { desc = "CMD enter command mode" })
 -- map("n", "<leader>Q", "<CMD>qa<CR>")
 -- map("n", "<leader>q", "<CMD>q<CR>")
 map("n", "q", "<CMD>q<CR>")
+map("n", "Q", "<CMD>qa<CR>")
 map("n", "<leader>`", "<CMD>Inspect<CR>")
 
 -- map("n", "<A-r>", "<CMD>luafile ~/.config/nvim/lua/custom/hlConfig.lua<CR>")
@@ -34,10 +35,10 @@ map("c", "<C-e>", "<end>")
 
 map("n", "<Tab>", "<CMD>BufferNext<CR>")
 
--- local mytree = require("funcs.myNvimTree")
--- map("n", "<A-e>", function()
---   mytree.f({ toggle = true })
--- end)
+local mytree = require("pconfig.nvimtree").mytree
+map("n", "<A-e>", function()
+  mytree({ toggle = true })
+end)
 -- map("n", "<C-=>", function()
 --   mytree.f({ resize = { relative = 1 } })
 -- end)

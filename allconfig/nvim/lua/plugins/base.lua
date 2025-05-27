@@ -12,13 +12,20 @@ return {
     require('onedark').load()
   end,
 },
--- {
---   "romgrk/barbar.nvim",
---   event = Z.barbar.event,
---   dependencies = Z.barbar.deps,
---   init = function()
---     Z.barbar.init()
---   end,
---   opts = Z.barbar.opts,
--- },
+{
+  "nvim-tree/nvim-tree.lua",
+  cmd = { "NvimTreeToggle", "NvimTreeFocus" },
+  opts = function()
+    return require("pconfig.nvimtree").config
+  end,
+},
+{
+  "romgrk/barbar.nvim",
+  event = "BufReadPost",
+  dependencies = { 'nvim-tree/nvim-web-devicons', },
+  init = function()
+    vim.g.barbar_auto_setup = false
+  end,
+  opts = {},
+},
 }
