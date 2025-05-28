@@ -35,6 +35,8 @@ o.undofile = true
 -- interval for writing swap file to disk, also used by gitsigns
 o.updatetime = 250
 
+opt.termguicolors = true
+
 -- disable nvim intro
 opt.shortmess:append "sI"
 

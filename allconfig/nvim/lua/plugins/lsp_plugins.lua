@@ -1,4 +1,3 @@
-
 return {
 {
   'saghen/blink.cmp',
@@ -32,13 +31,8 @@ return {
 },
 {
   'nvim-treesitter/nvim-treesitter',
-  branch = 'main',
+  branch = 'master',
   build = ':TSUpdate',
-  opts = {
-    install_dir = vim.fn.stdpath('data') .. '/site'
-  },
-  config = function()
-    require("pconfig.treesitter").install()
-  end,
+  opts = require'pconfig.treesitter'.opts,
 },
 }

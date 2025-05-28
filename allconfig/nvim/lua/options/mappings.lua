@@ -1,5 +1,5 @@
 local map = vim.keymap.set
-local unmap = vim.keymap.del
+-- local unmap = vim.keymap.del
 map({'n', 'v'}, '<Up>', '<Nop>', { noremap = true })
 map({'n', 'v'}, '<Down>', '<Nop>', { noremap = true })
 map({'n', 'v'}, '<Left>', '<Nop>', { noremap = true })
@@ -33,7 +33,7 @@ map({"n", "i"}, "<A-u>", "<CMD>u<CR>")
 map("c", "<C-a>", "<home>")
 map("c", "<C-e>", "<end>")
 
-map("n", "<Tab>", "<CMD>BufferNext<CR>")
+map("n", "<Tab>", "<CMD>BufferLineCycleNext<CR>")
 
 local mytree = require("pconfig.nvimtree").mytree
 map("n", "<A-e>", function()
@@ -58,7 +58,11 @@ end)
 -- map({"n", "i"}, "<A-g>", "<CMD>lua require('goto-preview').goto_preview_definition()<CR>")
 -- map("n", "<A-w>", "<CMD>WhichKey<CR>")
 
-
+-- local builtin = require('telescope.builtin')
+-- map('n', '<leader>ff', builtin.find_files, { desc = 'Telescope find files' })
+-- map('n', '<leader>fg', builtin.live_grep, { desc = 'Telescope live grep' })
+-- map('n', '<leader>fb', builtin.buffers, { desc = 'Telescope buffers' })
+-- map('n', '<leader>fh', builtin.help_tags, { desc = 'Telescope help tags' })
 
 -- map("i", "jk", "<ESC>")
 
