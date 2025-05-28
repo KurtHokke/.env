@@ -42,7 +42,8 @@ if [[ $setx -eq 1 ]]; then
 fi
 
 export PAGER="less"
-export CMAKE_GENERATOR="Unix Makefiles"
+export CMAKE_GENERATOR="Ninja"
+# export CMAKE_GENERATOR="Unix Makefiles"
 export EDITOR="vim"
 
 if [[ -f "$HOME/.sship" ]]; then
