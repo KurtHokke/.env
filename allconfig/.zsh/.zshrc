@@ -95,6 +95,8 @@ autoload -U +X bashcompinit && bashcompinit
 source "$ZADDONS/yazi/yazi.bash"
 source "$ZADDONS/yazi/ya.bash"
 
+source "$HOME/.cargo/env"
+
 zstyle ':completion:*' menu select
 
 

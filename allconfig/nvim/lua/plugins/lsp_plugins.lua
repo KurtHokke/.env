@@ -1,5 +1,12 @@
 return {
 {
+    'windwp/nvim-autopairs',
+    event = "InsertEnter",
+    config = true
+    -- use opts = {} for passing setup options
+    -- this is equivalent to setup({}) function
+},
+{
   'saghen/blink.cmp',
   dependencies = {
     {
@@ -34,5 +41,9 @@ return {
   branch = 'master',
   build = ':TSUpdate',
   opts = require'pconfig.treesitter'.opts,
+},
+{
+  'mrcjkb/rustaceanvim',
+  version = '^6', -- Recommended
 },
 }

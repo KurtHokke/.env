@@ -1,6 +1,62 @@
+
 local M = {}
--- require'pconfig.trouble'
+
+function M.highlight()
+  local hl = vim.api.nvim_set_hl
+  hl(0, 'Pmenu', { bg = '#0000f0', fg = '#00ff00'})
+end
+
 M.opts = {
+
+  appearance = {
+    -- 'mono' (default) for 'Nerd Font Mono' or 'normal' for 'Nerd Font'
+    -- Adjusts spacing to ensure icons are aligned
+    nerd_font_variant = 'mono'
+  },
+
+  -- (Default) Only show the documentation popup when manually triggered
+  completion = {
+    menu = {
+      winblend = 0,
+      scrollbar = false,
+      border = 'single',
+      draw = {
+        padding = 0,
+        columns = {
+          { "label", "label_description", gap = 1 },
+          { "kind_icon", "kind" }
+        },
+      },
+    },
+    documentation = { auto_show = false },
+    list = { selection = { auto_insert = false }},
+    ghost_text = { enabled = true },
+    accept = { auto_brackets = { enabled = true }},
+  },
+
+  snippets = { preset = 'luasnip' },
+
+  -- Default list of enabled providers defined so that you can extend it
+  -- elsewhere in your config, without redefining it, due to `opts_extend`
+  sources = {
+    default = { 'lsp', 'path', 'snippets', 'buffer' },
+    providers = {
+      snippets = {
+        module = 'blink.cmp.sources.snippets',
+        score_offset = 3,
+      },
+    },
+  },
+
+  -- (Default) Rust fuzzy matcher for typo resistance and significantly better performance
+  -- You may use a lua implementation instead by using `implementation = "lua"` or fallback to the lua implementation,
+  -- when the Rust fuzzy matcher is not available, by using `implementation = "prefer_rust"`
+  --
+  -- See the fuzzy documentation for more information
+  fuzzy = { implementation = "prefer_rust_with_warning" },
+
+  signature = { enabled = true },
+
   -- 'default' (recommended) for mappings similar to built-in completions (C-y to accept)
   -- 'super-tab' for mappings similar to vscode (tab to accept)
   -- 'enter' for enter to accept
@@ -54,41 +110,6 @@ M.opts = {
       'fallback'
     },
   },
-
-  appearance = {
-    -- 'mono' (default) for 'Nerd Font Mono' or 'normal' for 'Nerd Font'
-    -- Adjusts spacing to ensure icons are aligned
-    nerd_font_variant = 'mono'
-  },
-
-  -- (Default) Only show the documentation popup when manually triggered
-  completion = {
-    documentation = { auto_show = false },
-    list = { selection = {
-      -- preselect = false,
-      auto_insert = false
-    } },
-    ghost_text = {
-      enabled = true,
-    },
-  },
-
-  snippets = { preset = 'luasnip' },
-
-  -- Default list of enabled providers defined so that you can extend it
-  -- elsewhere in your config, without redefining it, due to `opts_extend`
-  sources = {
-    default = { 'lsp', 'path', 'snippets', 'buffer' },
-  },
-
-  -- (Default) Rust fuzzy matcher for typo resistance and significantly better performance
-  -- You may use a lua implementation instead by using `implementation = "lua"` or fallback to the lua implementation,
-  -- when the Rust fuzzy matcher is not available, by using `implementation = "prefer_rust"`
-  --
-  -- See the fuzzy documentation for more information
-  fuzzy = { implementation = "prefer_rust_with_warning" },
-
-  signature = { enabled = true }
 }
 M.opts_extend = { "sources.default" }
 return M

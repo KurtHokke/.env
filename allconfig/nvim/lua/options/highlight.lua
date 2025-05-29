@@ -1,3 +1,6 @@
+
+require'pconfig.blink'.highlight()
+
 local hl = vim.api.nvim_set_hl
 hl(0, 'CursorLineNr', { fg = '#ffa200' })
 hl(0, 'LineNr', { fg = '#ffffff' })

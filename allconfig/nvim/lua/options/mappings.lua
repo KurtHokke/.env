@@ -1,22 +1,48 @@
 local map = vim.keymap.set
 -- local unmap = vim.keymap.del
-map({'n', 'v'}, '<Up>', '<Nop>', { noremap = true })
-map({'n', 'v'}, '<Down>', '<Nop>', { noremap = true })
-map({'n', 'v'}, '<Left>', '<Nop>', { noremap = true })
-map({'n', 'v'}, '<Right>', '<Nop>', { noremap = true })
+
+local nrs = {
+  noremap = true,
+  silent = true,
+}
+local rs = {
+  remap = true,
+  silent = true,
+}
+
+map({'n', 'i'}, '<S-CR>', function ()
+  local jump = require'functions.jump_to_closing'.jump
+  jump()
+end)
+
+map('n', 'u', '<Nop>', nrs)
+
+map({'n', 'v'}, '<Up>', '<Nop>', nrs)
+map({'n', 'v'}, '<Down>', '<Nop>', nrs)
+map({'n', 'v'}, '<Left>', '<Nop>', nrs)
+map({'n', 'v'}, '<Right>', '<Nop>', nrs)
+
+map('n', '<CR>', 'm`O<ESC>``')
+-- map('n', '<S-CR>', 'm`kdd``')
+
+map('n', '<A-CR>', 'm`o<ESC>``')
+map('n', '<C-CR>', 'm`jdd``')
+
+-- map('n', '<leader>c', 'gcc', rs)
+-- map('v', '<leader>c', 'gc', rs)
 
 map("n", "e", "<Enter>")
 map("i", "<A-e>", "<Enter>")
 -- Preserve your existing Alt+h/j/k/l insert-mode mappings (May 24, 2025)
-map("i", "<A-h>", "<Left>", { noremap = true, silent = true, desc = "Move left in insert mode" })
-map("i", "<A-j>", "<Down>", { noremap = true, silent = true, desc = "Move down in insert mode" })
-map("i", "<A-k>", "<Up>", { noremap = true, silent = true, desc = "Move up in insert mode" })
-map("i", "<A-l>", "<Right>", { noremap = true, silent = true, desc = "Move right in insert mode" })
+map("i", "<A-h>", "<Left>", nrs)
+map("i", "<A-j>", "<Down>", nrs)
+map("i", "<A-k>", "<Up>", nrs)
+map("i", "<A-l>", "<Right>", nrs)
 
-map("n", "<A-h>", "5h", { noremap = true, silent = true, })
-map("n", "<A-j>", "5j", { noremap = true, silent = true, })
-map("n", "<A-k>", "5k", { noremap = true, silent = true, })
-map("n", "<A-l>", "5l", { noremap = true, silent = true, })
+map("n", "<A-h>", "5h", nrs)
+map("n", "<A-j>", "5j", nrs)
+map("n", "<A-k>", "5k", nrs)
+map("n", "<A-l>", "5l", nrs)
 
 map("n", ";", ":", { desc = "CMD enter command mode" })
 -- map("i", "jk", "<ESC>")
@@ -25,7 +51,8 @@ map("n", ";", ":", { desc = "CMD enter command mode" })
 -- map("n", "<leader>Q", "<CMD>qa<CR>")
 -- map("n", "<leader>q", "<CMD>q<CR>")
 map("n", "q", "<CMD>q<CR>")
-map("n", "Q", "<CMD>qa<CR>")
+map("n", "qa", "<CMD>qa<CR>")
+map("n", "Q", "<CMD>q!<CR>")
 map("n", "<leader>`", "<CMD>Inspect<CR>")
 
 -- map("n", "<A-r>", "<CMD>luafile ~/.config/nvim/lua/custom/hlConfig.lua<CR>")

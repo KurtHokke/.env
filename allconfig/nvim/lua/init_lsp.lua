@@ -3,6 +3,7 @@ local map = vim.keymap.set
 local x = vim.diagnostic.severity
 
 L.on_attach = function(_, bufnr)
+	-- require("better-diagnostic-virtual-text.api").setup_buf(bufnr, {})
   local function opts(desc)
     return { buffer = bufnr, desc = "LSP " .. desc }
   end
@@ -48,9 +49,11 @@ L.capabilities.textDocument.completion.completionItem = {
 vim.api.nvim_create_autocmd("LspAttach", {
   callback = function(args)
     L.on_attach(_, args.buf)
+    -- L.on_attach(args.data and args.data.client_id and vim.lsp.get_client_by_id(args.data.client_id) or nil, args.buf)
   end,
 })
 vim.diagnostic.config {
+  -- virtual_text = false,
   virtual_text = {
     prefix = "",
   },
@@ -112,4 +115,19 @@ vim.lsp.config('lua_ls', {
 })
 
 vim.lsp.enable("lua_ls")
+
+vim.lsp.config('clangd', {
+    cmd = {
+    "clangd",
+    "--background-index",
+    "--clang-tidy",
+    "--header-insertion=iwyu",
+    "--completion-style=detailed",
+    "--function-arg-placeholders=false",
+    "--fallback-style=llvm",
+  },
+})
 vim.lsp.enable("clangd")
+
+
+
