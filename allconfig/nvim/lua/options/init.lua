@@ -55,4 +55,3 @@ o.mousemoveevent = true
 -- vim.env.PATH = table.concat({ vim.fn.stdpath "data", "mason", "bin" }, sep) .. delim .. vim.env.PATH
 
 require("options.mappings")
-require("options.highlight")

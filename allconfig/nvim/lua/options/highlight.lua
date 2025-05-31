@@ -1,23 +1,45 @@
-
-require'pconfig.blink'.highlight()
+-- require'pconfig.blink'.highlight()
 
 local hl = vim.api.nvim_set_hl
-hl(0, 'CursorLineNr', { fg = '#ffa200' })
-hl(0, 'LineNr', { fg = '#ffffff' })
+-- hl(0, 'CursorLineNr', { fg = '#ffa200' })
+-- hl(0, 'LineNr', { fg = '#ffffff' })
+hl(0, '@type.builtin.c', { fg = '#c700e2' })
+hl(0, '@lsp.typemod.function.globalScope.c', { fg = '#00a2ff' })
+hl(0, '@lsp.type.enumMember.c', { fg = '#3a74c8' })
+hl(0, 'cNumber', { fg = '#29d8ff' })
+hl(0, 'cNumbers', { fg = '#29d8ff' })
+hl(0, 'cFloat', { fg = '#29d8ff' })
+hl(0, 'cInclude', { fg = '#fcc603' })
+hl(0, 'cDefine', { fg = '#d80b48' })
+hl(0, 'cStructure', { fg = '#c30035' })
+hl(0, 'cTypedef', { fg = '#bc2829' })
+hl(0, '@lsp.typemod.macro.globalScope.c', { fg = '#a07df4' })
+hl(0, '@lsp.typemod.enum.globalScope.c', { fg = '#ba51c8' })
+hl(0, '@function.call.c', { fg = '#00a2ff' })
+hl(0, '@type.builtin.c', { fg = '#dd00ff' })
+hl(0, '@keyword.modifier.c', { fg = '#cf03fc' })
+hl(0, '@keyword.import.c', { fg = '#fcc603' })
+hl(0, '@variable.parameter.c', { fg = '#dbb8ff' })
+hl(0, '@character.printf', { fg = '#ff3700' })
+hl(0, '@number.c', { fg = '#00f2ff' })
+hl(0, '@constant.c', { fg = '#00f2ff' })
+hl(0, '@constant.macro.c', { fg = '#d67dff' })
+hl(0, '@variable.c', { fg = '#dfc4ff' })
+hl(0, 'cRepeat', { fg = '#f00019' })
+hl(0, 'cConditional', { fg = '#ff0019' })
+hl(0, 'cStatement', { fg = '#ff0019' })
 
--- hl(0, '@function.call.c', { fg = '#00a2ff' })
--- hl(0, '@type.builtin.c', { fg = '#dd00ff' })
--- hl(0, '@keyword.modifier.c', { fg = '#cf03fc' })
--- hl(0, '@keyword.import.c', { fg = '#fcc603' })
--- hl(0, '@variable.parameter.c', { fg = '#dbb8ff' })
--- hl(0, '@character.printf', { fg = '#ff3700' })
--- hl(0, '@number.c', { fg = '#00f2ff' })
--- hl(0, '@constant.c', { fg = '#00f2ff' })
--- hl(0, '@constant.macro.c', { fg = '#d67dff' })
--- hl(0, '@variable.c', { fg = '#dfc4ff' })
--- hl(0, '@keyword.repeat.c', { fg = '#f00019' })
--- hl(0, '@keyword.conditional.c', { fg = '#ff0019' })
--- hl(0, '@keyword.return.c', { fg = '#ff0019' })
+-- local hl = require'functions.hl_setter'.set
+-- local config = require'pconfig.gruvbox'.config
+-- M.colortable = {
+--   LineNr = {fg = '#ffffff'},
+--   CursorLineNr = {fg = '#ffa200'},
+--   Normal = {fg = '#eeeeee', bg = '#000000'},
+-- }
+
+-- hl(0, 'GruvboxBg2', { fg = '#001100', bg = '#001100' })
+-- hl(0, 'GruvboxBg2', { bg = '#001100' })
+-- local mytable = { ['#ffffff'] = { 'a', 'b', 'c' }}
 -- hl(0, '', { fg = '' })
 -- hl(0, '', { fg = '' })
 -- hl(0, '', { fg = '' })

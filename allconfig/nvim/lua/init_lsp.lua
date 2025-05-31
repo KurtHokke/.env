@@ -7,7 +7,6 @@ L.on_attach = function(_, bufnr)
   local function opts(desc)
     return { buffer = bufnr, desc = "LSP " .. desc }
   end
-
   map("n", "gD", vim.lsp.buf.declaration, opts "Go to declaration")
   map("n", "gd", vim.lsp.buf.definition, opts "Go to definition")
   map("n", "<leader>wa", vim.lsp.buf.add_workspace_folder, opts "Add workspace folder")
@@ -22,11 +21,11 @@ L.on_attach = function(_, bufnr)
 end
 
 -- disable semanticTokens
-L.on_init = function(client, _)
-  if client:supports_method "textDocument/semanticTokens" then
-    client.server_capabilities.semanticTokensProvider = nil
-  end
-end
+-- L.on_init = function(client, _)
+--   if client:supports_method "textDocument/semanticTokens" then
+--     client.server_capabilities.semanticTokensProvider = nil
+--   end
+-- end
 L.capabilities = vim.lsp.protocol.make_client_capabilities()
 L.capabilities.textDocument.completion.completionItem = {
   documentationFormat = { "markdown", "plaintext" },
@@ -63,7 +62,7 @@ vim.diagnostic.config {
   -- wrap = true,
   float = { border = "single" },
 }
-vim.lsp.config("*", { capabilities = L.capabilities, on_init = L.on_init })
+vim.lsp.config("*", { capabilities = L.capabilities, })-- on_init = L.on_init })
 
 
 vim.lsp.config('lua_ls', {
@@ -93,7 +92,8 @@ vim.lsp.config('lua_ls', {
       workspace = {
         checkThirdParty = false,
         library = {
-          vim.env.VIMRUNTIME
+          vim.env.VIMRUNTIME,
+          vim.fn.stdpath('data') .. '/lazy'
           -- Depending on the usage, you might want to add additional paths
           -- here.
           -- '${3rd}/luv/library'

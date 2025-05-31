@@ -28,14 +28,16 @@ return {
 },
 {
   'akinsho/bufferline.nvim',
-  event = "BufReadPost",
+  event = "BufEnter",
   version = "*",
   dependencies = 'nvim-tree/nvim-web-devicons',
   opts = require'pconfig.bufferline'.opts,
 },
 {
-  "catgoose/nvim-colorizer.lua",
-  event = "BufReadPre",
-  opts = require'pconfig.colorizer'.opts,
+  'uga-rosa/ccc.nvim',
+  cmd = { 'CccHighlighterEnable', 'CccPick' },
+  config = function ()
+    require'pconfig.ccc'.config()
+  end
 },
 }

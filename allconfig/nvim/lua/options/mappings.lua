@@ -9,6 +9,28 @@ local rs = {
   remap = true,
   silent = true,
 }
+map('n', '<A-2>', function()
+  require'pconfig.treesitter'.test()
+end)
+map('n', '<A-1>', function()
+  require'functions.inspect'.inspect()
+end)
+map("n", "<A-r>", "<CMD>luafile ~/.config/nvim/lua/options/highlight.lua<CR>")
+-- map('n', '<A-2>', function()
+--   local test = require'functions.hl_setter'.test
+--   test()
+-- end)
+-- map('n', '<A-2>', function()
+--   local mytable = require'options.highlight'.colortable
+--   local set = require'functions.hl_setter'.set
+--   set(mytable)
+-- end)
+--
+-- map('n', '<A-1>', function()
+--   local mytable = require'options.highlight'.colortable
+--   local set = require'functions.hl_setter'.set
+--   set(mytable, { gruvbox = true })
+-- end)
 
 map({'n', 'i'}, '<S-CR>', function ()
   local jump = require'functions.jump_to_closing'.jump
@@ -50,12 +72,17 @@ map("n", ";", ":", { desc = "CMD enter command mode" })
 -- map("n", "<leader>w", "<CMD>w<CR>")
 -- map("n", "<leader>Q", "<CMD>qa<CR>")
 -- map("n", "<leader>q", "<CMD>q<CR>")
-map("n", "q", "<CMD>q<CR>")
-map("n", "qa", "<CMD>qa<CR>")
+map("n", "q", function()
+  local buf = vim.api.nvim_get_current_buf()
+  vim.api.nvim_command("BufferLineCyclePrev")
+  local command = string.format("bdelete! %d", buf)
+  vim.api.nvim_command(command)
+  -- require'bufferline'.go_to(1, false)
+end)
+map("n", "<leader>q", "<CMD>qa<CR>")
 map("n", "Q", "<CMD>q!<CR>")
 map("n", "<leader>`", "<CMD>Inspect<CR>")
 
--- map("n", "<A-r>", "<CMD>luafile ~/.config/nvim/lua/custom/hlConfig.lua<CR>")
 map({"n", "i"}, "<A-u>", "<CMD>u<CR>")
 map("c", "<C-a>", "<home>")
 map("c", "<C-e>", "<end>")
@@ -66,12 +93,12 @@ local mytree = require("pconfig.nvimtree").mytree
 map("n", "<A-e>", function()
   mytree({ toggle = true })
 end)
--- map("n", "<C-=>", function()
---   mytree.f({ resize = { relative = 1 } })
--- end)
--- map("n", "<C-->", function()
---   mytree.f({ resize = { relative = -1 } })
--- end)
+map("n", "<C-=>", function()
+  mytree({ resize = { relative = 1 } })
+end)
+map("n", "<C-->", function()
+  mytree({ resize = { relative = -1 } })
+end)
 --
 -- local quotejump = require("funcs.quotejump")
 -- map({"n", "i"}, "<A-.>", quotejump.jump_to_closing_quote)

@@ -3,8 +3,6 @@ return {
     'windwp/nvim-autopairs',
     event = "InsertEnter",
     config = true
-    -- use opts = {} for passing setup options
-    -- this is equivalent to setup({}) function
 },
 {
   'saghen/blink.cmp',
@@ -27,20 +25,33 @@ return {
     'rafamadriz/friendly-snippets'
   },
   version = '1.*',
-  opts = require'pconfig.blink'.opts,
-  opts_extend = require'pconfig.blink'.opts_extend,
+  opts = function()
+    return require'pconfig.blink'.opts
+  end,
+  opts_extend = function()
+    return require'pconfig.blink'.opts_extend
+  end
 },
 {
   "folke/trouble.nvim",
-  opts = require'pconfig.trouble'.opts, -- for default options, refer to the configuration section for custom setup.
+  opts = function()
+    return require'pconfig.trouble'.opts
+  end,
   cmd = "Trouble",
-  keys = require'pconfig.trouble'.keys
+  keys = function()
+    return require'pconfig.trouble'.keys
+  end
 },
 {
   'nvim-treesitter/nvim-treesitter',
-  branch = 'master',
+  branch = 'main',
   build = ':TSUpdate',
-  opts = require'pconfig.treesitter'.opts,
+  opts = {
+    install_dir = vim.fn.stdpath('data') .. '/TSInstallDir'
+  },
+  config = function()
+    require'pconfig.treesitter'
+  end
 },
 {
   'mrcjkb/rustaceanvim',
