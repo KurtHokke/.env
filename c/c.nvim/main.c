@@ -1,7 +1,10 @@
 #include <ncurses.h>
 #include <stdio.h>
 #include <stdbool.h>
+#include <stdint.h>
 #include <locale.h>
+#include <stdlib.h>
+#include <sys/types.h>
 
 #define THSND_DIVBY255 3.92156862745
 
@@ -13,9 +16,9 @@ enum wsedrf_KEYS {
   Bp = 114,
   Bm = 102,
   SPACE = 32,
+  COPY_TO_CLIPBOARD = 121,
   SHOULD_EXIT = 113
 };
-
 
 void make_color(unsigned int rgb[2][3])
 {
@@ -24,10 +27,17 @@ void make_color(unsigned int rgb[2][3])
     if (rgb[0][i] == 255) {
       rgb[1][i] = 1000;
     } else {
-      rgb[1][i] = (float)rgb[0][i] * THSND_DIVBY255;
+      rgb[1][i] = (double)rgb[0][i] * THSND_DIVBY255;
     }
     refresh();
   }
+}
+
+void call_syscopy(unsigned int rgb[2][3])
+{
+  char command[100];
+  snprintf(command, sizeof(command), "printf \"#%.02x%.02x%.02x\" | wl-copy", rgb[0][0], rgb[0][1], rgb[0][2]);
+  system(command);
 }
 
 int main(void)
@@ -51,9 +61,10 @@ int main(void)
   int x = 0,
       y = 0;
 
-  unsigned int add = 1;
+  // unsigned int add = 1;
+  u_int8_t add = 1;
   bool should_exit = false;
-  
+
   while(!should_exit) {
     c = getch();
     getmaxyx(stdscr, max_y, max_x);
@@ -62,6 +73,9 @@ int main(void)
     // printw("%d\n", c);
     // getch();
     switch (c) {
+      case COPY_TO_CLIPBOARD:
+        call_syscopy(rgb);
+        break;
       case SPACE:
         add = (add == 1)? 5 : 1;
         break;
@@ -97,7 +111,8 @@ int main(void)
     clear();
     refresh();
     attron(COLOR_PAIR(20));
-    mvprintw(y - 1, x - 4, "#%.02x%.02x%.02x", rgb[0][0], rgb[0][1], rgb[0][2]);
+    mvprintw(y - 1, x - 5, "#%.02x%.02x%.02x", rgb[0][0], rgb[0][1], rgb[0][2]);
+    mvprintw(y + 2, x - 2, "X%d", add);
     refresh();
     attroff(COLOR_PAIR(20));
     // for (int i = 0; i < 3; i++)
@@ -109,7 +124,7 @@ int main(void)
     // printw("%d\n", rgb[0]);
     // printw("%d\n", rgb[1]);
     // printw("%d\n", rgb[2]);
-    refresh();
+    // refresh();
   }
   endwin();
   return 0;

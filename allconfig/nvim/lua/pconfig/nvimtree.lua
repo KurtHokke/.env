@@ -9,6 +9,7 @@ M.config = {
     api.config.mappings.default_on_attach(bufnr)
     -- Override 'e' to collapse directory
     vim.keymap.set("n", "e", api.node.open.edit, map_opts("Open File Or Folder"))
+    vim.keymap.set("n", "<C-r>", api.fs.rename_basename, map_opts("Rename File Or Folder"))
   end,
   filters = { dotfiles = false },
   disable_netrw = true,

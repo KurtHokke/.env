@@ -4,7 +4,7 @@ local ccc_enable = true
 local theme = 'tokyonight'
 
 if theme == 'tokyonight' then
-  vim.cmd[[colorscheme tokyonight-night]]
+  vim.cmd[[colorscheme tokyonight]]
 end
 
 vim.api.nvim_create_autocmd('FileType', {
