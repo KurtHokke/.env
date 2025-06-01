@@ -1,4 +1,4 @@
--- require("options.highlight")
+require("options.highlight")
 
 local ccc_enable = true
 local theme = 'tokyonight'
@@ -13,5 +13,5 @@ vim.api.nvim_create_autocmd('FileType', {
 })
 
 if ccc_enable then
-  require'plugins.config.ccc'.mapping()
+  require'pconfig.ccc'.mapping()
 end

@@ -6,17 +6,17 @@ return {
   "folke/which-key.nvim",
   event = "VeryLazy",
   opts = function()
-    return require'plugins.config.which-key'.opts
+    return require'pconfig.which-key'.opts
   end,
   keys = function()
-    return require'plugins.config.which-key'.keys
+    return require'pconfig.which-key'.keys
   end,
 },
 {
   "nvim-tree/nvim-tree.lua",
   cmd = { "NvimTreeToggle", "NvimTreeFocus" },
   opts = function()
-    return require'plugins.config.nvimtree'.config
+    return require("pconfig.nvimtree").config
   end,
 },
 {
@@ -26,7 +26,6 @@ return {
 {
   'nvim-telescope/telescope.nvim',
   cmd = { 'Telescope' },
-  keys = { '<leader>rg' },
   branch = 'master',
   dependencies = {
     'nvim-lua/plenary.nvim',
@@ -36,10 +35,7 @@ return {
     },
   },
   opts = function()
-    return require'plugins.config.telescope'.opts
-  end,
-  config = function()
-    require'plugins.config.telescope'.after()
+    return require'pconfig.telescope'.opts
   end,
 },
 {
@@ -48,21 +44,21 @@ return {
   version = "*",
   dependencies = 'nvim-tree/nvim-web-devicons',
   opts = function()
-    return require'plugins.config.bufferline'.opts
+    return require'pconfig.bufferline'.opts
   end,
 },
 {
   'nvim-lualine/lualine.nvim',
   dependencies = { 'nvim-tree/nvim-web-devicons' },
   config = function()
-    require'plugins.config.lualine'.Bubbles()
+    require'pconfig.lualine'.Bubbles()
   end
 },
 {
   'uga-rosa/ccc.nvim',
   cmd = { 'CccHighlighterEnable', 'CccPick' },
   config = function ()
-    require'plugins.config.ccc'.config()
+    require'pconfig.ccc'.config()
   end
 },
 }

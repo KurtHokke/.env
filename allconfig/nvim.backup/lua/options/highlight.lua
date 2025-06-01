@@ -1,15 +1,6 @@
--- require'plugins.config.blink'.highlight()
-
-local M = {}
+-- require'pconfig.blink'.highlight()
 
 local hl = vim.api.nvim_set_hl
-
-function M.tokyonight(hl, c)
-  hl.BlinkCmpMenuBorder = { fg = "#00cb00" }
-  hl.NvimTreeFolderIcon = { fg = "#ffc500", bg = c.none }
-
-end
-
 -- hl(0, 'CursorLineNr', { fg = '#ffa200' })
 -- hl(0, 'LineNr', { fg = '#ffffff' })
 -- hl(0, '@type.builtin.c', { fg = '#c700e2' })
@@ -39,7 +30,7 @@ end
 -- hl(0, 'cStatement', { fg = '#ff0019' })
 
 -- local hl = require'functions.hl_setter'.set
--- local config = require'plugins.config.gruvbox'.config
+-- local config = require'pconfig.gruvbox'.config
 -- M.colortable = {
 --   LineNr = {fg = '#ffffff'},
 --   CursorLineNr = {fg = '#ffa200'},
@@ -59,7 +50,3 @@ end
 -- hl(0, '', { fg = '' })
 -- hl(0, '', { fg = '' })
 -- hl(0, '', { fg = '' })
-
-
-
-return M

@@ -10,7 +10,7 @@ local rs = {
   silent = true,
 }
 map('n', '<A-2>', function()
-  require'plugins.config.treesitter'.test()
+  require'pconfig.treesitter'.test()
 end)
 map('n', '<A-1>', function()
   require'functions.inspect'.inspect()
@@ -89,7 +89,7 @@ map("c", "<C-e>", "<end>")
 
 map("n", "<Tab>", "<CMD>BufferLineCycleNext<CR>")
 
-local mytree = require'plugins.config.nvimtree'.mytree
+local mytree = require("pconfig.nvimtree").mytree
 map("n", "<A-e>", function()
   mytree({ toggle = true })
 end)

@@ -19,27 +19,27 @@ return {
       build = "make install_jsregexp",
       opts = {},
       config = function()
-        require'plugins.config.luasnip'
+        require("pconfig.luasnip")
       end,
     },
     'rafamadriz/friendly-snippets'
   },
   version = '1.*',
   opts = function()
-    return require'plugins.config.blink'.opts
+    return require'pconfig.blink'.opts
   end,
   opts_extend = function()
-    return require'plugins.config.blink'.opts_extend
+    return require'pconfig.blink'.opts_extend
   end
 },
 {
   "folke/trouble.nvim",
   opts = function()
-    return require'plugins.config.trouble'.opts
+    return require'pconfig.trouble'.opts
   end,
   cmd = "Trouble",
   keys = function()
-    return require'plugins.config.trouble'.keys
+    return require'pconfig.trouble'.keys
   end
 },
 {
@@ -50,7 +50,7 @@ return {
     install_dir = vim.fn.stdpath('data') .. '/TSInstallDir'
   },
   config = function()
-    require'plugins.config.treesitter'
+    require'pconfig.treesitter'
   end
 },
 {
