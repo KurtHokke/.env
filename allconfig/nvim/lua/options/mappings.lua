@@ -9,6 +9,12 @@ local rs = {
   remap = true,
   silent = true,
 }
+
+-- map('n', '<A-3>', function ()
+--   local is_loaded = require'functions.is_loaded'
+--   is_loaded("cvwvwaswevedawvim")
+-- end)
+
 map('n', '<A-2>', function()
   require'plugins.config.treesitter'.test()
 end)
