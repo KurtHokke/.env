@@ -1,0 +1,7 @@
+/home/src/.env/allconfig/nvim/test/c.nvim/clua/build/CMakeFiles/fnames.dir
+/home/src/.env/allconfig/nvim/test/c.nvim/clua/build/CMakeFiles/edit_cache.dir
+/home/src/.env/allconfig/nvim/test/c.nvim/clua/build/CMakeFiles/rebuild_cache.dir
+/home/src/.env/allconfig/nvim/test/c.nvim/clua/build/CMakeFiles/list_install_components.dir
+/home/src/.env/allconfig/nvim/test/c.nvim/clua/build/CMakeFiles/install.dir
+/home/src/.env/allconfig/nvim/test/c.nvim/clua/build/CMakeFiles/install/local.dir
+/home/src/.env/allconfig/nvim/test/c.nvim/clua/build/CMakeFiles/install/strip.dir

@@ -1,14 +1,19 @@
 local M = {}
 M.hl_table = {
   ['#dc00ff'] = { '@type.builtin.c', '@lsp.typemod.type.defaultLibrary.c' },
+  ['#b907ff'] = { '@keyword.modifier.c' },
   ['#f4c100'] = { '@keyword.import.c' },
-  ['#00a0ff'] = { '@lsp.typemod.function.globalScope.c' },
-  ['#ff0000'] = { '@keyword.conditional.c', '@keyword.repeat.c', '@keyword.return.c' },
-  ['#cc0000'] = { '@keyword.type.c' },
+  ['#f48800'] = { '@lsp.typemod.parameter.functionScope.c' },
+  ['#f46200'] = { '@operator.c' },
+  ['#f5a700'] = { '@lsp.typemod.class.defaultLibrary.c' },
+  ['#ff0000'] = { '@keyword.conditional.c', '@keyword.repeat.c', '@keyword.return.c', '@operator.deref' },
+  ['#cc0000'] = { '@keyword.type.c', '@_parent.c' },
   ['#cc0043'] = { '@keyword.directive.define.c' },
   ['#d58bc8'] = { '@lsp.typemod.macro.globalScope.c' },
+  ['#00a0ff'] = { '@lsp.typemod.function.globalScope.c', '@lsp.typemod.function.defaultLibrary.c' },
   ['#22adff'] = { '@lsp.typemod.enum.globalScope.c', '@lsp.type.enumMember.c' },
   ['#2dd0fe'] = { '@number.c' },
+  ['#1fe801'] = { '@lsp.type.operator.c' },
   ['#f5d0ff'] = { '@lsp.typemod.variable.functionScope.c' },
 
 }

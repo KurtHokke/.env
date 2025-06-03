@@ -12,6 +12,8 @@ local ensure_installed = {
     "desktop",
     "regex",
     "rust",
+    "jsonc",
+    "query",
 }
 local function need_update()
   local is_installed = require'nvim-treesitter'.get_installed()

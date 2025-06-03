@@ -1,5 +1,6 @@
 require'options.user_cmd'
 
+-- vim.rtp
 
 vim.api.nvim_create_autocmd('FileType', {
   pattern = { 'lua', 'vim', 'c', 'cpp', 'CMakeLists.txt', 'cmake', 'sh', 'bash', 'css', 'desktop' },

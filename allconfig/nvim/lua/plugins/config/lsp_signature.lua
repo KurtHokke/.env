@@ -15,7 +15,8 @@ M.opts = {
 
   max_height = 12, -- max height of signature floating_window, include borders
   max_width = function()
-    return vim.api.nvim_win_get_width(0) * 0.8
+    local w = vim.api.nvim_win_get_width(0) * 0.8
+    return math.floor(w)
   end, -- max_width of signature floating_window, line will be wrapped if exceed max_width
                   -- the value need >= 40
                   -- if max_width is function, it will be called

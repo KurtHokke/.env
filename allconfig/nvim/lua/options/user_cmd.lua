@@ -2,6 +2,19 @@
 local newcmd = vim.api.nvim_create_user_command
 local log = require'functions.logger'.log
 
+-- newcmd('LuaRocks', function()
+--   local rocks = require'plugins.config.luarocks'.rocks
+--   require'luarocks-nvim'.setup({
+--     rocks = rocks,
+--   })
+-- end, {})
+
+newcmd('TestLIB', function(args)
+  local test = require'fnames'
+  local paths = test.fnames(args.fargs[1])
+  log(vim.inspect(paths))
+end, { nargs = 1 })
+
 newcmd('PluginExist', function(args)
   require'functions.plugin_utils'.exists(args.fargs[1], true)
 end, { nargs = 1 })

@@ -1,1 +1,0 @@
-/home/arcno/.local/share/nvim/TSInstallDir/queries/c/highlights.scm

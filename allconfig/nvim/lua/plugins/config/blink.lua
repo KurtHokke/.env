@@ -34,32 +34,32 @@ M.opts = {
   -- Default list of enabled providers defined so that you can extend it
   -- elsewhere in your config, without redefining it, due to `opts_extend`
   sources = {
-    default = { 'lsp', 'path', 'snippets', 'buffer', 'emoji', 'nerdfont' },
+    default = { 'lsp', 'path', 'snippets', 'buffer', }, --'emoji', 'nerdfont' },
     providers = {
       snippets = {
         module = 'blink.cmp.sources.snippets',
-        score_offset = 3,
+        score_offset = 10,
       },
-      emoji = {
-        module = "blink-emoji",
-        name = "Emoji",
-        score_offset = 15, -- Tune by preference
-        opts = {
-          insert = true, -- Insert emoji (default) or complete its name
-          ---@type string|table|fun():table
-          trigger = function()
-            return { ">" }
-          end,
-        },
-      },
-      nerdfont = {
-        module = "blink-nerdfont",
-        name = "Nerd Fonts",
-        score_offset = 15, -- Tune by preference
-        opts = {
-          insert = true, -- Insert nerdfont icon (default) or complete its name
-        },
-      },
+      -- emoji = {
+      --   module = "blink-emoji",
+      --   name = "Emoji",
+      --   score_offset = 15, -- Tune by preference
+      --   opts = {
+      --     insert = true, -- Insert emoji (default) or complete its name
+      --     ---@type string|table|fun():table
+      --     trigger = function()
+      --       return { ">" }
+      --     end,
+      --   },
+      -- },
+      -- nerdfont = {
+      --   module = "blink-nerdfont",
+      --   name = "Nerd Fonts",
+      --   score_offset = 15, -- Tune by preference
+      --   opts = {
+      --     insert = true, -- Insert nerdfont icon (default) or complete its name
+      --   },
+      -- },
     },
   },
 

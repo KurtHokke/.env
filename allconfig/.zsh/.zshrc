@@ -59,7 +59,7 @@ ssh-add ~/.ssh/github > /dev/null 2>&1
 unset MYPATH
 syncmypath  #function
 
-PATH="$PATH:$ZDOTDIR/scripts:$HOME/.local/bin:$HOME/.cargo/bin:${HOME}/.local/apps:/opt/cuda/bin"
+PATH="$PATH:$ZDOTDIR/scripts:$HOME/.local/bin:$HOME/.cargo/bin:${HOME}/.local/apps:/opt/cuda/bin:/usr/local/cmake-3.31.7/bin"
 export PATH="$PATH:$VCPKG_ROOT:$MYPATH"
 #export PATH
 export XDG_DATA_HOME="$HOME/.local/share"

@@ -1,8 +1,27 @@
 return {
+-- {
+--     'windwp/nvim-autopairs',
+--     event = "InsertEnter",
+--     config = true
+-- },
 {
-    'windwp/nvim-autopairs',
-    event = "InsertEnter",
-    config = true
+  "echasnovski/mini.pairs",
+  event = "VeryLazy",
+  opts = {
+    modes = { insert = true, command = true, terminal = false },
+    -- skip autopair when next character is one of these
+    skip_next = [=[[%w%%%'%[%"%.%`%$]]=],
+    -- skip autopair when the cursor is inside these treesitter nodes
+    skip_ts = { "string" },
+    -- skip autopair when next character is closing pair
+    -- and there are more closing pairs than opening pairs
+    skip_unbalanced = true,
+    -- better deal with markdown code blocks
+    markdown = true,
+  },
+  config = function(_, opts)
+    require'plugins.config.mini-pairs'.setup(opts)
+  end,
 },
 {
   "neovim/nvim-lspconfig",
@@ -16,8 +35,8 @@ return {
   dependencies = {
     {
       "neovim/nvim-lspconfig",
-      "moyiz/blink-emoji.nvim",
-      "MahanRahmati/blink-nerdfont.nvim",
+      -- "moyiz/blink-emoji.nvim",
+      -- "MahanRahmati/blink-nerdfont.nvim",
     },
     {
       "L3MON4D3/LuaSnip",
@@ -31,22 +50,16 @@ return {
     'rafamadriz/friendly-snippets'
   },
   version = '1.*',
-  opts = function()
-    return require'plugins.config.blink'.opts
-  end,
+  opts = function() return require'plugins.config.blink'.opts end,
   opts_extend = function()
     return require'plugins.config.blink'.opts_extend
   end
 },
 {
   "folke/trouble.nvim",
-  opts = function()
-    return require'plugins.config.trouble'.opts
-  end,
+  opts = function() return require'plugins.config.trouble'.opts end,
   cmd = "Trouble",
-  keys = function()
-    return require'plugins.config.trouble'.keys
-  end
+  keys = function() return require'plugins.config.trouble'.keys end,
 },
 {
   'nvim-treesitter/nvim-treesitter',
@@ -58,6 +71,11 @@ return {
     })
     require'plugins.config.treesitter'
   end
+},
+{
+  "nvim-treesitter/nvim-treesitter-context",
+  event = "BufEnter",
+  opts = function() return require'plugins.config.treesitter-context'.opts end,
 },
 {
   "ray-x/lsp_signature.nvim",

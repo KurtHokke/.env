@@ -58,6 +58,10 @@ opt.cmdheight = 0
 local pyvenv = vim.fn.stdpath('data') .. '/pyneo/bin'
 vim.env.PATH = vim.env.PATH .. ':' .. pyvenv
 
+local libso = vim.fn.stdpath('data') .. '/libso'
+package.cpath = package.cpath .. ";" .. libso .. "/?.so"
+-- opt.rtp:append(libso)
+
 -- vim.api.nvim_create_autocmd('CmdlineEnter', {
 --   callback = function()
 --     vim.opt.cmdheight = 1

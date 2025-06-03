@@ -121,9 +121,8 @@ vim.lsp.config('lua_ls', {
   }
 })
 vim.lsp.enable("lua_ls")
-
 vim.lsp.config('clangd', {
-    cmd = {
+  cmd = {
     "clangd",
     "--background-index",
     "--clang-tidy",
@@ -131,6 +130,16 @@ vim.lsp.config('clangd', {
     "--completion-style=detailed",
     "--function-arg-placeholders=false",
     "--fallback-style=llvm",
+  },
+  root_markers = {
+    'CMakeLists.txt',
+    '.clangd',
+    '.clang-tidy',
+    '.clang-format',
+    'compile_commands.json',
+    'compile_flags.txt',
+    'configure.ac', -- AutoTools
+    '.git',
   },
 })
 vim.lsp.enable("clangd")

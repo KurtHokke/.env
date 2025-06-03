@@ -15,6 +15,7 @@
 #alias -g T='|tail'
 #alias -g V='| vim -'
 
+alias lazy='NVIM_APPNAME=LazyVim XDG_DATA_HOME=/home/src nvim'
 
 alias la='ls -lah'
 alias ls.ss='ls --sort=size -1 -Ar'

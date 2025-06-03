@@ -12,12 +12,13 @@ local rs = {
 }
 
 -- map('n', '<A-3>', function ()
---   local is_loaded = require'functions.is_loaded'
---   is_loaded("cvwvwaswevedawvim")
+--   local test = require'fnames'
+--
 -- end)
 
 map('n', '<A-2>', function()
-  require'plugins.config.treesitter'.test()
+  local test = require'PluginConfigImporter'
+  test()
 end)
 map('n', '<A-1>', function()
   require'functions.inspect'.inspect()
@@ -43,8 +44,7 @@ map({'n', 'v'}, '<Right>', '<Nop>', nrs)
 map('n', '<CR>', 'o')
 map('n', '<S-CR>', 'O')
 
--- map('n', '<leader>c', 'gcc', rs)
--- map('v', '<leader>c', 'gc', rs)
+map('n', '<ESC>', '<ESC><CMD>nohlsearch<CR>')
 
 map("n", "e", "<Enter>")
 map("i", "<A-e>", "<Enter>")
@@ -54,10 +54,10 @@ map("i", "<A-j>", "<Down>", nrs)
 map("i", "<A-k>", "<Up>", nrs)
 map("i", "<A-l>", "<Right>", nrs)
 
-map("n", "<A-h>", "5h", nrs)
-map("n", "<A-j>", "5j", nrs)
-map("n", "<A-k>", "5k", nrs)
-map("n", "<A-l>", "5l", nrs)
+map({"n", "v"}, "<A-h>", "5h", nrs)
+map({"n", "v"}, "<A-j>", "5j", nrs)
+map({"n", "v"}, "<A-k>", "5k", nrs)
+map({"n", "v"}, "<A-l>", "5l", nrs)
 
 map("n", ";", ":", { desc = "CMD enter command mode" })
 -- map("i", "jk", "<ESC>")

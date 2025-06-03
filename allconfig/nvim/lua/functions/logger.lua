@@ -11,7 +11,7 @@ local M = {}
 ---  opts:
 ---  .level (number) 1-6
 ---  .title (string) Title
----  .timeout (number|boolean) seconds to display
+---  .timeout (number|boolean) milliseconds to display
 ---  .render (string) "default"
 ---                   "minimal"
 ---                   "simple"
@@ -24,6 +24,9 @@ function M.log(msg, opts)
   if opts.level ~= nil and opts.level >= 1 and opts.level <= 6 then
     level = opts.level
     opts.level = nil
+  end
+  if opts.timeout == nil or type(opts.timeout) ~= "number" or type(opts.timeout) ~= "boolean" then
+    opts.timeout = 8000
   end
   notify(msg, level, opts)
 end
