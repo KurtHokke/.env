@@ -1,5 +1,5 @@
 local M = {}
-local log = require'functions.logger'
+local log = require'functions.logger'.log
 function M.inspect()
   local pos = vim.api.nvim_win_get_cursor(0)
   local ins = vim.inspect_pos(0, pos[1] - 1, pos[2])

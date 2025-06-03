@@ -2,6 +2,8 @@ local opt = vim.opt
 local o = vim.o
 local g = vim.g
 
+g.starting_directory = vim.fn.getcwd()
+
 o.laststatus = 3
 o.showmode = false
 
@@ -42,6 +44,8 @@ opt.shortmess:append "sI"
 
 opt.whichwrap:append "<>[]hl"
 
+g.loaded_netrw = 1
+g.loaded_netrwPlugin = 1
 g.loaded_node_provider = 0
 g.loaded_python3_provider = 0
 g.loaded_perl_provider = 0
@@ -49,9 +53,22 @@ g.loaded_ruby_provider = 0
 
 o.mousemoveevent = true
 
--- local is_windows = vim.fn.has "win32" ~= 0
--- local sep = is_windows and "\\" or "/"
--- local delim = is_windows and ";" or ":"
--- vim.env.PATH = table.concat({ vim.fn.stdpath "data", "mason", "bin" }, sep) .. delim .. vim.env.PATH
+opt.cmdheight = 0
+
+local pyvenv = vim.fn.stdpath('data') .. '/pyneo/bin'
+vim.env.PATH = vim.env.PATH .. ':' .. pyvenv
+
+-- vim.api.nvim_create_autocmd('CmdlineEnter', {
+--   callback = function()
+--     vim.opt.cmdheight = 1
+--   end
+-- })
+-- vim.api.nvim_create_autocmd('CmdlineLeave', {
+--   callback = function()
+--     -- vim.defer_fn(function()
+--     vim.opt.cmdheight = 0
+--     -- end, 1000)
+--   end
+-- })
 
 require("options.mappings")

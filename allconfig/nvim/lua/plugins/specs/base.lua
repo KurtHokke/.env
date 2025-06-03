@@ -3,6 +3,9 @@ return {
   "nvim-tree/nvim-web-devicons", lazy = true, opts = {},
 },
 {
+  'echasnovski/mini.icons', lazy = true, version = false, opts = {},
+},
+{
   "folke/which-key.nvim",
   event = "VeryLazy",
   opts = function()
@@ -18,6 +21,14 @@ return {
   opts = function()
     return require'plugins.config.nvimtree'.config
   end,
+},
+{
+  'mrjones2014/smart-splits.nvim',
+  build = './kitty/install-kittens.bash',
+  opts = {},
+  config = function()
+    require'plugins.config.smart-splits'
+  end
 },
 {
   'rcarriga/nvim-notify',
@@ -54,9 +65,22 @@ return {
 {
   'nvim-lualine/lualine.nvim',
   dependencies = { 'nvim-tree/nvim-web-devicons' },
-  config = function()
-    require'plugins.config.lualine'.Bubbles()
+  opts = function()
+    return require'plugins.config.lualine'.config
   end
+},
+{
+  "folke/noice.nvim",
+  event = "VeryLazy",
+  opts = require'plugins.config.noice'.opts,
+  dependencies = {
+    -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
+    "MunifTanjim/nui.nvim",
+    -- OPTIONAL:
+    --   `nvim-notify` is only needed, if you want to use the notification view.
+    --   If not available, we use `mini` as the fallback
+    "rcarriga/nvim-notify",
+    }
 },
 {
   'uga-rosa/ccc.nvim',
@@ -64,5 +88,10 @@ return {
   config = function ()
     require'plugins.config.ccc'.config()
   end
+},
+{
+  'echasnovski/mini.doc',
+  version = false,
+  opts = {},
 },
 }

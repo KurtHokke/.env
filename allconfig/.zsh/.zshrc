@@ -44,7 +44,7 @@ fi
 export PAGER="less"
 export CMAKE_GENERATOR="Ninja"
 # export CMAKE_GENERATOR="Unix Makefiles"
-export EDITOR="vim"
+export EDITOR="nvim"
 
 if [[ -f "$HOME/.sship" ]]; then
     export SSHIP=$(cat "$HOME/.sship")

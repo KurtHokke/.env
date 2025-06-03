@@ -1,11 +1,6 @@
 
 local M = {}
 
-function M.highlight()
-  local hl = vim.api.nvim_set_hl
-  hl(0, 'Pmenu', { bg = '#0000f0', fg = '#00ff00'})
-end
-
 M.opts = {
 
   appearance = {
@@ -39,11 +34,31 @@ M.opts = {
   -- Default list of enabled providers defined so that you can extend it
   -- elsewhere in your config, without redefining it, due to `opts_extend`
   sources = {
-    default = { 'lsp', 'path', 'snippets', 'buffer' },
+    default = { 'lsp', 'path', 'snippets', 'buffer', 'emoji', 'nerdfont' },
     providers = {
       snippets = {
         module = 'blink.cmp.sources.snippets',
         score_offset = 3,
+      },
+      emoji = {
+        module = "blink-emoji",
+        name = "Emoji",
+        score_offset = 15, -- Tune by preference
+        opts = {
+          insert = true, -- Insert emoji (default) or complete its name
+          ---@type string|table|fun():table
+          trigger = function()
+            return { ">" }
+          end,
+        },
+      },
+      nerdfont = {
+        module = "blink-nerdfont",
+        name = "Nerd Fonts",
+        score_offset = 15, -- Tune by preference
+        opts = {
+          insert = true, -- Insert nerdfont icon (default) or complete its name
+        },
       },
     },
   },
@@ -55,7 +70,7 @@ M.opts = {
   -- See the fuzzy documentation for more information
   fuzzy = { implementation = "prefer_rust_with_warning" },
 
-  signature = { enabled = true },
+  signature = { enabled = false },
 
   -- 'default' (recommended) for mappings similar to built-in completions (C-y to accept)
   -- 'super-tab' for mappings similar to vscode (tab to accept)

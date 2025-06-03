@@ -3,7 +3,9 @@ local map = vim.keymap.set
 local x = vim.diagnostic.severity
 
 L.on_attach = function(_, bufnr)
-	-- require("better-diagnostic-virtual-text.api").setup_buf(bufnr, {})
+
+  require "lsp_signature".on_attach(require'plugins.config.lsp_signature'.opts, bufnr)
+
   local function opts(desc)
     return { buffer = bufnr, desc = "LSP " .. desc }
   end
@@ -27,6 +29,7 @@ end
 --   end
 -- end
 L.capabilities = vim.lsp.protocol.make_client_capabilities()
+-- L.capabilities.textDocument.signatureHelp = nil
 L.capabilities.textDocument.completion.completionItem = {
   documentationFormat = { "markdown", "plaintext" },
   snippetSupport = true,
@@ -62,8 +65,12 @@ vim.diagnostic.config {
   -- wrap = true,
   float = { border = "single" },
 }
-vim.lsp.config("*", { capabilities = L.capabilities, })-- on_init = L.on_init })
+vim.lsp.config("*", { capabilities = L.capabilities })--, on_init = L.on_init })
 
+-- local plugin_lua_dirs = {}
+-- for _, path in ipairs(vim.fn.glob(vim.fn.stdpath('data') .. '/lazy/*/lua', true, true, true)) do
+--   table.insert(plugin_lua_dirs, path)
+-- end
 
 vim.lsp.config('lua_ls', {
   on_init = function(client)
@@ -92,11 +99,11 @@ vim.lsp.config('lua_ls', {
       workspace = {
         checkThirdParty = false,
         library = {
-          vim.env.VIMRUNTIME,
-          -- vim.fn.stdpath('data') .. '/lazy'
+          vim.env.VIMRUNTIME .. '/lua',
+          -- unpack(plugin_lua_dirs),
           -- Depending on the usage, you might want to add additional paths
           -- here.
-          -- '${3rd}/luv/library'
+          -- '${3rd}/luv/library',
           -- '${3rd}/busted/library'
         }
         -- Or pull in all of 'runtimepath'.
@@ -113,7 +120,6 @@ vim.lsp.config('lua_ls', {
     Lua = {}
   }
 })
-
 vim.lsp.enable("lua_ls")
 
 vim.lsp.config('clangd', {
@@ -129,5 +135,18 @@ vim.lsp.config('clangd', {
 })
 vim.lsp.enable("clangd")
 
+-- vim.lsp.config('neocmake', {
+--   capabilities = L.capabilities,
+-- })
+vim.lsp.enable('neocmake')
 
+-- vim.lsp.config("cmake", {
+--   cmd = { vim.fn.stdpath('data') .. '/pyneo/bin/cmake-language-server' },
+--   filetypes = { 'cmake', 'CMakeLists.txt' },
+--   root_markers = { 'CMakePresets.json', 'CTestConfig.cmake', '.git', 'build', 'cmake' },
+--   init_options = {
+--     buildDirectory = 'build',
+--   },
+-- })
+-- vim.lsp.enable("cmake")
 

@@ -1,6 +1,7 @@
 local map = vim.keymap.set
 -- local unmap = vim.keymap.del
-
+local log = require'functions.logger'.log
+local stringmani = require'functions.string'
 local nrs = {
   noremap = true,
   silent = true,
@@ -21,24 +22,13 @@ end)
 map('n', '<A-1>', function()
   require'functions.inspect'.inspect()
 end)
-map("n", "<A-r>", "<CMD>luafile ~/.config/nvim/lua/options/highlight.lua<CR>")
--- map('n', '<A-2>', function()
---   local test = require'functions.hl_setter'.test
---   test()
--- end)
--- map('n', '<A-2>', function()
---   local mytable = require'options.highlight'.colortable
---   local set = require'functions.hl_setter'.set
---   set(mytable)
--- end)
---
--- map('n', '<A-1>', function()
---   local mytable = require'options.highlight'.colortable
---   local set = require'functions.hl_setter'.set
---   set(mytable, { gruvbox = true })
--- end)
+-- map("n", "<A-r>", "<CMD>luafile ~/.config/nvim/lua/options/highlight.lua<CR>")
+map("n", "<A-r>", function()
+  package.loaded["options.highlight"] = nil
+  require'functions.hl_setter'.syntax_hl(require'options.highlight'.hl_table)
+end)
 
-map({'n', 'i'}, '<S-CR>', function ()
+map({'n', 'i'}, '<C-CR>', function ()
   local jump = require'functions.jump_to_closing'.jump
   jump()
 end)
@@ -50,11 +40,8 @@ map({'n', 'v'}, '<Down>', '<Nop>', nrs)
 map({'n', 'v'}, '<Left>', '<Nop>', nrs)
 map({'n', 'v'}, '<Right>', '<Nop>', nrs)
 
-map('n', '<CR>', 'm`O<ESC>``')
--- map('n', '<S-CR>', 'm`kdd``')
-
-map('n', '<A-CR>', 'm`o<ESC>``')
-map('n', '<C-CR>', 'm`jdd``')
+map('n', '<CR>', 'o')
+map('n', '<S-CR>', 'O')
 
 -- map('n', '<leader>c', 'gcc', rs)
 -- map('v', '<leader>c', 'gc', rs)
@@ -78,13 +65,20 @@ map("n", ";", ":", { desc = "CMD enter command mode" })
 -- map("n", "<leader>w", "<CMD>w<CR>")
 -- map("n", "<leader>Q", "<CMD>qa<CR>")
 -- map("n", "<leader>q", "<CMD>q<CR>")
+
 map("n", "q", function()
   local buf = vim.api.nvim_get_current_buf()
-  vim.api.nvim_command("BufferLineCyclePrev")
-  local command = string.format("bdelete! %d", buf)
-  vim.api.nvim_command(command)
-  -- require'bufferline'.go_to(1, false)
+  if not vim.api.nvim_get_option_value("modified", { buf = buf }) then
+    vim.api.nvim_command("BufferLineCyclePrev")
+    local command = string.format("bdelete! %d", buf)
+    vim.api.nvim_command(command)
+  else
+    local filepath = vim.api.nvim_buf_get_name(buf)
+    local title = stringmani.shorten_path(filepath)
+    log("Save changes before trying to close buffer", { render = 'compact', level = vim.log.levels.WARN, title = title })
+  end
 end)
+
 map("n", "<leader>q", "<CMD>qa<CR>")
 map("n", "Q", "<CMD>q!<CR>")
 map("n", "<leader>`", "<CMD>Inspect<CR>")

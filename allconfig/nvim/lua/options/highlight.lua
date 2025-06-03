@@ -1,14 +1,24 @@
--- require'plugins.config.blink'.highlight()
-
 local M = {}
+M.hl_table = {
+  ['#dc00ff'] = { '@type.builtin.c', '@lsp.typemod.type.defaultLibrary.c' },
+  ['#f4c100'] = { '@keyword.import.c' },
+  ['#00a0ff'] = { '@lsp.typemod.function.globalScope.c' },
+  ['#ff0000'] = { '@keyword.conditional.c', '@keyword.repeat.c', '@keyword.return.c' },
+  ['#cc0000'] = { '@keyword.type.c' },
+  ['#cc0043'] = { '@keyword.directive.define.c' },
+  ['#d58bc8'] = { '@lsp.typemod.macro.globalScope.c' },
+  ['#22adff'] = { '@lsp.typemod.enum.globalScope.c', '@lsp.type.enumMember.c' },
+  ['#2dd0fe'] = { '@number.c' },
+  ['#f5d0ff'] = { '@lsp.typemod.variable.functionScope.c' },
 
-local hl = vim.api.nvim_set_hl
+}
 
 function M.tokyonight(hl, c)
   hl.BlinkCmpMenuBorder = { fg = "#00cb00" }
   hl.NvimTreeFolderIcon = { fg = "#ffc500", bg = c.none }
 
 end
+
 
 -- hl(0, 'CursorLineNr', { fg = '#ffa200' })
 -- hl(0, 'LineNr', { fg = '#ffffff' })

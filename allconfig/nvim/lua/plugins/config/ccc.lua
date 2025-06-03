@@ -7,7 +7,7 @@ function M.mapping()
     silent = true,
   }
   -- map('n', '<leader>ccc', '<CMD>execute "CccHighlighterEnable" | CccPick<CR>', nrs)
-  map({'n', 'i'}, '<A-c>', '<CMD>CccPick<CR>', nrs)
+  map({'n', 'i'}, '<A-c>', '<CMD>CccPick<CR><ESC>', nrs)
 end
 
 function M.config()

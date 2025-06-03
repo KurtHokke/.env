@@ -22,7 +22,6 @@ local i = ls.insert_node
 -- args is a table, where 1 is the text in Placeholder 1, 2 the text in
 -- placeholder 2,...
 
-
 -- local function copy(args)
 --   return args[1]
 -- end
@@ -35,8 +34,13 @@ ls.add_snippets("lua", {
     t("'"),
     i(0),
   }),
-  s("local", {
-    t("local "),
+  s("local", { t("local ") }),
+  s("return", { t("return ") }),
+  s('func', {
+    t({'function()', '\t'}),
+    i(1, ''),
+    t({'', 'end'}),
+    i(0),
   }),
 })
 -- ls.add_snippets("all", {

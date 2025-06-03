@@ -1,4 +1,4 @@
--- local log = require'functions.logger'
+-- local log = require'functions.logger'.log
 local ensure_installed = {
     "lua",
     "luadoc",
@@ -9,7 +9,9 @@ local ensure_installed = {
     "cpp",
     "css",
     "cmake",
-    "desktop"
+    "desktop",
+    "regex",
+    "rust",
 }
 local function need_update()
   local is_installed = require'nvim-treesitter'.get_installed()
