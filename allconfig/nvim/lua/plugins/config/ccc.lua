@@ -11,21 +11,20 @@ function M.mapping()
 end
 
 function M.config()
-  local ccc = require'ccc'
-  local mapping = ccc.mapping
-  ccc.setup({
-	  highlighter = {
-	    auto_enable = true,
-	    lsp = true,
-	  },
-    mappings = {
-      ['<A-l>'] = mapping.increase10,
-      ['<A-h>'] = mapping.decrease10,
-      e = mapping.complete
-    },
-    highlight_mode = "virtual",
-
-  })
+  -- local ccc = require'ccc'
+  -- ccc.setup({
+  --  highlighter = {
+  --    auto_enable = true,
+  --    lsp = true,
+  --  },
+  --   mappings = {
+  --     ['<A-l>'] = mapping.increase10,
+  --     ['<A-h>'] = mapping.decrease10,
+  --     e = mapping.complete
+  --   },
+  --   highlight_mode = "virtual",
+  --
+  -- })
   -- vim.api.nvim_command('CccHighlighterEnable')
 end
 

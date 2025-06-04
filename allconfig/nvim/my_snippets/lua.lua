@@ -25,7 +25,7 @@ local i = ls.insert_node
 -- local function copy(args)
 --   return args[1]
 -- end
-
+-- ls.add_snippets
 ls.add_snippets("lua", {
   s("require", {
     t("require"),

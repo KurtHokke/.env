@@ -44,6 +44,8 @@ opt.shortmess:append "sI"
 
 opt.whichwrap:append "<>[]hl"
 
+opt.foldmethod = "marker"
+
 g.loaded_netrw = 1
 g.loaded_netrwPlugin = 1
 g.loaded_node_provider = 0

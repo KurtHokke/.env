@@ -17,7 +17,8 @@ local rs = {
 -- end)
 
 map('n', '<A-2>', function()
-  local test = require'PluginConfigImporter'
+  package.loaded["functions.fzf"] = nil
+  local test = require'functions.fzf'.live_grep_nvimtreedir
   test()
 end)
 map('n', '<A-1>', function()
@@ -54,10 +55,10 @@ map("i", "<A-j>", "<Down>", nrs)
 map("i", "<A-k>", "<Up>", nrs)
 map("i", "<A-l>", "<Right>", nrs)
 
-map({"n", "v"}, "<A-h>", "5h", nrs)
-map({"n", "v"}, "<A-j>", "5j", nrs)
-map({"n", "v"}, "<A-k>", "5k", nrs)
-map({"n", "v"}, "<A-l>", "5l", nrs)
+map({"n", "v"}, "<A-h>", "2h", rs)
+map({"n", "v"}, "<A-j>", "3j", rs)
+map({"n", "v"}, "<A-k>", "3k", rs)
+map({"n", "v"}, "<A-l>", "2l", rs)
 
 map("n", ";", ":", { desc = "CMD enter command mode" })
 -- map("i", "jk", "<ESC>")
@@ -87,7 +88,7 @@ map({"n", "i"}, "<A-u>", "<CMD>u<CR>")
 map("c", "<C-a>", "<home>")
 map("c", "<C-e>", "<end>")
 
-map("n", "<Tab>", "<CMD>BufferLineCycleNext<CR>")
+map("n", "<TAB>", "<CMD>BufferLineCycleNext<CR>")
 
 local mytree = require'plugins.config.nvimtree'.mytree
 map("n", "<A-e>", function()

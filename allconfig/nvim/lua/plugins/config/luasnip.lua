@@ -10,5 +10,6 @@ vim.keymap.set({"i", "s"}, "<C-B>", function()
 end, {silent = true})
 
 require("luasnip.loaders.from_lua").lazy_load({paths = "~/.config/nvim/my_snippets"})
+-- require("luasnip.loaders.from_vscode").lazy_load()
 -- require'my_snippets.lua'
 -- require'my_snippets.c'

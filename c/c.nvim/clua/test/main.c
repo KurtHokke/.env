@@ -1,14 +1,23 @@
+#include <dirent.h>
 #include <stdio.h>
 
 
-int main(void)
+int main(const int argc, const char *argv[])
 {
-  char *str = "..";
-  if ((str[0] == '.') && (str[1] == '\0'
-                          || (str[1] == '.' && str[2] == '\0'))) {
-    printf("yes\n");
-  } else {
-    printf("no\n");
+  if (argc < 2) {
+    printf("null\n");
+    return 1;
   }
+  DIR *dir = opendir(argv[1]);
+  if (dir == NULL) {
+    printf("failed to open %s\n", argv[1]);
+    return 1;
+  }
+  struct dirent *entry;
+  while ((entry = readdir(dir)) != NULL) {
+    printf("%s\n", entry->d_name);
+  }
+
+  closedir(dir);
   return 0;
 }

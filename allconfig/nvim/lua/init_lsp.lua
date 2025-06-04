@@ -24,8 +24,9 @@ end
 
 -- disable semanticTokens
 -- L.on_init = function(client, _)
---   if client:supports_method "textDocument/semanticTokens" then
---     client.server_capabilities.semanticTokensProvider = nil
+--   if client:supports_method "textDocument/declaration" then
+--     client.server_capabilities.declarationProvider = true
+--     -- client.server_capabilities.semanticTokensProvider = nil
 --   end
 -- end
 L.capabilities = vim.lsp.protocol.make_client_capabilities()
@@ -65,7 +66,7 @@ vim.diagnostic.config {
   -- wrap = true,
   float = { border = "single" },
 }
-vim.lsp.config("*", { capabilities = L.capabilities })--, on_init = L.on_init })
+vim.lsp.config("*", { capabilities = L.capabilities})--, on_init = L.on_init })
 
 -- local plugin_lua_dirs = {}
 -- for _, path in ipairs(vim.fn.glob(vim.fn.stdpath('data') .. '/lazy/*/lua', true, true, true)) do
@@ -74,6 +75,10 @@ vim.lsp.config("*", { capabilities = L.capabilities })--, on_init = L.on_init })
 
 vim.lsp.config('lua_ls', {
   on_init = function(client)
+    -- if client:supports_method "textDocument/declaration" then
+    --   client.server_capabilities.declarationProvider = true
+    --   -- client.server_capabilities.semanticTokensProvider = nil
+    -- end
     if client.workspace_folders then
       local path = client.workspace_folders[1].name
       if
@@ -148,7 +153,7 @@ vim.lsp.enable("clangd")
 --   capabilities = L.capabilities,
 -- })
 vim.lsp.enable('neocmake')
-
+vim.lsp.enable('jsonls')
 -- vim.lsp.config("cmake", {
 --   cmd = { vim.fn.stdpath('data') .. '/pyneo/bin/cmake-language-server' },
 --   filetypes = { 'cmake', 'CMakeLists.txt' },

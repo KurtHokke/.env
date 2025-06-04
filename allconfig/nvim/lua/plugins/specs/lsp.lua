@@ -1,9 +1,11 @@
 return {
--- {
---     'windwp/nvim-autopairs',
---     event = "InsertEnter",
---     config = true
--- },
+{
+  "folke/lazydev.nvim",
+  ft = "lua", -- only load on lua files
+  opts = function()
+    return require'plugins.config.lazydev'.opts
+  end
+},
 {
   "echasnovski/mini.pairs",
   event = "VeryLazy",
@@ -42,12 +44,12 @@ return {
       "L3MON4D3/LuaSnip",
       version = "v2.*", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
       build = "make install_jsregexp",
-      opts = {},
+      -- opts = {},
+      -- dependencies = 'rafamadriz/friendly-snippets',
       config = function()
         require'plugins.config.luasnip'
       end,
     },
-    'rafamadriz/friendly-snippets'
   },
   version = '1.*',
   opts = function() return require'plugins.config.blink'.opts end,
@@ -77,6 +79,11 @@ return {
   event = "BufEnter",
   opts = function() return require'plugins.config.treesitter-context'.opts end,
 },
+-- {
+--   'kevinhwang91/nvim-ufo',
+--   dependencies = 'kevinhwang91/promise-async',
+--   opts = function() return require'plugins.config.ufo'.opts end
+-- },
 {
   "ray-x/lsp_signature.nvim",
   event = "InsertEnter",

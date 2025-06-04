@@ -2,12 +2,24 @@ local M = {}
 M.config = {
   on_attach = function(bufnr)
     local api = require("nvim-tree.api")
-    local function map_opts(desc)
-      return { desc = "nvim-tree: " .. desc, buffer = bufnr, noremap = true, silent = true, nowait = true }
+    local function map_opts(desc, opts)
+      opts = opts or {}
+      opts.silent = opts.silent or true
+      opts.nowait = opts.nowait or true
+      if opts.remap ~= nil and opts.remap == true then
+        opts.noremap = false
+      else
+        opts.remap = false
+        opts.noremap = true
+      end
+
+      return { desc = "nvim-tree: " .. desc, buffer = bufnr, remap = opts.remap, noremap = opts.noremap, silent = opts.silent, nowait = opts.nowait }
     end
     -- Load default mappings
     api.config.mappings.default_on_attach(bufnr)
     -- Override 'e' to collapse directory
+    -- vim.keymap.set("n", "<TAB>", "<CMD>BufferLineCycleNext<CR>")
+    vim.keymap.set("n", "<TAB>", "<C-w>w", map_opts("Unfocus Nvim-Tree", {remap = true}))
     vim.keymap.set("n", "e", api.node.open.edit, map_opts("Open File Or Folder"))
     vim.keymap.set("n", "<C-r>", api.fs.rename_basename, map_opts("Rename File Or Folder"))
   end,

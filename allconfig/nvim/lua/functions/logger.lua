@@ -1,13 +1,14 @@
 local M = {}
 
 --- Documentation
---- @class table
+--- @class optstable
 --- @field level? number
+--- @field raw? boolean
 --- @field title? string
 --- @field timeout? number|boolean
 --- @field render? string
---- @param msg string
---- @param opts? table
+--- @param msg any
+--- @param opts? optstable
 ---  opts:
 ---  .level (number) 1-6
 ---  .title (string) Title
@@ -28,7 +29,11 @@ function M.log(msg, opts)
   if opts.timeout == nil or type(opts.timeout) ~= "number" or type(opts.timeout) ~= "boolean" then
     opts.timeout = 8000
   end
-  notify(msg, level, opts)
+  if opts.raw ~= nil and type(opts.raw) == "boolean" and opts.raw == true then
+    notify(vim.inspect(msg), level, opts)
+  else
+    notify(msg, level, opts)
+  end
 end
 
 return M

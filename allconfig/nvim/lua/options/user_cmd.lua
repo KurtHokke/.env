@@ -9,6 +9,14 @@ local log = require'functions.logger'.log
 --   })
 -- end, {})
 
+
+
+newcmd('GetPath', function(args)
+  -- package.loaded["functions.module_utils"] = nil
+  local get = require'functions.module_utils'.get_mod_abspath
+  get(args.fargs[1])
+end, {nargs = 1})
+
 newcmd('TestLIB', function(args)
   local test = require'fnames'
   local paths = test.fnames(args.fargs[1])
