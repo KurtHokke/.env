@@ -1,5 +1,6 @@
 local M = {}
-
+--require'lualine'
+---@module "lualine"
 M.config = {
   options = {
     icons_enabled = true,
@@ -23,7 +24,7 @@ M.config = {
   sections = {
     lualine_a = {'mode'},
     lualine_b = {'branch', 'diff', 'diagnostics'},
-    lualine_c = {'filename'},
+    lualine_c = {'filename', 'lsp_status'},
     lualine_x = {'encoding', 'fileformat', 'filetype'},
     lualine_y = {'progress'},
     lualine_z = {'location'}

@@ -149,9 +149,31 @@ vim.lsp.config('clangd', {
 })
 vim.lsp.enable("clangd")
 
--- vim.lsp.config('neocmake', {
---   capabilities = L.capabilities,
--- })
+vim.filetype.add({
+  filename = {
+    [".zshrc"] = "zsh",
+    [".zshenv"] = "zsh",
+  }
+})
+vim.lsp.config('bashls', {
+  cmd = { 'bash-language-server', 'start' },
+  settings = {
+    bashIde = {
+      -- Glob pattern for finding and parsing shell script files in the workspace.
+      -- Used by the background analysis features across files.
+
+      -- Prevent recursive scanning which will cause issues when opening a file
+      -- directly in the home directory (e.g. ~/foo.sh).
+      --
+      -- Default upstream pattern is "**/*@(.sh|.inc|.bash|.command)".
+      globPattern = vim.env.GLOB_PATTERN or '*@(.sh|.inc|.bash|.command|.zsh)',
+    },
+  },
+  filetypes = { 'bash', 'sh', 'zsh' },
+  root_markers = { '.git' },
+})
+vim.lsp.enable('bashls')
+
 vim.lsp.enable('neocmake')
 vim.lsp.enable('jsonls')
 -- vim.lsp.config("cmake", {

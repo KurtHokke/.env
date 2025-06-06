@@ -1,6 +1,15 @@
 local M = {}
 local log = require'functions.logger'.log
-function M.get_mod_abspath(modname)
+
+-- ---@type table<>
+-- M.opts = {
+--
+-- }
+
+---@class get_mod_abspath_OPTS
+---@field log? {boolean:true|false}
+---@param opts? get_mod_abspath_OPTS
+function M.get_mod_abspath(modname, opts)
   local Config = require'lazy.core.config'
   if not Config.spec then
     log('no Config.spec')

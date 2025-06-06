@@ -1,3 +1,4 @@
+---@module "lazy"
 return {
 {
   "folke/lazydev.nvim",
@@ -27,12 +28,14 @@ return {
 },
 {
   "neovim/nvim-lspconfig",
+  event = "VeryLazy",
   config = function()
     require("init_lsp")
   end,
 },
 {
   'saghen/blink.cmp',
+  event = "VeryLazy",
   -- enabled = false,
   dependencies = {
     {
@@ -53,15 +56,13 @@ return {
   },
   version = '1.*',
   opts = function() return require'plugins.config.blink'.opts end,
-  opts_extend = function()
-    return require'plugins.config.blink'.opts_extend
-  end
+  opts_extend = function() return require'plugins.config.blink'.opts_extend end
 },
 {
   "folke/trouble.nvim",
-  opts = function() return require'plugins.config.trouble'.opts end,
   cmd = "Trouble",
   keys = function() return require'plugins.config.trouble'.keys end,
+  opts = function() return require'plugins.config.trouble'.opts end,
 },
 {
   'nvim-treesitter/nvim-treesitter',

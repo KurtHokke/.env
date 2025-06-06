@@ -11,13 +11,25 @@ local rs = {
   silent = true,
 }
 
--- map('n', '<A-3>', function ()
---   local test = require'fnames'
---
+map('n', 'u', '<Nop>', nrs)
+map({'n', 'v'}, ' ', '<Nop>', nrs)
+map({'n', 'v'}, '<Up>', '<Nop>', nrs)
+map({'n', 'v'}, '<Down>', '<Nop>', nrs)
+map({'n', 'v'}, '<Left>', '<Nop>', nrs)
+map({'n', 'v'}, '<Right>', '<Nop>', nrs)
+
+-- map({'n', 'v', 'i', 'c'}, '<A-3>', function()
+--   log(vim.api.nvim_get_mode().mode, {raw = true})
 -- end)
 
+map({'n', 'v', 'i'}, '<A-3>', function ()
+  package.loaded["functions._playground"] = nil
+  local test = require'functions._playground'.test
+  test()
+end)
+
 map('n', '<A-2>', function()
-  package.loaded["functions.fzf"] = nil
+  -- package.loaded["functions.fzf"] = nil
   local test = require'functions.fzf'.live_grep_nvimtreedir
   test()
 end)
@@ -35,12 +47,7 @@ map({'n', 'i'}, '<C-CR>', function ()
   jump()
 end)
 
-map('n', 'u', '<Nop>', nrs)
-
-map({'n', 'v'}, '<Up>', '<Nop>', nrs)
-map({'n', 'v'}, '<Down>', '<Nop>', nrs)
-map({'n', 'v'}, '<Left>', '<Nop>', nrs)
-map({'n', 'v'}, '<Right>', '<Nop>', nrs)
+map('n', '<leader>rg', '<CMD>FzfLua live_grep_glob<CR>', nrs)
 
 map('n', '<CR>', 'o')
 map('n', '<S-CR>', 'O')
@@ -60,7 +67,7 @@ map({"n", "v"}, "<A-j>", "3j", rs)
 map({"n", "v"}, "<A-k>", "3k", rs)
 map({"n", "v"}, "<A-l>", "2l", rs)
 
-map("n", ";", ":", { desc = "CMD enter command mode" })
+map({"n", "v"}, ";", ":", { desc = "CMD enter command mode" })
 -- map("i", "jk", "<ESC>")
 -- map("n", "<leader>W", "<CMD>wqa<CR>")
 -- map("n", "<leader>w", "<CMD>w<CR>")

@@ -1,6 +1,9 @@
 
 local M = {}
+local log = require'functions.logger'.log
+---@module "blink-cmp"
 
+M.str_in_list = require'functions.string'.str_in_list
 M.opts = {
 
   appearance = {
@@ -8,7 +11,6 @@ M.opts = {
     -- Adjusts spacing to ensure icons are aligned
     nerd_font_variant = 'mono'
   },
-
   -- (Default) Only show the documentation popup when manually triggered
   completion = {
     menu = {
@@ -22,6 +24,28 @@ M.opts = {
           { "kind_icon", "kind" }
         },
       },
+      auto_show = function(ctx)
+        if M.str_in_list(vim.treesitter.get_captures_at_cursor(), "string") then
+          local pos = vim.api.nvim_win_get_cursor(0)
+          local linetext = vim.api.nvim_buf_get_lines(0, pos[1] - 1, pos[1], false)
+          if string.match(linetext[1], "event") then
+            log('found event in line')
+            return true
+          end
+          log(linetext[1], {raw = true})
+          return false
+        else
+          return true
+        end
+      end,
+      cmdline_position = function()
+        if vim.g.ui_cmdline_pos ~= nil then
+          local pos = vim.g.ui_cmdline_pos -- (1, 0)-indexed
+          return { pos[1], pos[2] }
+        end
+        log("vim.g.ui_cmdline_pos == nil /blink.cmp", {level = vim.log.levels.ERROR, timeout = false})
+        return {0, 0}
+      end,
     },
     documentation = { auto_show = false },
     list = { selection = { auto_insert = false }},
@@ -34,7 +58,7 @@ M.opts = {
   -- Default list of enabled providers defined so that you can extend it
   -- elsewhere in your config, without redefining it, due to `opts_extend`
   sources = {
-    default = { 'lazydev', 'lsp', 'path', 'snippets', 'buffer' }, --'emoji', 'nerdfont' },
+    default = { 'lazydev', 'lsp', 'path', 'snippets' }, --'emoji', 'nerdfont' },
     providers = {
       lazydev = {
         name = "LazyDev",
@@ -45,6 +69,9 @@ M.opts = {
       snippets = {
         module = 'blink.cmp.sources.snippets',
         score_offset = 10,
+        should_show_items = function(ctx)
+          return ctx.trigger.initial_kind ~= 'trigger_character'
+        end
       },
       -- emoji = {
       --   module = "blink-emoji",

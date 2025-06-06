@@ -19,13 +19,17 @@ local i = ls.insert_node
 -- local types = require("luasnip.util.types")
 -- local conds = require("luasnip.extras.conditions")
 -- local conds_expand = require("luasnip.extras.conditions.expand")
--- args is a table, where 1 is the text in Placeholder 1, 2 the text in
--- placeholder 2,...
-
--- local function copy(args)
---   return args[1]
+-- -- args is a table, where 1 is the text in Placeholder 1, 2 the text in
+-- -- placeholder 2,...
+--
+-- local function cond_NotInString()
+--   if vim.treesitter.get_captures_at_cursor()[1] ~= "string" then
+--     return true
+--   else
+--     return false
+--   end
 -- end
--- ls.add_snippets
+
 ls.add_snippets("lua", {
   s("require", {
     t("require"),

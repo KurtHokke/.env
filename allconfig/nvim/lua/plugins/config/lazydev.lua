@@ -2,7 +2,9 @@ local M = {}
 
 M.opts = {
   library = {
+    { path = "${3rd}/luv/library", words = { "vim%.uv" } },
     -- { path = "ccc.nvim", mods = { "ccc" } },
+    { path = "/home/src/.env/allconfig/.local/nvim/lazy/lazy.nvim/lua/lazy", mods = { "lazy" } },
   }
 }
 

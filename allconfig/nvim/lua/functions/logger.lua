@@ -1,28 +1,47 @@
 local M = {}
 
+-- ---@enum LogLevels
+-- M._loglevels = {
+--   off = vim.log.levels.OFF,
+--   info = vim.log.levels.INFO,
+--   warn = vim.log.levels.WARN,
+--   error = vim.log.levels.ERROR,
+--   debug = vim.log.levels.DEBUG,
+--   trace = vim.log.levels.TRACE,
+-- }
+---@alias LogLevels
+---| number
+---|` vim.log.levels.OFF`
+---|` vim.log.levels.INFO`
+---|` vim.log.levels.WARN`
+---|` vim.log.levels.ERROR`
+---|` vim.log.levels.DEBUG`
+---|` vim.log.levels.TRACE`
+---@alias TrueOrFalse
+---| boolean
+---|` false`
+---|` true`
+---@alias RenderType
+---|` 'default'`
+---|` 'minimal'`
+---|` 'simple'`
+---|` 'compact'`
+---|` 'wrapped-compact'`
+
 --- Documentation
 --- @class optstable
---- @field level? number
---- @field raw? boolean
+--- @field level? LogLevels
+--- @field raw? TrueOrFalse
 --- @field title? string
---- @field timeout? number|boolean
---- @field render? string
+--- @field timeout? number|TrueOrFalse
+--- @field render? RenderType
 --- @param msg any
 --- @param opts? optstable
----  opts:
----  .level (number) 1-6
----  .title (string) Title
----  .timeout (number|boolean) milliseconds to display
----  .render (string) "default"
----                   "minimal"
----                   "simple"
----                   "compact"
----                   "wrapped-compact"
 function M.log(msg, opts)
   local notify = require'notify'
   local level = vim.log.levels.INFO
   opts = opts or {}
-  if opts.level ~= nil and opts.level >= 1 and opts.level <= 6 then
+  if opts.level ~= nil and opts.level >= 0 and opts.level <= 5 then
     level = opts.level
     opts.level = nil
   end

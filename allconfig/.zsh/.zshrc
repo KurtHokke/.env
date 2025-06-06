@@ -37,9 +37,6 @@ HISTTIMEFORMAT="%d/%m/%Y %H:%M] "
 
 bindkey -e
 
-if [[ $setx -eq 1 ]]; then
-	set -x
-fi
 
 export PAGER="less"
 export CMAKE_GENERATOR="Ninja"
@@ -66,6 +63,8 @@ export XDG_DATA_HOME="$HOME/.local/share"
 export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/opt/cuda/lib64:/opt/cuda/lib"
 
 export VCPKG_DISABLE_METRICS=true
+
+export OPENAI_API_KEY="$(cat "$ZDOTDIR/other/oak")"
 
 prompt() {
   PS1="%B%F{040}%~%f%b "

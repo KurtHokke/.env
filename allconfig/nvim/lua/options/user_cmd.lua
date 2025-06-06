@@ -8,8 +8,11 @@ local log = require'functions.logger'.log
 --     rocks = rocks,
 --   })
 -- end, {})
-
-
+newcmd('StrInList', function()
+  package.loaded['functions.string'] = nil
+  local get = require'functions.string'.str_in_list
+  get()
+end, {})
 
 newcmd('GetPath', function(args)
   -- package.loaded["functions.module_utils"] = nil
@@ -31,32 +34,18 @@ newcmd('PluginLoaded', function(args)
   require'functions.plugin_utils'.is_loaded(args.fargs[1], true)
 end, { nargs = 1 })
 
-local function GoTo_completion(arg_lead, cmd_line, cursor_pos)
-  -- Get files in the current directory
-  local alias = { "-nvim" }
-  local paths = vim.fn.glob(arg_lead .. "*/", false, true)
-  local cmp = vim.tbl_extend("keep", alias, paths)
-  return cmp
-end
-
+-- local function GoTo_completion(arg_lead, cmd_line, cursor_pos)
+--   -- Get files in the current directory
+--   local alias = { "-nvim" }
+--   local paths = vim.fn.glob(arg_lead .. "*/", false, true)
+--   local cmp = vim.tbl_extend("keep", alias, paths)
+--   return cmp
+-- end
+local GoTo = require'functions.GoTo'
 newcmd('GoTo', function(args)
-  if args.fargs[1] ~= nil then
-    local path = args.fargs[1]
-    local alias = string.lower(path)
-    if alias == '-nvim' then
-      vim.api.nvim_set_current_dir(vim.fn.stdpath('config'))
-    elseif vim.fn.isdirectory(path) == 1 then
-      vim.api.nvim_set_current_dir(path)
-    end
-  else
-    if vim.fn.getcwd() == vim.g.starting_directory then
-      vim.api.nvim_set_current_dir(vim.fn.stdpath('config'))
-    else
-      vim.api.nvim_set_current_dir(vim.g.starting_directory)
-    end
-    -- log(vim.g.starting_directory)
-  end
-end, { nargs = '?', complete = GoTo_completion })
+  local path = args.fargs[1] or nil
+  GoTo.GoTo(path)
+end, { nargs = '?', complete = GoTo.GoTo_completion })
 
 
 newcmd('ActiveLinters', function()

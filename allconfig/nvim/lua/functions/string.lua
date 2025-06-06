@@ -1,5 +1,8 @@
 local M = {}
 
+local log = require'functions.logger'.log
+
+
 ---@param path string
 ---@param max_components? number Defaulting to 3 if nil
 function M.shorten_path(path, max_components)
@@ -19,6 +22,22 @@ function M.shorten_path(path, max_components)
     table.insert(short_components, components[i])
   end
   return "..." .. "/" .. table.concat(short_components, "/")
+end
+
+---@param list string[] list to search in 
+---@param str string string to search for
+---@return boolean|nil
+function M.str_in_list(list, str)
+  if type(list) ~= "table" then
+    log(list, {raw = true, level = vim.log.levels.ERROR, timeout = false})
+    return nil
+  end
+  for _, v in ipairs(list) do
+    if str == v then
+      return true
+    end
+  end
+  return false
 end
 
 return M

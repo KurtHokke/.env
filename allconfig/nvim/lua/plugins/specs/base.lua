@@ -1,6 +1,8 @@
-return {
+---@module "lazy"
+return 
+---@class LazyPlugin
 {
-  "nvim-tree/nvim-web-devicons", lazy = true, opts = {},
+  "nvim-tree/nvim-web-devicons", lazy = true, opts = {}, event
 },
 {
   'echasnovski/mini.icons', lazy = true, version = false, opts = {},
@@ -16,12 +18,14 @@ return {
 },
 {
   "nvim-tree/nvim-tree.lua",
-  cmd = { "NvimTreeToggle", "NvimTreeFocus" },
+  lazy = true,
+  -- cmd = { "NvimTreeToggle", "NvimTreeFocus" },
+  -- keys = {'<A-e>'},
   opts = function() return require'plugins.config.nvimtree'.config end,
 },
 {
   'mrjones2014/smart-splits.nvim',
-  lazy = true,
+  -- lazy = true,
   keys = { '<CS-CR>', '<CA-CR>' },
   build = './kitty/install-kittens.bash',
   opts = {},
@@ -34,25 +38,8 @@ return {
   lazy = true,
 },
 {
-  'nvim-telescope/telescope.nvim',
-  enabled = false,
-  cmd = { 'Telescope' },
-  keys = { '<leader>rg' },
-  branch = 'master',
-  dependencies = {
-    'nvim-lua/plenary.nvim',
-    {
-      'nvim-telescope/telescope-fzf-native.nvim',
-      build = '/usr/local/cmake-3.31.7/bin/cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && /usr/local/cmake-3.31.7/bin/cmake --build build --config Release',
-    },
-  },
-  opts = function() return require'plugins.config.telescope'.opts end,
-  config = function()
-    require'plugins.config.telescope'.after()
-  end,
-},
-{
   "ibhagwan/fzf-lua",
+  -- lazy = true,
   -- optional for icon support
   dependencies = { "nvim-tree/nvim-web-devicons" },
   -- or if using mini.icons/mini.nvim
@@ -89,9 +76,10 @@ return {
 },
 {
   "MagicDuck/grug-far.nvim",
-  opts = { headerMaxWidth = 80 },
+  -- lazy = true,
   cmd = "GrugFar",
   keys = function() return require'plugins.config.grug-far'.keys end,
+  opts = { headerMaxWidth = 80 },
 },
 {
   'uga-rosa/ccc.nvim',
@@ -102,6 +90,7 @@ return {
 },
 {
   'echasnovski/mini.doc',
+  enabled = false,
   lazy = true,
   version = false,
   opts = {},

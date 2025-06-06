@@ -23,20 +23,28 @@ M.opts = {
   wrap = true, -- allow doc/signature text wrap inside floating_window, useful if your lsp return doc/sig is too long
   floating_window = true, -- show hint in a floating window, set to false for virtual text only mode
 
-  floating_window_above_cur_line = true, -- try to place the floating above the current line when possible Note:
+  floating_window_above_cur_line = false, -- try to place the floating above the current line when possible Note:
   -- will set to true when fully tested, set to false will use whichever side has more space
   -- this setting will be helpful if you do not want the PUM and floating win overlap
 
   floating_window_off_x = 1, -- adjust float windows x position.
                              -- can be either a number or function
   floating_window_off_y = 0, -- adjust float windows y position. e.g -2 move window up 2 lines; 2 move down 2 lines
+  -- floating_window_off_y = function()
+  --   if vim.api.nvim_get_mode().mode == "c" then
+  --     return 9
+  --   else
+  --     return 1
+  --   end
+  -- end,
                               -- can be either number or function, see examples
   -- ignore_error = func(err, ctx, config), -- this scilence errors, check init.lua for more details
 
+  show_struct = { enable = true },                                   -- experimental: show struct info
   close_timeout = 4000, -- close floating window after ms when laster parameter is entered
   fix_pos = false,  -- set to true, the floating window will not auto-close until finish all parameters
   hint_enable = true, -- virtual hint enable
-  hint_prefix = "🅱️ ",  -- Panda for parameter, NOTE: for the terminal not support emoji, might crash
+  hint_prefix = "🔍 ",  -- Panda for parameter, NOTE: for the terminal not support emoji, might crash
   -- or, provide a table with 3 icons
   -- hint_prefix = {
   --     above = "↙ ",  -- when the hint is on the line above the current line
@@ -49,7 +57,7 @@ M.opts = {
   -- return 'right_align' to display hint right aligned in the current line
   hi_parameter = "LspSignatureActiveParameter", -- how your parameter will be highlight
   handler_opts = {
-    border = "rounded"   -- double, rounded, single, shadow, none, or a table of borders
+    border = "double"   -- double, rounded, single, shadow, none, or a table of borders
   },
 
   always_trigger = false, -- sometime show signature on new line or in middle of parameter can be confusing, set it to false for #58
@@ -60,7 +68,7 @@ M.opts = {
 
   padding = '', -- character to pad on left and right of signature can be ' ', or '|'  etc
 
-  transparency = nil, -- disabled by default, allow floating win transparent value 1~100
+  transparency = 40, -- disabled by default, allow floating win transparent value 1~100
   shadow_blend = 36, -- if you using shadow as border use this set the opacity
   shadow_guibg = 'Black', -- if you using shadow as border use this set the color e.g. 'Green' or '#121315'
   timer_interval = 200, -- default timer check interval set to lower value if you want to reduce latency
