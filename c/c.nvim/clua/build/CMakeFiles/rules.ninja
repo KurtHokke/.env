@@ -44,7 +44,7 @@ rule CUSTOM_COMMAND
 # Rule for re-running cmake.
 
 rule RERUN_CMAKE
-  command = /usr/local/cmake-3.31.7/bin/cmake --regenerate-during-build -S/home/src/.env/allconfig/nvim/test/c.nvim/clua -B/home/src/.env/allconfig/nvim/test/c.nvim/clua/build
+  command = /usr/local/cmake-3.31.7/bin/cmake --regenerate-during-build -S/home/src/.env/allconfig/nvim/untracked/c.nvim/clua -B/home/src/.env/allconfig/nvim/untracked/c.nvim/clua/build
   description = Re-running CMake...
   generator = 1
 

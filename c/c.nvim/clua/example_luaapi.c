@@ -1,9 +1,7 @@
-// mylib.c
 #include <lua.h>
 #include <lauxlib.h>
 #include <lualib.h>
 
-// Example C function: add two numbers
 static int l_add(lua_State *L) {
     double a = luaL_checknumber(L, 1); // Get first argument
     double b = luaL_checknumber(L, 2); // Get second argument

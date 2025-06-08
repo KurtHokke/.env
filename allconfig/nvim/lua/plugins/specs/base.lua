@@ -1,14 +1,20 @@
 ---@module "lazy"
-return 
----@class LazyPlugin
+return {
+---@class LazySpec
 {
-  "nvim-tree/nvim-web-devicons", lazy = true, opts = {}, event
+  "nvim-tree/nvim-web-devicons", lazy = true, opts = {},
 },
 {
   'echasnovski/mini.icons', lazy = true, version = false, opts = {},
 },
 {
-  'nvim-lua/plenary.nvim', lazy = true,
+  'nvim-lua/plenary.nvim', lazy = false,
+},
+{
+  'KurtHokke/pconf.nvim',
+  dev = true,
+  build = 'cd src && cmake -B build && cmake --build build && cmake --install build',
+  opts = {},
 },
 {
   "folke/which-key.nvim",
@@ -17,11 +23,29 @@ return
   keys = function() return require'plugins.config.which-key'.keys end,
 },
 {
+  "nvim-neo-tree/neo-tree.nvim",
+  enabled = false,
+  branch = "v3.x",
+  dependencies = {
+    "nvim-lua/plenary.nvim",
+    "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
+    "MunifTanjim/nui.nvim",
+    -- {"3rd/image.nvim", opts = {}}, -- Optional image support in preview window: See `# Preview Mode` for more information
+  },
+  lazy = false, -- neo-tree will lazily load itself
+  ---@module "neo-tree"
+  ---@type neotree.Config?
+  opts = {
+    -- fill any relevant options here
+  },
+},
+{
   "nvim-tree/nvim-tree.lua",
-  lazy = true,
+  -- enabled = false,
   -- cmd = { "NvimTreeToggle", "NvimTreeFocus" },
-  -- keys = {'<A-e>'},
-  opts = function() return require'plugins.config.nvimtree'.config end,
+  keys = {'<A-e>'},
+  -- opts = function() return require'plugins.config.nvimtree'.opts end,
+  config = function() require'plugins.config.nvimtree'.config() end,
 },
 {
   'mrjones2014/smart-splits.nvim',
@@ -30,7 +54,7 @@ return
   build = './kitty/install-kittens.bash',
   opts = {},
   config = function()
-    require'plugins.config.smart-splits'
+    require'plugins.config.smart-splits'.config()
   end
 },
 {
@@ -39,14 +63,17 @@ return
 },
 {
   "ibhagwan/fzf-lua",
+  keys = { '<leader>rg', 'K' },
   -- lazy = true,
   -- optional for icon support
-  dependencies = { "nvim-tree/nvim-web-devicons" },
+  -- dependencies = { "nvim-tree/nvim-web-devicons" },
   -- or if using mini.icons/mini.nvim
-  -- dependencies = { "echasnovski/mini.icons" },
-  opts = {},
-  init = function()
-    require'plugins.config.fzf-lua'
+  dependencies = { "echasnovski/mini.icons" },
+  opts = function()
+    return require'plugins.config.fzf-lua'.opts
+  end,
+  config = function()
+    require'plugins.config.fzf-lua'.config()
   end
 },
 {

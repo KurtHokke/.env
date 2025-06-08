@@ -10,25 +10,17 @@ return {
 {
   "echasnovski/mini.pairs",
   event = "VeryLazy",
-  opts = {
-    modes = { insert = true, command = true, terminal = false },
-    -- skip autopair when next character is one of these
-    skip_next = [=[[%w%%%'%[%"%.%`%$]]=],
-    -- skip autopair when the cursor is inside these treesitter nodes
-    skip_ts = { "string" },
-    -- skip autopair when next character is closing pair
-    -- and there are more closing pairs than opening pairs
-    skip_unbalanced = true,
-    -- better deal with markdown code blocks
-    markdown = true,
-  },
-  config = function(_, opts)
-    require'plugins.config.mini-pairs'.setup(opts)
+  config = function()
+    require'plugins.config.mini-pairs'.setup()
   end,
 },
 {
+  'nvimtools/none-ls.nvim',
+
+},
+{
   "neovim/nvim-lspconfig",
-  event = "VeryLazy",
+  -- event = "VeryLazy",
   config = function()
     require("init_lsp")
   end,
@@ -36,21 +28,16 @@ return {
 {
   'saghen/blink.cmp',
   event = "VeryLazy",
-  -- enabled = false,
   dependencies = {
     {
       "neovim/nvim-lspconfig",
-      -- "moyiz/blink-emoji.nvim",
-      -- "MahanRahmati/blink-nerdfont.nvim",
     },
     {
       "L3MON4D3/LuaSnip",
-      version = "v2.*", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
+      version = "v2.*",
       build = "make install_jsregexp",
-      -- opts = {},
-      -- dependencies = 'rafamadriz/friendly-snippets',
       config = function()
-        require'plugins.config.luasnip'
+        require'plugins.config.luasnip'.config()
       end,
     },
   },
@@ -72,7 +59,7 @@ return {
     require'nvim-treesitter'.setup({
       install_dir = vim.fn.stdpath('data') .. '/TSInstallDir'
     })
-    require'plugins.config.treesitter'
+    require'plugins.config.treesitter'.config()
   end
 },
 {
@@ -80,24 +67,13 @@ return {
   event = "BufEnter",
   opts = function() return require'plugins.config.treesitter-context'.opts end,
 },
--- {
---   'kevinhwang91/nvim-ufo',
---   dependencies = 'kevinhwang91/promise-async',
---   opts = function() return require'plugins.config.ufo'.opts end
--- },
 {
   "ray-x/lsp_signature.nvim",
   event = "InsertEnter",
 },
--- {
---   "mfussenegger/nvim-lint",
---   enabled = false,
---   config = function()
---     require'plugins.config.lint'
---   end,
--- },
 {
   'mrcjkb/rustaceanvim',
+  enabled = false,
   version = '^6', -- Recommended
 },
 }

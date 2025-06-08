@@ -1,4 +1,4 @@
-local ls = require("luasnip")
+local ls = require("luasnip") --{{{
 -- some shorthands...
 local s = ls.snippet
 -- local sn = ls.snippet_node
@@ -14,39 +14,44 @@ local i = ls.insert_node
 -- local m = require("luasnip.extras").match
 -- local n = require("luasnip.extras").nonempty
 -- local dl = require("luasnip.extras").dynamic_lambda
--- local fmt = require("luasnip.extras.fmt").fmt
+local fmt = require("luasnip.extras.fmt").fmt
 -- local fmta = require("luasnip.extras.fmt").fmta
 -- local types = require("luasnip.util.types")
 -- local conds = require("luasnip.extras.conditions")
 -- local conds_expand = require("luasnip.extras.conditions.expand")
 -- -- args is a table, where 1 is the text in Placeholder 1, 2 the text in
--- -- placeholder 2,...
---
--- local function cond_NotInString()
---   if vim.treesitter.get_captures_at_cursor()[1] ~= "string" then
---     return true
---   else
---     return false
---   end
--- end
+-- -- placeholder 2,... --}}}
+
 
 ls.add_snippets("lua", {
-  s("require", {
-    t("require"),
-    t("'"),
-    i(1),
-    t("'"),
-    i(0),
-  }),
+  s("func", fmt([[
+  function {}()
+    {}
+  end
+  ]], {i(1), i(2)})),
   s("local", { t("local ") }),
   s("return", { t("return ") }),
-  s('func', {
-    t({'function()', '\t'}),
-    i(1, ''),
-    t({'', 'end'}),
-    i(0),
-  }),
+  s('requ', { t("require'"), i(1), t("'"), i(0) })
 })
+-- ls.add_snippets("lua", {
+--   s("require", {
+--     t("require"),
+--     t("'"),
+--     i(1),
+--     t("'"),
+--     i(0),
+--   }),
+--   s("local", { t("local ") }),
+--   s("return", { t("return ") }),
+--   s('func', {
+--     t({'function '}),
+--     i(1, ''),
+--     t({'()', '\t'}),
+--     i(2),
+--     t({'', 'end'}),
+--     i(0),
+--   }),
+-- })
 -- ls.add_snippets("all", {
 --   -- trigger is `fn`, second argument to snippet-constructor are the nodes to insert into the buffer on expansion.
 --   s("fn", {

@@ -1,42 +1,42 @@
+---@class Logger
 local M = {}
 
--- ---@enum LogLevels
--- M._loglevels = {
---   off = vim.log.levels.OFF,
---   info = vim.log.levels.INFO,
---   warn = vim.log.levels.WARN,
---   error = vim.log.levels.ERROR,
---   debug = vim.log.levels.DEBUG,
---   trace = vim.log.levels.TRACE,
--- }
+
 ---@alias LogLevels
----| number
----|` vim.log.levels.OFF`
 ---|` vim.log.levels.INFO`
 ---|` vim.log.levels.WARN`
 ---|` vim.log.levels.ERROR`
 ---|` vim.log.levels.DEBUG`
 ---|` vim.log.levels.TRACE`
----@alias TrueOrFalse
----| boolean
----|` false`
----|` true`
+---|` vim.log.levels.OFF`
 ---@alias RenderType
 ---|` 'default'`
 ---|` 'minimal'`
 ---|` 'simple'`
 ---|` 'compact'`
 ---|` 'wrapped-compact'`
+---|` function()  end`
 
---- Documentation
 --- @class optstable
---- @field level? LogLevels
---- @field raw? TrueOrFalse
+--- @field level? LogLevels|number 
+--- @field raw? boolean
+--- |` true`
+--- |` false`
 --- @field title? string
---- @field timeout? number|TrueOrFalse
---- @field render? RenderType
---- @param msg any
---- @param opts? optstable
+--- @field icon? string
+--- @field timeout? number|boolean
+--- |` false`
+--- @field animate? boolean
+--- |` false`
+--- @field hide_from_history? boolean
+--- @field render? RenderType|number|function
+--- @field replace? number|notify.Record
+--- @field on_open? function
+--- |` function()  end`
+--- @field on_close? function
+--- |` function()  end`
+---@param msg string
+---@param opts? optstable
 function M.log(msg, opts)
   local notify = require'notify'
   local level = vim.log.levels.INFO

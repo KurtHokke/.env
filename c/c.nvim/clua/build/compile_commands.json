@@ -1,0 +1,8 @@
+[
+{
+  "directory": "/home/src/.env/allconfig/nvim/untracked/c.nvim/clua/build",
+  "command": "/usr/bin/cc -Dfnames_EXPORTS -I/usr/include/luajit-2.1 -fPIC -std=c99 -Wall -Werror -O3 -flto -march=native -o CMakeFiles/fnames.dir/fnames.c.o -c /home/src/.env/allconfig/nvim/untracked/c.nvim/clua/fnames.c",
+  "file": "/home/src/.env/allconfig/nvim/untracked/c.nvim/clua/fnames.c",
+  "output": "CMakeFiles/fnames.dir/fnames.c.o"
+}
+]

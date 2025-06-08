@@ -56,7 +56,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
   end,
 })
 vim.diagnostic.config {
-  -- virtual_text = false,
   virtual_text = {
     prefix = "",
   },
@@ -134,10 +133,9 @@ vim.lsp.config('clangd', {
     "--header-insertion=iwyu",
     "--completion-style=detailed",
     "--function-arg-placeholders=false",
-    "--fallback-style=llvm",
+    -- "--fallback-style=llvm",
   },
   root_markers = {
-    'CMakeLists.txt',
     '.clangd',
     '.clang-tidy',
     '.clang-format',

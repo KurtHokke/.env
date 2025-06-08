@@ -1,4 +1,13 @@
 local M = {}
+
+function M.lint_progress()
+  local linters = require("lint").get_running()
+  if #linters == 0 then
+      return "󰦕"
+  end
+  return "󱉶 " .. table.concat(linters, ", ")
+end
+
 --require'lualine'
 ---@module "lualine"
 M.config = {
@@ -24,7 +33,7 @@ M.config = {
   sections = {
     lualine_a = {'mode'},
     lualine_b = {'branch', 'diff', 'diagnostics'},
-    lualine_c = {'filename', 'lsp_status'},
+    lualine_c = {'filename', 'lsp_status', M.lint_progress },
     lualine_x = {'encoding', 'fileformat', 'filetype'},
     lualine_y = {'progress'},
     lualine_z = {'location'}

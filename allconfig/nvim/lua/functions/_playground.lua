@@ -1,6 +1,6 @@
 local log = require'functions.logger'.log
 local str_in_list = require'functions.string'.str_in_list
-
+log('s', )
 local M = {}
 function M.test()
   local ts = vim.treesitter

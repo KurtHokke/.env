@@ -76,5 +76,10 @@ package.cpath = package.cpath .. ";" .. libso .. "/?.so"
 --     -- end, 1000)
 --   end
 -- })
-
+vim.api.nvim_create_autocmd({"BufRead", "BufNewFile"}, {
+  pattern = "*.zsh",
+  callback = function()
+    vim.bo.filetype = "sh"
+  end,
+})
 require("options.mappings")

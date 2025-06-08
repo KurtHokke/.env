@@ -1,5 +1,5 @@
 local M = {}
-M.config = {
+M.opts = {
   on_attach = function(bufnr)
     local api = require("nvim-tree.api")
     local function map_opts(desc, opts)
@@ -86,6 +86,20 @@ function M.mytree(opts)
       api.tree.resize(resizeopts)
     end
   end
+end
+
+function M.config()
+  require'nvim-tree'.setup(M.opts)
+  local map = vim.keymap.set
+  map("n", "<A-e>", function()
+    M.mytree({ toggle = true })
+  end)
+  map("n", "<C-=>", function()
+    M.mytree({ resize = { relative = 1 } })
+  end)
+  map("n", "<C-->", function()
+    M.mytree({ resize = { relative = -1 } })
+  end)
 end
 
 return M

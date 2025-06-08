@@ -1,4 +1,4 @@
-# Install script for directory: /home/src/.env/allconfig/nvim/test/c.nvim/clua
+# Install script for directory: /home/src/.env/allconfig/nvim/untracked/c.nvim/clua
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -57,7 +57,7 @@ if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT
   if(CMAKE_ERROR_ON_ABSOLUTE_INSTALL_DESTINATION)
     message(FATAL_ERROR "ABSOLUTE path INSTALL DESTINATION forbidden (by caller): ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
   endif()
-  file(INSTALL DESTINATION "/home/arcno/.local/share/nvim/libso" TYPE SHARED_LIBRARY FILES "/home/src/.env/allconfig/nvim/test/c.nvim/clua/build/fnames.so")
+  file(INSTALL DESTINATION "/home/arcno/.local/share/nvim/libso" TYPE SHARED_LIBRARY FILES "/home/src/.env/allconfig/nvim/untracked/c.nvim/clua/build/fnames.so")
   if(EXISTS "$ENV{DESTDIR}/home/arcno/.local/share/nvim/libso/fnames.so" AND
      NOT IS_SYMLINK "$ENV{DESTDIR}/home/arcno/.local/share/nvim/libso/fnames.so")
     if(CMAKE_INSTALL_DO_STRIP)
@@ -70,13 +70,13 @@ if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT
 endif()
 
 if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)
-  include("/home/src/.env/allconfig/nvim/test/c.nvim/clua/build/CMakeFiles/fnames.dir/install-cxx-module-bmi-noconfig.cmake" OPTIONAL)
+  include("/home/src/.env/allconfig/nvim/untracked/c.nvim/clua/build/CMakeFiles/fnames.dir/install-cxx-module-bmi-noconfig.cmake" OPTIONAL)
 endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
 if(CMAKE_INSTALL_LOCAL_ONLY)
-  file(WRITE "/home/src/.env/allconfig/nvim/test/c.nvim/clua/build/install_local_manifest.txt"
+  file(WRITE "/home/src/.env/allconfig/nvim/untracked/c.nvim/clua/build/install_local_manifest.txt"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
 endif()
 if(CMAKE_INSTALL_COMPONENT)
@@ -92,6 +92,6 @@ else()
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
-  file(WRITE "/home/src/.env/allconfig/nvim/test/c.nvim/clua/build/${CMAKE_INSTALL_MANIFEST}"
+  file(WRITE "/home/src/.env/allconfig/nvim/untracked/c.nvim/clua/build/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
 endif()

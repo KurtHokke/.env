@@ -47,7 +47,6 @@ map({'n', 'i'}, '<C-CR>', function ()
   jump()
 end)
 
-map('n', '<leader>rg', '<CMD>FzfLua live_grep_glob<CR>', nrs)
 
 map('n', '<CR>', 'o')
 map('n', '<S-CR>', 'O')
@@ -97,16 +96,16 @@ map("c", "<C-e>", "<end>")
 
 map("n", "<TAB>", "<CMD>BufferLineCycleNext<CR>")
 
-local mytree = require'plugins.config.nvimtree'.mytree
-map("n", "<A-e>", function()
-  mytree({ toggle = true })
-end)
-map("n", "<C-=>", function()
-  mytree({ resize = { relative = 1 } })
-end)
-map("n", "<C-->", function()
-  mytree({ resize = { relative = -1 } })
-end)
+-- local mytree = require'plugins.config.nvimtree'.mytree
+-- map("n", "<A-e>", function()
+--   mytree({ toggle = true })
+-- end)
+-- map("n", "<C-=>", function()
+--   mytree({ resize = { relative = 1 } })
+-- end)
+-- map("n", "<C-->", function()
+--   mytree({ resize = { relative = -1 } })
+-- end)
 --
 -- local quotejump = require("funcs.quotejump")
 -- map({"n", "i"}, "<A-.>", quotejump.jump_to_closing_quote)

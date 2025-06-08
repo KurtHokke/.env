@@ -7,7 +7,6 @@ M.aliases = {
   "--data",
   "--zsh",
 }
-
 function M.GoTo_completion(arg_lead, cmd_line, cursor_pos)
   -- Get files in the current directory
   local paths = vim.fn.glob(arg_lead .. "*/", false, true)

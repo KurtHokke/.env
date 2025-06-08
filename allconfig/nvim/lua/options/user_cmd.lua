@@ -8,12 +8,16 @@ local log = require'functions.logger'.log
 --     rocks = rocks,
 --   })
 -- end, {})
-newcmd('StrInList', function()
-  package.loaded['functions.string'] = nil
-  local get = require'functions.string'.str_in_list
-  get()
-end, {})
-
+-- newcmd('StrInList', function()
+--   package.loaded['functions.string'] = nil
+--   local get = require'functions.string'.str_in_list
+--   get()
+-- end, {})
+function _G.TestLIB(dir, opts)
+  local test = require'myplugin.lua.pconf'.scandir
+  local paths = test(dir, opts)
+  log(vim.inspect(paths))
+end
 newcmd('GetPath', function(args)
   -- package.loaded["functions.module_utils"] = nil
   local get = require'functions.module_utils'.get_mod_abspath
@@ -21,10 +25,10 @@ newcmd('GetPath', function(args)
 end, {nargs = 1})
 
 newcmd('TestLIB', function(args)
-  local test = require'fnames'
-  local paths = test.fnames(args.fargs[1])
+  local test = require'myplugin.lua.pconf'.init
+  local paths = test(args.fargs[1], {pattern = args.fargs[2]})
   log(vim.inspect(paths))
-end, { nargs = 1 })
+end, {nargs = '?'})
 
 newcmd('PluginExist', function(args)
   require'functions.plugin_utils'.exists(args.fargs[1], true)

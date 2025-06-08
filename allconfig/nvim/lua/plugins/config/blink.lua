@@ -23,16 +23,36 @@ M.opts = {
           { "label", "label_description", gap = 1 },
           { "kind_icon", "kind" }
         },
+        components = {
+          kind_icon = {
+            text = function(ctx)
+              local kind_icon, _, _ = require('mini.icons').get('lsp', ctx.kind)
+              return kind_icon
+            end,
+            -- (optional) use highlights from mini.icons
+            highlight = function(ctx)
+              local _, hl, _ = require('mini.icons').get('lsp', ctx.kind)
+              return hl
+            end,
+          },
+          kind = {
+            -- (optional) use highlights from mini.icons
+            highlight = function(ctx)
+              local _, hl, _ = require('mini.icons').get('lsp', ctx.kind)
+              return hl
+            end,
+          },
+        },
       },
       auto_show = function(ctx)
         if M.str_in_list(vim.treesitter.get_captures_at_cursor(), "string") then
-          local pos = vim.api.nvim_win_get_cursor(0)
-          local linetext = vim.api.nvim_buf_get_lines(0, pos[1] - 1, pos[1], false)
-          if string.match(linetext[1], "event") then
-            log('found event in line')
-            return true
-          end
-          log(linetext[1], {raw = true})
+          -- local pos = vim.api.nvim_win_get_cursor(0)
+          -- local linetext = vim.api.nvim_buf_get_lines(0, pos[1] - 1, pos[1], false)
+          -- if string.match(linetext[1], "event") then
+          --   log('found event in line')
+          --   return true
+          -- end
+          -- log(linetext[1], {raw = true})
           return false
         else
           return true
@@ -58,7 +78,7 @@ M.opts = {
   -- Default list of enabled providers defined so that you can extend it
   -- elsewhere in your config, without redefining it, due to `opts_extend`
   sources = {
-    default = { 'lazydev', 'lsp', 'path', 'snippets' }, --'emoji', 'nerdfont' },
+    default = { 'lazydev', 'lsp', 'path', 'snippets', 'omni' }, --'emoji', 'nerdfont' },
     providers = {
       lazydev = {
         name = "LazyDev",
@@ -143,7 +163,15 @@ M.opts = {
     },
     ['<Tab>'] = {
       function (cmp)
-        if not cmp.is_visible() then return end
+        if not cmp.is_visible() then
+          if require'luasnip'.expand_or_jumpable() then
+            vim.schedule(function()
+              require'luasnip'.expand_or_jump()
+            end)
+            return true
+          end
+          return
+        end
         cmp.select_next()
         return true
       end,

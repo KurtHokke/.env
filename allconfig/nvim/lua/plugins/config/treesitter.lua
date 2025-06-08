@@ -1,5 +1,6 @@
--- local log = require'functions.logger'.log
-local ensure_installed = {
+local M = {}
+
+M.ensure_installed = {
     "lua",
     "luadoc",
     "vim",
@@ -15,12 +16,12 @@ local ensure_installed = {
     "jsonc",
     "query",
 }
-local function need_update()
+function M.need_update()
   local is_installed = require'nvim-treesitter'.get_installed()
   if #is_installed == 0 then
     return true
   end
-  for _, v in ipairs(ensure_installed) do
+  for _, v in ipairs(M.ensure_installed) do
     local found_installed = false
     for _, vv in ipairs(is_installed) do
       if v == vv then
@@ -35,16 +36,10 @@ local function need_update()
   return false
 end
 
-if need_update() then
-  require'nvim-treesitter'.install(ensure_installed)
+function M.config()
+  if M.need_update() then
+    require'nvim-treesitter'.install(M.ensure_installed)
+  end
 end
---   auto_install = true,
---   highlight = {
---     enable = true,
---     use_languagetree = true,
---     additional_vim_regex_highlighting = false,
---   },
---   incremental_selection = {
---     enable = true,
---   },
--- }
+
+return M
