@@ -14,8 +14,8 @@ local plugin_exists = require'functions.plugin_utils'.exists
 --   vim.cmd[[colorscheme tokyonight]]
 -- end
 
-if plugin_exists('ccc.nvim') then
-  require'plugins.config.ccc'.mapping()
-end
+-- if plugin_exists('ccc.nvim') then
+--   require'plugins.config.ccc'.mapping()
+-- end
 
 require'functions.hl_setter'.syntax_hl(require'options.highlight'.hl_table)

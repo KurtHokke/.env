@@ -18,11 +18,6 @@ M.hl_table = {
 
 }
 
-function M.tokyonight(hl, c)
-  hl.BlinkCmpMenuBorder = { fg = "#00cb00" }
-  hl.NvimTreeFolderIcon = { fg = "#ffc500", bg = c.none }
-
-end
 
 
 -- hl(0, 'CursorLineNr', { fg = '#ffa200' })

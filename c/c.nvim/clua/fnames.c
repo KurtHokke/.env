@@ -5,7 +5,7 @@
 #include <lualib.h>
 
 
-static int l_fnames(lua_State *L)
+static int l_fnames(lua_State *L
 {
   const char *path = luaL_checkstring(L, 1);
   DIR *dir = opendir(path);

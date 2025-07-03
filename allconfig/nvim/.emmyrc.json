@@ -1,0 +1,69 @@
+{
+  "completion": {
+    "enable": true,
+    "autoRequire": true,
+    "autoRequireFunction": "require",
+    "autoRequireNamingConvention": "keep",
+    "callSnippet": false,
+    "postfix": "@"
+  },
+  "signature": {
+    "detailSignatureHelper": false
+  },
+  "diagnostics": {
+    "disable": [
+      "need-check-nil"
+    ],
+    "globals": ["vim"],
+    "globalsRegex": [],
+    "severity": {
+    },
+    "enables": [
+    ]
+  },
+  "hint": {
+    "enable": true,
+    "paramHint": true,
+    "indexHint": true,
+    "localHint": true,
+    "overrideHint": true
+  },
+  "runtime": {
+    "version": "LuaJIT",
+    "requireLikeFunction": [],
+    "frameworkVersions": [],
+    "extensions": [],
+    "requirePattern": []
+  },
+  "workspace": {
+    "ignoreDir": [
+
+    ],
+    "ignoreGlobs": [
+    ],
+    "library": [],
+    "workspaceRoots": [],
+    "encoding": "",
+    "moduleMap": []
+  },
+  "resource": {
+    "paths": [
+    ]
+  },
+  "codeLens": {
+    "enable": true
+  },
+  "strict": {
+    "requirePath": false,
+    "typeCall": false,
+    "arrayIndex": false,
+    "metaOverrideFileDefine": true
+  },
+  "hover": {
+    "enable": true
+  },
+  "references": {
+    "enable": true,
+    "fuzzy_search": true
+  }
+}

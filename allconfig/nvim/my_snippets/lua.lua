@@ -22,7 +22,6 @@ local fmt = require("luasnip.extras.fmt").fmt
 -- -- args is a table, where 1 is the text in Placeholder 1, 2 the text in
 -- -- placeholder 2,... --}}}
 
-
 ls.add_snippets("lua", {
   s("func", fmt([[
   function {}()
@@ -31,9 +30,16 @@ ls.add_snippets("lua", {
   ]], {i(1), i(2)})),
   s("local", { t("local ") }),
   s("return", { t("return ") }),
+  s({trig = "return {", priority = 900}, fmt([[
+  return {{{}
+  }}
+  ]], {i(1)})),
   s('requ', { t("require'"), i(1), t("'"), i(0) })
-})
--- ls.add_snippets("lua", {
+}, {default_priority = 1000})
+
+
+
+-- ls.add_snippets("lua", { ---{{{
 --   s("require", {
 --     t("require"),
 --     t("'"),
@@ -73,4 +79,4 @@ ls.add_snippets("lua", {
 --     t({ "", "}" }),
 --   }),
 -- })
---
+-- ---}}}

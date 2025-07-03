@@ -37,6 +37,7 @@ function M.append_lua_ls_library(path)
   end
 end
 
+
 return M
 -- Example usage
 -- append_lua_ls_library("~/.local/share/nvim/lazy/ccc/lua")

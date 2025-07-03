@@ -1,0 +1,8 @@
+[
+{
+  "directory": "/home/src/.env/allconfig/nvim",
+  "command": "/usr/bin/cc -Wall -Werror -std=c99 -O3 -flto -march=native -o CMakeFiles/main.dir/main.c.o -c /home/src/.env/allconfig/nvim/main.c",
+  "file": "/home/src/.env/allconfig/nvim/main.c",
+  "output": "CMakeFiles/main.dir/main.c.o"
+}
+]

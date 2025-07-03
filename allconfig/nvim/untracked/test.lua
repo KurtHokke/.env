@@ -1,6 +1,0 @@
-local a = {}
-
-return {
-  a
-
-}
